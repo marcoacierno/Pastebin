@@ -39,6 +39,7 @@ public class codeshareReceiver extends BroadcastReceiver {
         errors.put("Bad API request, invalid api_expire_date", R.string.erroreinterno);
         errors.put("Bad API request, invalid api_paste_private", R.string.erroreinterno);
         errors.put("Bad API request, invalid api_paste_format", R.string.erroreinterno);
+        errors.put("Post limit, maximum pastes per 24h reached", R.string.maxpastes);
     }
 
     public void onReceive(final Context context, Intent intent) {
@@ -60,6 +61,8 @@ public class codeshareReceiver extends BroadcastReceiver {
         UrlValidator urlValidator = new UrlValidator();
         if (!urlValidator.isValid(finalResponse))
         {
+            Log.d(MyActivity.DEBUG_TAG, "finalResponse => " + finalResponse);
+            Log.d(MyActivity.DEBUG_TAG, "errors.get(finalResponse) => " + errors.get(finalResponse));
             String response = context.getString(errors.get(finalResponse));
 
             alertDialog.setTitle(R.string.errore);

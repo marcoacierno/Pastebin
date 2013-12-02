@@ -39,6 +39,7 @@
     <string name="profile">Profilo</string>
     <string name="retry">Riprova</string>
     <string name="nopastes">Nessun paste pubblicato</string>
+    <string name="maxpastes">Hai raggiunto il limite di paste in 24h</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>
