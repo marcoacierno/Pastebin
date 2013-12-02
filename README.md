@@ -1,7 +1,24 @@
-Pastebin application API beta 1.<br />
-Bugs: Paste dates are bugged. <br />
-ToDo: Improve main.xml (lol confusing, too much LinearLayout useless use RelativeLayout), User system, View to show user account pastes and local saved pastes. <br />
-Photos: later. <br />
-Min API: 8 <br />
-Min Android: 2.2<br />
-Since it's my first "serious" android application it contains some errors etc.
+# Pastebin Android application
+
+Beta application, since it's my first "serious" android application it's not the best at all as application.
+
+# Features
+* Fast post
+* Show the paste in the application
+* Fork the paste and create your own copy of it
+
+# Bugs
+* Dates are bugged
+
+# ToDo
+* Improve main.xml file (too much LinearLayout)
+* User system login
+* Activity to show account pastes and local pastes
+
+# Photos
+
+I Will add screens later
+
+# Android
+
+Require Android 2.2 at least.
