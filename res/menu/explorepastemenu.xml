@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/forkpaste"
+        android:showAsAction="ifRoom"
+        android:title="@string/fork"
+        android:icon="@drawable/ic_action_copy"
+        />
+
+    <!--<item-->
+        <!--android:id="@+id/sharepaste"-->
+        <!--android:showAsAction="ifRoom"-->
+        <!--android:title="@string/share"-->
+        <!--android:icon="@drawable/ic_action_share"-->
+        <!--android:actionProviderClass="android.widget.ShareActionProvider"-->
+        <!--/>-->
+</menu>

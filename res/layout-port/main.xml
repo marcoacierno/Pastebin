@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- portait !-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:padding="4dip"
+              android:gravity="center_horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_height="200dip"
+        android:layout_width="match_parent">
+
+        <EditText
+            android:id="@+id/codearea"
+            android:layout_width="fill_parent"
+            android:minHeight="200dip"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:hint="@string/writeyourcode"
+            android:inputType="textMultiLine"
+            />
+    </ScrollView>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/accessibilita"
+        >
+        <RadioButton
+            android:id="@+id/access_pubblico"
+            android:layout_marginLeft="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publico"
+            android:gravity="left"
+            android:checked="true"
+            />
+        <RadioButton
+            android:id="@+id/access_private"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privato"
+            android:gravity="left"
+            />
+
+        <RadioButton
+            android:id="@+id/access_nolista"
+            android:layout_marginLeft="10dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nolista"
+            android:gravity="left"
+            />
+    </RadioGroup>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/pastetitletxt"
+            android:text="@string/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        />
+
+        <EditText
+            android:id="@+id/pastetitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/titolopaste"
+            android:singleLine="true"
+        />
+    </LinearLayout>
+
+    <LinearLayout             android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/language"
+            android:text="@string/linguaggio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerlinguaggio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/languages"
+            android:prompt="@string/linguaggiprompt"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout             android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:id="@+id/internal_ll">
+
+        <TextView
+            android:text="@string/scadenza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtscadenza"
+        />
+
+        <Spinner
+            android:id="@+id/spinnerscadenza"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/expiration"
+            android:prompt="@string/expirationprompt"
+        />
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+        >
+
+        <Button
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/posta"
+            android:onClick="sharePaste" />
+
+    </RelativeLayout>
+
+</LinearLayout>
