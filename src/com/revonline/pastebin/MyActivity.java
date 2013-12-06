@@ -1,8 +1,6 @@
 package com.revonline.pastebin;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.*;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;

@@ -44,16 +44,20 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Debug Tag" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="" />
+    <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Pastebin.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/AndroidManifest.xml" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386014332127" ignored="false" />
-    <file path="/MyActivity.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385930052951" ignored="false" />
+    <file path="/MyActivity.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386351022935" ignored="false" />
     <file path="/fragment.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386011309612" ignored="false" />
     <file path="/TListener.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385583892826" ignored="false" />
     <file path="/NewPaste.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385742773621" ignored="false" />
     <file path="/TrendingPastes.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385583327018" ignored="false" />
-    <file path="/Dummy.txt" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386015193431" ignored="false" />
+    <file path="/Dummy.txt" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386354102690" ignored="false" />
     <file path="/PagerAdapter.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385587408106" ignored="false" />
     <file path="/PageView.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385586736426" ignored="false" />
     <file path="/FragmentCollections.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385740837964" ignored="false" />
@@ -65,7 +69,7 @@
     <file path="$PROJECT_DIR$/gen/com/revonline/pastebin/Manifest.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385929908606" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/revonline/pastebin/BuildConfig.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385929909357" ignored="false" />
     <file path="/codeShareReceiver.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385839799678" ignored="false" />
-    <file path="/codeshareReceiver.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386020373984" ignored="false" />
+    <file path="/codeshareReceiver.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386099989588" ignored="false" />
     <file path="/SQLiteHelper.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1386016807671" ignored="false" />
     <file path="/paste.xml" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385918123998" ignored="false" />
     <file path="/ExplorePaste.java" changelist="764e0c26-7085-4c7f-b3cd-9159474c916f" time="1385926761630" ignored="false" />
@@ -167,24 +171,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MyActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="241" column="29" selection-start="10878" selection-end="10878" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="221" column="32" selection-start="10149" selection-end="10149" vertical-scroll-proportion="0.16876972">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="codeshareReceiver.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="codeshareReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/codeshareReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="88" selection-start="1812" selection-end="1812" vertical-scroll-proportion="0.8854167">
-              <folding>
-                <element signature="e#835#852#0" expanded="true" />
-              </folding>
+            <state line="85" column="39" selection-start="3991" selection-end="3991" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,7 +192,7 @@
       <file leaf-file-name="SpecialKeys.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="42" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
+            <state line="8" column="38" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -201,7 +201,7 @@
       <file leaf-file-name="explorepastemenu.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="12" column="26" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -210,7 +210,7 @@
       <file leaf-file-name="menu.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="9" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
+            <state line="7" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -219,7 +219,7 @@
       <file leaf-file-name="PastesListAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="17" selection-start="2604" selection-end="2604" vertical-scroll-proportion="0.0">
+            <state line="83" column="0" selection-start="2604" selection-end="2604" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -231,6 +231,15 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="SYNC_SETTING" value="DONT" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -258,10 +267,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -271,7 +278,19 @@
             <id />
           </State>
           <State>
+            <id>AOP</id>
+          </State>
+          <State>
             <id>Android Lint</id>
+          </State>
+          <State>
+            <id>Assignment issues</id>
+          </State>
+          <State>
+            <id>Assignment issuesGroovy</id>
+          </State>
+          <State>
+            <id>Assignment issuesJavaScript</id>
           </State>
           <State>
             <id>BPMN 2.0 configuration errors</id>
@@ -289,6 +308,9 @@
             <id>Code maturity issues</id>
           </State>
           <State>
+            <id>CoffeeScript</id>
+          </State>
+          <State>
             <id>Declaration redundancy</id>
           </State>
           <State>
@@ -298,7 +320,16 @@
             <id>General</id>
           </State>
           <State>
+            <id>GeneralCoffeeScript</id>
+          </State>
+          <State>
             <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Groovy</id>
+          </State>
+          <State>
+            <id>Guice Inspections</id>
           </State>
           <State>
             <id>Hibernate Issues</id>
@@ -307,7 +338,13 @@
             <id>Internationalization issues</id>
           </State>
           <State>
+            <id>J2ME issues</id>
+          </State>
+          <State>
             <id>JPA issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
           </State>
           <State>
             <id>Java language level migration aids</id>
@@ -320,6 +357,9 @@
           </State>
           <State>
             <id>OSGi</id>
+          </State>
+          <State>
+            <id>Potentially confusing code constructsGroovy</id>
           </State>
           <State>
             <id>Probable bugs</id>
@@ -351,16 +391,17 @@
           <State>
             <id>TestNG</id>
           </State>
-        </expanded-state>
-        <selected-state>
           <State>
-            <id>Abstraction issues</id>
+            <id>Threading issues</id>
           </State>
-        </selected-state>
+          <State>
+            <id>Threading issuesGroovy</id>
+          </State>
+        </expanded-state>
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -388,6 +429,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -548,34 +591,32 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="Errors" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/commons-validator-1.4.0.jar!/" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="8218bc0b" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.102:5555" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="avd1" />
-    <property name="AndroidTargetDevices" value="192.168.56.103:5555" />
     <property name="restartRequiresConfirmation" value="true" />
+    <property name="AndroidTargetDevices" value="192.168.56.103:5555" />
+    <property name="FullScreen" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -623,6 +664,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -649,19 +703,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -808,7 +849,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -818,11 +859,10 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67001116" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32790223" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.2865106" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67001116" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67001116" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33110368" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -830,8 +870,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67112595" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17769477" sideWeight="0.67112595" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32887402" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17769477" sideWeight="0.67209774" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6718576" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -839,6 +879,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27136752" sideWeight="0.6688963" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32887402" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -911,10 +952,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="20" selection-start="3690" selection-end="3690" vertical-scroll-proportion="-1.4539131">
           <folding>
-            <element signature="e#2758#2948#0" expanded="true" />
-            <element signature="e#2941#2942#0" expanded="true" />
-            <element signature="e#2995#3155#0" expanded="true" />
-            <element signature="e#3148#3149#0" expanded="true" />
+            <element signature="e#2758#2948#0" expanded="false" />
+            <element signature="e#2941#2942#0" expanded="false" />
+            <element signature="e#2995#3155#0" expanded="false" />
+            <element signature="e#3148#3149#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -989,56 +1030,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/SQLiteHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="16" selection-start="6007" selection-end="6007" vertical-scroll-proportion="0.8966132">
-          <folding>
-            <element signature="e#5109#5120#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="123" column="16" selection-start="6007" selection-end="6007" vertical-scroll-proportion="0.8966132" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="9" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
+        <state line="7" column="0" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="241" column="29" selection-start="10878" selection-end="10878" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="17" selection-start="2604" selection-end="2604" vertical-scroll-proportion="0.0">
+        <state line="83" column="0" selection-start="2604" selection-end="2604" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="12" column="26" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="42" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
+        <state line="8" column="38" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/codeshareReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="88" selection-start="1812" selection-end="1812" vertical-scroll-proportion="0.8854167">
-          <folding>
-            <element signature="e#835#852#0" expanded="true" />
-          </folding>
+        <state line="85" column="39" selection-start="3991" selection-end="3991" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="221" column="32" selection-start="10149" selection-end="10149" vertical-scroll-proportion="0.16876972">
+          <folding />
         </state>
       </provider>
     </entry>
