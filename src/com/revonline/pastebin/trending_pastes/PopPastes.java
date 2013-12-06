@@ -171,7 +171,16 @@ public class PopPastes extends Activity {
             else
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PopPastes.this);
-                builder.setMessage(R.string.nointernet);
+
+                if (ErrorMessages.errors.containsKey(xml))
+                {
+                    builder.setMessage(ErrorMessages.errors.get(xml));
+                }
+                else
+                {
+                    builder.setMessage(R.string.nointernet);
+                }
+
                 // i do in this way cuz i think it can bug
                 builder.setPositiveButton(R.string.retry, retry);
                 builder.setNegativeButton(R.string.close, close);

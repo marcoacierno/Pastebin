@@ -25,22 +25,6 @@ import java.util.HashMap;
 
 public class codeshareReceiver extends BroadcastReceiver {
     public final static String SHARE_SUCCESS = "pastebin.SHARE_SUCCESS";
-    public final static HashMap<String, Integer> errors = new HashMap<String, Integer>();
-
-    static
-    {
-        errors.put("Bad API request, invalid api_option", R.string.erroreinterno);
-        errors.put("Bad API request, invalid api_dev_key", R.string.erroreinterno);
-        errors.put("Bad API request, IP blocked", R.string.blockedip);
-        errors.put("Bad API request, maximum number of 25 unlisted pastes for your free account", R.string.maxunlimitedpastes);
-        errors.put("Bad API request, maximum number of 10 private pastes for your free account", R.string.maxprivatepastes);
-        errors.put("Bad API request, api_paste_code was empty", R.string.blankcode);
-        errors.put("Bad API request, maximum paste file size exceeded", R.string.maxpastesize);
-        errors.put("Bad API request, invalid api_expire_date", R.string.erroreinterno);
-        errors.put("Bad API request, invalid api_paste_private", R.string.erroreinterno);
-        errors.put("Bad API request, invalid api_paste_format", R.string.erroreinterno);
-        errors.put("Post limit, maximum pastes per 24h reached", R.string.maxpastes);
-    }
 
     public void onReceive(final Context context, Intent intent) {
         Log.d(MyActivity.DEBUG_TAG, "codeshareReceiver - onReceive");
@@ -62,8 +46,8 @@ public class codeshareReceiver extends BroadcastReceiver {
         if (!urlValidator.isValid(finalResponse))
         {
             Log.d(MyActivity.DEBUG_TAG, "finalResponse => " + finalResponse);
-            Log.d(MyActivity.DEBUG_TAG, "errors.get(finalResponse) => " + errors.get(finalResponse));
-            String response = context.getString(errors.get(finalResponse));
+            Log.d(MyActivity.DEBUG_TAG, "errors.get(finalResponse) => " + ErrorMessages.errors.get(finalResponse));
+            String response = context.getString(ErrorMessages.errors.get(finalResponse));
 
             alertDialog.setTitle(R.string.errore);
             alertDialog.setMessage("Si è verificato un errore: " + response + ". Riprova.");
