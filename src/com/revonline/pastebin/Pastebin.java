@@ -28,8 +28,11 @@ public class Pastebin {
         this.context = context;
     }
 
-    public void postPaste(String title, String code, String language, String scadenza, int visibility)
+    public void postPaste(String title, String code, String language, String scadenza, int visibility, boolean anonimo, String key)
     {
+        // anonimo => true se il paste deve essere anonimo
+        // false => se il paste deve essere dell'utente (se loggato)
+
         Log.d(MyActivity.DEBUG_TAG, "visibility => " + visibility);
 
         if (code.length() < 1)
@@ -47,6 +50,10 @@ public class Pastebin {
         argsPair.add(new ParcelableNameValuePair("api_paste_format", language));
         argsPair.add(new ParcelableNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
         argsPair.add(new ParcelableNameValuePair("api_paste_code", code));
+        if (!anonimo)
+        {
+            argsPair.add(new ParcelableNameValuePair("api_user_key", key));
+        }
      //http://pastebin.com/api/api_post.php
 
         Intent intent = new Intent(context, SendCode.class);

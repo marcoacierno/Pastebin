@@ -120,6 +120,20 @@
 
     </LinearLayout>
 
+    <LinearLayout  android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/internal_l2">
+
+        <CheckBox
+            android:id="@+id/postacomeanonimo"
+            android:text="@string/useanonimo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+
     <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

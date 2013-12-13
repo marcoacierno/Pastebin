@@ -25,5 +25,9 @@ public class ErrorMessages {
         errors.put("Bad API request, invalid api_paste_private", R.string.erroreinterno);
         errors.put("Bad API request, invalid api_paste_format", R.string.erroreinterno);
         errors.put("Post limit, maximum pastes per 24h reached", R.string.maxpastes);
+        errors.put("Bad API request, use POST request, not GET", R.string.erroreinterno);
+        errors.put("Bad API request, invalid login", R.string.invaliddata);
+        errors.put("Bad API request, account not active", R.string.accountnoactive);
+        errors.put("Bad API request, invalid POST parameters", R.string.erroreinterno);
     }
 }

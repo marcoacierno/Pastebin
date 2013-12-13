@@ -6,4 +6,9 @@
         android:title="@string/pastepopolari"
         />
 
+    <item
+        android:id="@+id/loginmenu"
+        android:title="@string/IO"
+    />
+
 </menu>

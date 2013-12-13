@@ -36,7 +36,7 @@
                 android:value="MyActivity"
                 />
         </activity>
-        <activity android:name=".user.IOUser"
+        <activity android:name=".user.UserActivity"
                   android:parentActivityName="MyActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,6 +46,6 @@
 
         <service android:enabled="true" android:name=".SendCode" />
 
-        <receiver android:name=".codeshareReceiver"/>
+        <receiver android:name=".CodeShareReceiver"/>
     </application>
 </manifest>

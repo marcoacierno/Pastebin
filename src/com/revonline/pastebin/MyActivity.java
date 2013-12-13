@@ -1,16 +1,18 @@
 package com.revonline.pastebin;
 
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
-import com.revonline.pastebin.database.SQLiteHelper;
+
 import com.revonline.pastebin.trending_pastes.PopPastes;
+import com.revonline.pastebin.user.User;
+import com.revonline.pastebin.user.UserActivity;
 
 public class MyActivity extends Activity {
     public static final String DEBUG_TAG = "Debug Tag";
@@ -20,7 +22,7 @@ public class MyActivity extends Activity {
     private String time;
     private int visiblity;
     private EditText pasteText;
-    private codeshareReceiver codeshareResponse;
+    private CodeShareReceiver codeshareResponse;
     private static final String[] fixedLanguages = new String[]{"4cs", "6502acme", "6502kickass", "6502tasm", "abap", "actionscript",
             "actionscript3", "ada", "algol68", "apache", "applescript", "apt_sources", "arm", "asm", "asp", "asymptote", "autoconf", "autohotkey", "autoit", "avisynth", "awk",
             "bascomavr", "bash", "basic4gl", "bibtex", "blitzbasic", "bnf", "boo", "bf", "c", "c_mac", "cil", "csharp", "cpp",
@@ -40,7 +42,12 @@ public class MyActivity extends Activity {
             "xorg_conf", "xpp", "yaml", "z80", "zxbasic"};
     public static boolean apiLower11;
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
-//    private int portait = 1;
+    public User user;
+    private RadioButton privateButton;
+    private MenuItem IOmenuitem;
+    private CheckBox anonimo;//true => posta come anonimo
+                             //false => posta come un utente, se loggato.
+    //    private int portait = 1;
     /**
      * Called when the activity is first created.
      */
@@ -49,6 +56,9 @@ public class MyActivity extends Activity {
         Log.d(DEBUG_TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        // load user
+        user = new User(this);
 
 //        Log.d(DEBUG_TAG, "portait = " + portait);
 
@@ -85,7 +95,6 @@ public class MyActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                String convert = (String) parent.getItemAtPosition(position);
                 language = fixedLanguages[position];
             }
 
@@ -154,8 +163,8 @@ public class MyActivity extends Activity {
             }
         });
 
-        codeshareResponse = new codeshareReceiver();
-        IntentFilter intentFilter = new IntentFilter(codeshareReceiver.SHARE_SUCCESS);
+        codeshareResponse = new CodeShareReceiver();
+        IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         registerReceiver(codeshareResponse, intentFilter);
 
@@ -169,17 +178,31 @@ public class MyActivity extends Activity {
         {
             pasteText.setText(fork);
         }
-    }
-//
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);    //To change body of overridden methods use File | Settings | File Templates.
-//
-//        Log.d(DEBUG_TAG, "Orientation = " + newConfig.orientation);
-//
-//        portait = newConfig.orientation;
-//    }
 
+        Log.d(DEBUG_TAG, "user.isLogged() => " + user.isLogged());
+        privateButton = (RadioButton)findViewById(R.id.access_private);
+        privateButton.setEnabled(user.isLogged());
+
+        anonimo = (CheckBox) findViewById(R.id.postacomeanonimo);
+    }
+
+    @Override
+    public void onResume()
+    {
+        Log.d(DEBUG_TAG, "onResume MyActivity");
+        super.onResume();
+        user.update();
+
+        //
+        //controllo se effettivamente IOmenuitem è stato creato..
+        if (apiLower11 && IOmenuitem != null)
+            IOmenuitem.setTitle(getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login")));
+
+        anonimo.setEnabled(user.isLogged());
+        privateButton.setEnabled(user.isLogged());
+    }
+
+    @SuppressLint("NewApi")
     private void initNavigation()
     {
         // >= 11
@@ -187,7 +210,9 @@ public class MyActivity extends Activity {
         {
             ActionBar actionBar = getActionBar();
 
-            String[] items = {getString(R.string.createpaste), getString(R.string.pastepopolari)};
+            String[] items = {getString(R.string.createpaste), getString(R.string.pastepopolari),
+                    getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login"))
+            };
 
             //actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -210,6 +235,10 @@ public class MyActivity extends Activity {
                             intent = new Intent(getApplicationContext(), PopPastes.class);
                             startActivity(intent);
                             break;
+                        case 2:
+                            intent = new Intent(getApplicationContext(), UserActivity.class);
+                            startActivity(intent);
+                            break;
                     }
 
                     return false;  //To change body of implemented methods use File | Settings | File Templates.
@@ -224,6 +253,9 @@ public class MyActivity extends Activity {
         {
             MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu, menu);
+
+            IOmenuitem = menu.findItem(R.id.loginmenu);
+            IOmenuitem.setTitle(getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login")));
         }
         return super.onCreateOptionsMenu(menu);    //To change body of overridden methods use File | Settings | File Templates.
     }
@@ -235,7 +267,11 @@ public class MyActivity extends Activity {
             switch (item.getItemId())
             {
                 case R.id.popularpaste:
-                    Intent intent = new Intent(getApplicationContext(), PopPastes.class);
+                    Intent intent = new Intent(this, PopPastes.class);
+                    startActivity(intent);
+                    break;
+                case R.id.loginmenu:
+                    intent = new Intent(this, UserActivity.class);
                     startActivity(intent);
                     break;
             }
@@ -259,7 +295,7 @@ public class MyActivity extends Activity {
             return;
         }
 
-        pastebin.postPaste(viewPasteTitle.getText().toString(), codice, language, time, visiblity);
+        pastebin.postPaste(viewPasteTitle.getText().toString(), codice, language, time, visiblity, anonimo.isChecked(), user.getUserKey());
     }
 
     @Override

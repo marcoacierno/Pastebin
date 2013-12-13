@@ -40,6 +40,20 @@
     <string name="retry">Riprova</string>
     <string name="nopastes">Nessun paste pubblicato</string>
     <string name="maxpastes">Hai raggiunto il limite di paste in 24h</string>
+    <string name="msgerrore">Si è verificato un errore %1$s. Riprova.</string>
+    <string name="uploadsuccess">Il paste è stato pubblicato con successo! URL: %1$s</string>
+    <string name="IO">Io [%1$s]</string>
+    <string name="invaliddata">I dati forniti sono errati!</string>
+    <string name="accountnoactive">L\'Account specificato non è attivo!</string>
+    <string name="loginok">Login avvenuto con successo!</string>
+    <string name="backtohome">Torna alla pagina principale</string>
+    <string name="loginpastebin">Per utilizzare questa scheda devi loggarti nel tuo account Pastebin</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="continua">Continua</string>
+    <string name="logout">Logout</string>
+    <string name="useanonimo">Posta come anonimo</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>

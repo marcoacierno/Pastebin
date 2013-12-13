@@ -6,11 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
-import com.revonline.pastebin.database.SQLiteHelper;
+
+import com.revonline.pastebin.database.PasteDBHelper;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
 import org.apache.commons.validator.routines.UrlValidator;
-
-import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,11 +22,11 @@ import java.util.HashMap;
 //immaginarti con altri
 //la follia definitiva.
 
-public class codeshareReceiver extends BroadcastReceiver {
+public class CodeShareReceiver extends BroadcastReceiver {
     public final static String SHARE_SUCCESS = "pastebin.SHARE_SUCCESS";
 
     public void onReceive(final Context context, Intent intent) {
-        Log.d(MyActivity.DEBUG_TAG, "codeshareReceiver - onReceive");
+        Log.d(MyActivity.DEBUG_TAG, "CodeShareReceiver - onReceive");
         final String finalResponse = intent.getStringExtra(SendCode.FLAG_EXTRA_HTTP_RESULT);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -50,13 +49,13 @@ public class codeshareReceiver extends BroadcastReceiver {
             String response = context.getString(ErrorMessages.errors.get(finalResponse));
 
             alertDialog.setTitle(R.string.errore);
-            alertDialog.setMessage("Si è verificato un errore: " + response + ". Riprova.");
+            alertDialog.setMessage(context.getString(R.string.msgerrore, response));
             alertDialog.setNegativeButton(R.string.close, null);
         }
         else
         {
             alertDialog.setTitle(R.string.result);
-            alertDialog.setMessage("Il paste è stato pubblicato con successo! URL: " + finalResponse);
+            alertDialog.setMessage(context.getString(R.string.uploadsuccess, finalResponse));
             final String key = finalResponse.substring(finalResponse.lastIndexOf('/') + 1);
 
             AlertDialog.Builder builder = alertDialog.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
@@ -71,10 +70,10 @@ public class codeshareReceiver extends BroadcastReceiver {
 
             alertDialog.setNegativeButton(R.string.close, null);
 
-            SQLiteHelper sqLiteHelper = new SQLiteHelper(context);
+            PasteDBHelper pasteDBHelper = new PasteDBHelper(context);
 
             //(String name, String language, String scadenza, int tipo, String url)
-            sqLiteHelper.addPaste(
+            pasteDBHelper.addPaste(
                     intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME),
                     intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
                     intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_SCADENZA),

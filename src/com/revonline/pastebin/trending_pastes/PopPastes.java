@@ -174,7 +174,7 @@ public class PopPastes extends Activity {
 
                 if (ErrorMessages.errors.containsKey(xml))
                 {
-                    builder.setMessage(ErrorMessages.errors.get(xml));
+                    builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
                 }
                 else
                 {

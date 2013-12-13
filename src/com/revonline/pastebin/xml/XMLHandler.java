@@ -39,12 +39,15 @@ public class XMLHandler extends DefaultHandler {
         if (localName.equals(XML_ROOT_ELEMENT))
         {
             Log.d(MyActivity.DEBUG_TAG, "root element");
+
             if (info != null)
             {
                 Log.d(MyActivity.DEBUG_TAG, "add new item");
                 data.add(info);
+                info = null;
             }
 
+            Log.d(MyActivity.DEBUG_TAG, "creo..");
             info = new PasteInfo();
         }
     }
@@ -83,6 +86,14 @@ public class XMLHandler extends DefaultHandler {
         {
             value = new String(ch, start, length);
             onElement = false;
+        }
+    }
+
+    @Override
+    public void endDocument() throws SAXException {
+        if (info != null)
+        {
+            data.add(info);
         }
     }
 
