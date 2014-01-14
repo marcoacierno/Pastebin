@@ -36,9 +36,10 @@ public class ExplorePaste extends Activity
     public static final String FLAG_EXTRA_PASTE_URL = "PASTE.EXTRA.PASTE_URL";
     private String pasteKey;
     private TextView textView;
-    private ShareActionProvider shareActionProvider;
+    private boolean downloaded = false;
 
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paste);
 
@@ -54,7 +55,15 @@ public class ExplorePaste extends Activity
 
         textView = (TextView) findViewById(R.id.codeview);
 
-        new DownloadRAW().execute();
+        downloaded = (savedInstanceState != null) && savedInstanceState.getBoolean("downloaded");
+
+        if (!downloaded) new DownloadRAW().execute();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("downloaded", downloaded);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -131,6 +140,7 @@ public class ExplorePaste extends Activity
         {
             super.onPostExecute(s);    //To change body of overridden methods use File | Settings | File Templates.
 
+            downloaded = true;
             if (s != null)
             {
                 textView.setText(s);

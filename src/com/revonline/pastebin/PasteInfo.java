@@ -1,5 +1,8 @@
 package com.revonline.pastebin;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.GregorianCalendar;
 
 /**
@@ -9,13 +12,19 @@ import java.util.GregorianCalendar;
  * Time: 15.48
  * To change this template use File | Settings | File Templates.
  */
-public class PasteInfo {
+public class PasteInfo implements Parcelable
+{
     public int sqlID;
     private String pasteName;
     private String pasteAuthor;
     private String pasteLanguage;
     private GregorianCalendar pasteData = new GregorianCalendar(); // mb .sql.Date ?
     private String pasteKey;
+
+    public PasteInfo(Parcel in)
+    {
+        readFromParcel(in);
+    }
 
     public PasteInfo(String pasteName, String pasteAuthor, String pasteLanguage, GregorianCalendar pasteData, String pasteKey) {
         this.pasteName = pasteName;
@@ -74,4 +83,48 @@ public class PasteInfo {
     public void setSqlID(int sqlID) {
         this.sqlID = sqlID;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        /**    public int sqlID;
+         private String pasteName;
+         private String pasteAuthor;
+         private String pasteLanguage;
+         private GregorianCalendar pasteData = new GregorianCalendar(); // mb .sql.Date ?
+         private String pasteKey;
+        */
+
+        parcel.writeInt(sqlID);
+        parcel.writeString(pasteName);
+        parcel.writeString(pasteAuthor);
+        parcel.writeString(pasteLanguage);
+        parcel.writeSerializable(pasteData);
+        parcel.writeString(pasteKey);
+    }
+
+    private void readFromParcel(Parcel in)
+    {
+        sqlID = in.readInt();
+        pasteName = in.readString();
+        pasteAuthor = in.readString();
+        pasteLanguage = in.readString();
+        pasteData = (GregorianCalendar) in.readSerializable();
+        pasteKey = in.readString();
+    }
+
+    public static final Parcelable.Creator<PasteInfo> CREATOR
+            = new Parcelable.Creator<PasteInfo>() {
+        public PasteInfo createFromParcel(Parcel in) {
+            return new PasteInfo(in);
+        }
+
+        public PasteInfo[] newArray(int size) {
+            return new PasteInfo[size];
+        }
+    };
 }

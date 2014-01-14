@@ -46,6 +46,6 @@
 
         <service android:enabled="true" android:name=".SendCode" />
 
-        <receiver android:name=".CodeShareReceiver"/>
+        <receiver android:name=".codeshareReceiver"/>
     </application>
 </manifest>

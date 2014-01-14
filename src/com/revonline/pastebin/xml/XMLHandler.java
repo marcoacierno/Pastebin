@@ -27,7 +27,7 @@ public class XMLHandler extends DefaultHandler {
     private static final String XML_PASTE_LANGUAGE = "paste_format_long";
     private boolean onElement;
     private String value;
-    public List<PasteInfo> data = new ArrayList<PasteInfo>();
+    public ArrayList<PasteInfo> data = new ArrayList<PasteInfo>();
     private PasteInfo info = null;
 
     @Override

@@ -22,7 +22,7 @@ public class MyActivity extends Activity {
     private String time;
     private int visiblity;
     private EditText pasteText;
-    private CodeShareReceiver codeshareResponse;
+    private codeshareReceiver codeshareResponse;
     private static final String[] fixedLanguages = new String[]{"4cs", "6502acme", "6502kickass", "6502tasm", "abap", "actionscript",
             "actionscript3", "ada", "algol68", "apache", "applescript", "apt_sources", "arm", "asm", "asp", "asymptote", "autoconf", "autohotkey", "autoit", "avisynth", "awk",
             "bascomavr", "bash", "basic4gl", "bibtex", "blitzbasic", "bnf", "boo", "bf", "c", "c_mac", "cil", "csharp", "cpp",
@@ -163,8 +163,8 @@ public class MyActivity extends Activity {
             }
         });
 
-        codeshareResponse = new CodeShareReceiver();
-        IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
+        codeshareResponse = new codeshareReceiver();
+        IntentFilter intentFilter = new IntentFilter(codeshareReceiver.SHARE_SUCCESS);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         registerReceiver(codeshareResponse, intentFilter);
 

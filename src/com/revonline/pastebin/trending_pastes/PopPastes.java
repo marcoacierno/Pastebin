@@ -42,11 +42,22 @@ import java.util.List;
  * Time: 12.01
  * To change this template use File | Settings | File Templates.
  */
-public class PopPastes extends Activity {
-    PastesListAdapter adapter;
+public class PopPastes extends Activity
+{
+    public static final String KEY_POP_PASTES = "poppastes";
+    private PastesListAdapter adapter;
+    private ArrayList<PasteInfo> pasteInfos;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trendingpastes);
+
+        adapter = new PastesListAdapter(this);
+
+        if (savedInstanceState != null)
+        {
+            pasteInfos = savedInstanceState.getParcelableArrayList(KEY_POP_PASTES);
+        }
 
         if (!MyActivity.apiLower11)
         {
@@ -59,9 +70,10 @@ public class PopPastes extends Activity {
             setTitle(R.string.pastepopolari);
         }
 
-        adapter = new PastesListAdapter(this);
+
         ListView listView = (ListView) findViewById(R.id.treadingpastes);
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -70,14 +82,33 @@ public class PopPastes extends Activity {
                 startActivity(intent);
             }
         });
+
         listView.setEmptyView(findViewById(R.id.empty));
 
-        new DownloadTrendingPastes().execute();
+
+        if (pasteInfos == null)
+        {
+            new DownloadTrendingPastes().execute();
+        }
+        else
+        {
+            adapter.setPasteInfoList(pasteInfos);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState)
+    {
+        outState.putParcelableArrayList(KEY_POP_PASTES, pasteInfos);
+        Log.d(MyActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
+        Log.d(MyActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
+
+        super.onSaveInstanceState(outState);
     }
 
     DialogInterface.OnClickListener retry = new DialogInterface.OnClickListener() {
         @Override
-        public void onClick(DialogInterface dialog, int which) {
+            public void onClick(DialogInterface dialog, int which) {
             new DownloadTrendingPastes().execute();
         }
     };
@@ -103,7 +134,6 @@ public class PopPastes extends Activity {
             alertDialog = builder.show();
         }
 
-        List<PasteInfo> pasteInfos;
         @Override
         protected String doInBackground(Void... params) {
             HttpClient client = new DefaultHttpClient();
