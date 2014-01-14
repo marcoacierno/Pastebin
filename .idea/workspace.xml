@@ -54,7 +54,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Pastebin.iws" />
@@ -842,7 +842,11 @@
       <created>1389730633044</created>
       <updated>1389730633044</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="small layout update">
+      <created>1389731358904</created>
+      <updated>1389731358904</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -917,7 +921,8 @@
     <MESSAGE value="testing" />
     <MESSAGE value="removed the redownload of popular pastes and the paste if screen orientation change" />
     <MESSAGE value="only one layout (to support small screens too)" />
-    <option name="LAST_COMMIT_MESSAGE" value="only one layout (to support small screens too)" />
+    <MESSAGE value="small layout update" />
+    <option name="LAST_COMMIT_MESSAGE" value="small layout update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

@@ -17,7 +17,9 @@ Beta application, since it's my first "serious" android application it's not the
 
 # Photos
 
-I Will add screens later
+http://picu.site11.com/images/beca125b60e14f551173c558a19eff59d409ac97.png
+http://picu.site11.com/images/882ed41a6f594f8f8e88ae59a20962659849c669.png
+http://picu.site11.com/images/ba645e51066036c9b46f28a6a450eac4ce0dac27.png
 
 # Android
 
