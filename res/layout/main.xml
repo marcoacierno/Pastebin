@@ -141,22 +141,13 @@
                 />
 
         </LinearLayout>
-
-        <!--api_user_key-->
-
-        <RelativeLayout
+        <!-- deve essere riaggiunto !-->
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            >
+            android:text="@string/posta"
+            android:onClick="sharePaste" />
 
-            <Button
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/posta"
-                android:onClick="sharePaste" />
-
-        </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>
