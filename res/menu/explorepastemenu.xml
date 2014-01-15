@@ -3,10 +3,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/forkpaste"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/fork"
         android:icon="@drawable/ic_action_copy"
-        />
+    />
+
+    <item
+        android:id="@+id/openinbrowser"
+        android:showAsAction="always"
+        android:title="@string/openbrowser"
+        android:icon="@drawable/ic_action_web_site"
+    />
 
     <!--<item-->
         <!--android:id="@+id/sharepaste"-->

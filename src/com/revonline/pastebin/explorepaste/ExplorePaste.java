@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,12 +79,18 @@ public class ExplorePaste extends Activity
 
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        Intent intent;
         switch (item.getItemId())
         {
             case R.id.forkpaste:
-                Intent intent = new Intent(this, MyActivity.class);
+                intent = new Intent(this, MyActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra(MyActivity.EXTRA_FLAG_FORK, textView.getText().toString());
+                startActivity(intent);
+                break;
+            case R.id.openinbrowser:
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://pastebin.com/" + pasteKey));
                 startActivity(intent);
                 break;
         }

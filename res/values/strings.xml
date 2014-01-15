@@ -54,6 +54,7 @@
     <string name="continua">Continua</string>
     <string name="logout">Logout</string>
     <string name="useanonimo">Posta come anonimo</string>
+    <string name="openbrowser">Apri su Internet</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>
