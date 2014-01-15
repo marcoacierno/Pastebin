@@ -8,7 +8,6 @@ Beta application, since it's my first "serious" android application it's not the
 * Fork the paste and create your own copy of it
 
 # Bugs
-* Dates are bugged
 
 # ToDo
 * Improve main.xml file (too much LinearLayout)
