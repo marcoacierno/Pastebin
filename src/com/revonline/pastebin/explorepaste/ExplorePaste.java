@@ -169,7 +169,7 @@ public class ExplorePaste extends Activity
             }
             //no paste here
 
-            alertDialog.dismiss();
+            if (!ExplorePaste.this.isFinishing()) alertDialog.dismiss();
         }
     }
 }
