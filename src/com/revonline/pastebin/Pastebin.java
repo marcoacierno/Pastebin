@@ -24,7 +24,8 @@ public class Pastebin {
     public static final String EXTRA_FLAG_PASTE_SCADENZA = "pastebin.EXTRA_FLAG.SCADENZA";
     public static final String EXTRA_FLAG_PASTE_ARGS = "pastebin.EXTRA_FLAG.ARGS";
 
-    public Pastebin(Context context) {
+    public Pastebin(Context context)
+    {
         this.context = context;
     }
 
@@ -66,6 +67,6 @@ public class Pastebin {
         Log.d(MyActivity.DEBUG_TAG, "launch service");
         context.startService(intent);
 
-        Toast.makeText(context, R.string.sharestarted, Toast.LENGTH_LONG).show();;
+        Toast.makeText(context, R.string.sharestarted, Toast.LENGTH_LONG).show();
     }
 }

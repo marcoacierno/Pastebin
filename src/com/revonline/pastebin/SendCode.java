@@ -83,7 +83,7 @@ public class SendCode extends IntentService {
         }
 
         Intent broadcast = new Intent();
-        broadcast.setAction(codeshareReceiver.SHARE_SUCCESS);
+        broadcast.setAction(CodeShareReceiver.SHARE_SUCCESS);
         broadcast.addCategory(Intent.CATEGORY_DEFAULT);
         broadcast.putExtra(FLAG_EXTRA_HTTP_RESULT, finalResponse);
 

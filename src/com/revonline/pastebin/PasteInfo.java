@@ -3,6 +3,8 @@ package com.revonline.pastebin;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -18,7 +20,7 @@ public class PasteInfo implements Parcelable
     private String pasteName;
     private String pasteAuthor;
     private String pasteLanguage;
-    private GregorianCalendar pasteData = new GregorianCalendar(); // mb .sql.Date ?
+    private Calendar pasteData; // mb .sql.Date ?
     private String pasteKey;
 
     public PasteInfo(Parcel in)
@@ -26,7 +28,7 @@ public class PasteInfo implements Parcelable
         readFromParcel(in);
     }
 
-    public PasteInfo(String pasteName, String pasteAuthor, String pasteLanguage, GregorianCalendar pasteData, String pasteKey) {
+    public PasteInfo(String pasteName, String pasteAuthor, String pasteLanguage, Calendar pasteData, String pasteKey) {
         this.pasteName = pasteName;
         this.pasteAuthor = pasteAuthor;
         this.pasteLanguage = pasteLanguage;
@@ -60,11 +62,11 @@ public class PasteInfo implements Parcelable
         this.pasteLanguage = pasteLanguage;
     }
 
-    public GregorianCalendar getPasteData() {
+    public Calendar getPasteData() {
         return pasteData;
     }
 
-    public void setPasteData(GregorianCalendar pasteData) {
+    public void setPasteData(Calendar pasteData) {
         this.pasteData = pasteData;
     }
 
@@ -113,7 +115,7 @@ public class PasteInfo implements Parcelable
         pasteName = in.readString();
         pasteAuthor = in.readString();
         pasteLanguage = in.readString();
-        pasteData = (GregorianCalendar) in.readSerializable();
+        pasteData = (Calendar) in.readSerializable();
         pasteKey = in.readString();
     }
 

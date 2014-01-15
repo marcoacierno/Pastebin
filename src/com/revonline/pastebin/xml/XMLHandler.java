@@ -7,10 +7,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,6 +49,19 @@ public class XMLHandler extends DefaultHandler {
         }
     }
 
+    /*
+    function timeToDate(f){
+      if(!f.inPut.value.length){
+        f.output.value = "";
+        return;
+      }
+      f.output.value = new Date(parseInt(f.inPut.value)*(f.milli.checked?1:1000));
+      //pageTracker._trackPageview("/dateCalcs/millisecond-to-date-string");
+      pageTracker._trackEvent("dateCalculators", "millisecond-to-date-string", f.output.value);
+    }
+
+     */
+
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         onElement = false;
@@ -63,10 +73,12 @@ public class XMLHandler extends DefaultHandler {
         }
         else if (localName.equals(XML_PASTE_DATE))
         {
-            info.setPasteData(new GregorianCalendar());
-            info.getPasteData().setTimeInMillis(Integer.parseInt(value));
+            info.setPasteData(Calendar.getInstance());
+            // SEMBRA ANDARE IN OVERFLOW MA NON DOVREBBE
+            long time = Long.parseLong(value) * 1000;
+            info.getPasteData().setTimeInMillis(time);
 
-            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste date " + value);
+            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste date -- temp removed... " + time);
         }
         else if (localName.equals(XML_PASTE_TITLE))
         {

@@ -22,7 +22,7 @@ public class MyActivity extends Activity {
     private String time;
     private int visiblity;
     private EditText pasteText;
-    private codeshareReceiver codeshareResponse;
+    private CodeShareReceiver codeshareResponse;
     private static final String[] fixedLanguages = new String[]{"4cs", "6502acme", "6502kickass", "6502tasm", "abap", "actionscript",
             "actionscript3", "ada", "algol68", "apache", "applescript", "apt_sources", "arm", "asm", "asp", "asymptote", "autoconf", "autohotkey", "autoit", "avisynth", "awk",
             "bascomavr", "bash", "basic4gl", "bibtex", "blitzbasic", "bnf", "boo", "bf", "c", "c_mac", "cil", "csharp", "cpp",
@@ -163,8 +163,8 @@ public class MyActivity extends Activity {
             }
         });
 
-        codeshareResponse = new codeshareReceiver();
-        IntentFilter intentFilter = new IntentFilter(codeshareReceiver.SHARE_SUCCESS);
+        codeshareResponse = new CodeShareReceiver();
+        IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
         intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
         registerReceiver(codeshareResponse, intentFilter);
 
@@ -264,10 +264,11 @@ public class MyActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (apiLower11)
         {
+            Intent intent;
             switch (item.getItemId())
             {
                 case R.id.popularpaste:
-                    Intent intent = new Intent(this, PopPastes.class);
+                    intent = new Intent(this, PopPastes.class);
                     startActivity(intent);
                     break;
                 case R.id.loginmenu:
@@ -287,11 +288,13 @@ public class MyActivity extends Activity {
 
         if (codice.length() < 1)
         {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-            alertDialog.setTitle(R.string.errore);
-            alertDialog.setMessage(R.string.cannotbeblank);
-            alertDialog.setPositiveButton(R.string.OK, null);
-            alertDialog.show();
+//            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+//            alertDialog.setTitle(R.string.errore);
+//            alertDialog.setMessage(R.string.cannotbeblank);
+//            alertDialog.setPositiveButton(R.string.OK, null);
+//            alertDialog.show();
+//
+            Toast.makeText(this, R.string.cannotbeblank, Toast.LENGTH_SHORT).show();
             return;
         }
 

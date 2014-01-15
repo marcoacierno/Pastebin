@@ -2,14 +2,15 @@ package com.revonline.pastebin.explorepaste;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import com.revonline.pastebin.MyActivity;
 import com.revonline.pastebin.R;
@@ -91,15 +92,29 @@ public class ExplorePaste extends Activity
 
     class DownloadRAW extends AsyncTask<Void, Void, String>
     {
-        private AlertDialog alertDialog;
+        private ProgressDialog alertDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
-            AlertDialog.Builder builder = new AlertDialog.Builder(ExplorePaste.this);
-            builder.setMessage(R.string.waitdownload);
 
-            alertDialog = builder.show();
+            alertDialog = new ProgressDialog(ExplorePaste.this);
+            alertDialog.setMessage(ExplorePaste.this.getString(R.string.waitdownload));
+            alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent keyEvent)
+                {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_UP)
+                    {
+                        finish();
+                        return true;
+                    }
+
+                    return false;
+                }
+            });
+            alertDialog.setCancelable(false);
+            alertDialog.show();
         }
 
         @Override
@@ -147,7 +162,7 @@ public class ExplorePaste extends Activity
             }
             //no paste here
 
-            alertDialog.hide();
+            alertDialog.dismiss();
         }
     }
 }

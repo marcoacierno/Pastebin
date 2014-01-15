@@ -3,11 +3,13 @@ package com.revonline.pastebin.trending_pastes;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -123,15 +125,29 @@ public class PopPastes extends Activity
     //<Params, Progress, Result>
     class DownloadTrendingPastes extends AsyncTask<Void, Void, String>
     {
-        AlertDialog alertDialog;
+        ProgressDialog alertDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
-            AlertDialog.Builder builder = new AlertDialog.Builder(PopPastes.this);
-            builder.setMessage(R.string.waitdownloadlist);
 
-            alertDialog = builder.show();
+            alertDialog = new ProgressDialog(PopPastes.this);
+            alertDialog.setMessage(PopPastes.this.getString(R.string.waitdownloadlist));
+            alertDialog.setCancelable(false);
+            alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                @Override
+                public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent keyEvent)
+                {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_UP)
+                    {
+                        finish();
+                        return true;
+                    }
+
+                    return false;
+                }
+            });
+            alertDialog.show();
         }
 
         @Override
@@ -191,9 +207,10 @@ public class PopPastes extends Activity
         @Override
         protected void onPostExecute(String xml) {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
+            if (PopPastes.this.isFinishing()) return;
             Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
-            alertDialog.hide();
+            alertDialog.dismiss();
             if (pasteInfos != null && pasteInfos.size() > 0)
             {
                 adapter.setPasteInfoList(pasteInfos);

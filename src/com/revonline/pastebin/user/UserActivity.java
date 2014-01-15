@@ -3,6 +3,7 @@ package com.revonline.pastebin.user;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -170,15 +171,15 @@ public class UserActivity extends Activity {
     // DownloadPastes code, ignore it
     class DownloadPastes extends AsyncTask<Void, Void, String>
     {
-        AlertDialog alertDialog;
+        ProgressDialog alertDialog;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
-            AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
-            builder.setMessage(R.string.waitdownloadlist);
-
-            alertDialog = builder.show();
+            alertDialog = new ProgressDialog(UserActivity.this);
+            alertDialog.setMessage(UserActivity.this.getString(R.string.waitdownloadlist));
+            alertDialog.setCancelable(false);
+            alertDialog.show();
         }
 
         List<PasteInfo> pasteInfos;
@@ -243,7 +244,7 @@ public class UserActivity extends Activity {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
             Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
-            alertDialog.hide();
+            alertDialog.dismiss();
             if (pasteInfos != null && pasteInfos.size() > 0)
             {
                 adapter.setPasteInfoList(pasteInfos);

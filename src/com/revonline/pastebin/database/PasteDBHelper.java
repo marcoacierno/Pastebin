@@ -10,6 +10,7 @@ import com.revonline.pastebin.MyActivity;
 import com.revonline.pastebin.PasteInfo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -117,10 +118,9 @@ public class PasteDBHelper extends SQLiteOpenHelper implements DBData {
                 pasteInfo.setPasteLanguage(cursor.getString(idxLang));
                 pasteInfo.setSqlID(cursor.getInt(idxID));
                 pasteInfo.setPasteKey(cursor.getString(idxKey));
-                GregorianCalendar calendar = new GregorianCalendar();
-                calendar.setTimeInMillis(cursor.getInt(idxTime));
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(cursor.getInt(idxTime)*1000);
                 pasteInfo.setPasteData(calendar);
-
 
                 list.add(pasteInfo);
 
