@@ -6,8 +6,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,6 +28,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.joda.time.DateTime;
+import org.joda.time.Hours;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -35,6 +39,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -60,6 +65,48 @@ public class PopPastes extends Activity
         {
             pasteInfos = savedInstanceState.getParcelableArrayList(KEY_POP_PASTES);
         }
+        else
+        {
+            //
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            String cached_xml = sharedPreferences.getString("cachexml", null);
+
+            long lastDownload = sharedPreferences.getLong("lastdownload", 0);
+
+            Log.d(MyActivity.DEBUG_TAG, "lastDownload=>"+lastDownload);
+
+            if (cached_xml != null)
+            {
+                int hours = Hours.hoursBetween(
+                        new DateTime(lastDownload),
+                        new DateTime()
+                ).getHours();
+
+                Log.d(MyActivity.DEBUG_TAG, "diff: " + hours);
+
+                // non è passata un'ora, quindi uso la cache
+                if (hours == 0)
+                {
+                    try
+                    {
+                        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+                        SAXParser parser = saxParserFactory.newSAXParser();
+                        XMLReader reader = parser.getXMLReader();
+                        XMLHandler handler = new XMLHandler();
+                        reader.setContentHandler(handler);
+                        reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
+
+                        pasteInfos = handler.data;
+                    } catch (ParserConfigurationException e) {
+                        e.printStackTrace();
+                    } catch (SAXException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
 
         if (!MyActivity.apiLower11)
         {
@@ -71,7 +118,6 @@ public class PopPastes extends Activity
         {
             setTitle(R.string.pastepopolari);
         }
-
 
         ListView listView = (ListView) findViewById(R.id.treadingpastes);
         listView.setAdapter(adapter);
@@ -86,7 +132,6 @@ public class PopPastes extends Activity
         });
 
         listView.setEmptyView(findViewById(R.id.empty));
-
 
         if (pasteInfos == null)
         {
@@ -208,6 +253,12 @@ public class PopPastes extends Activity
         protected void onPostExecute(String xml) {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
             if (PopPastes.this.isFinishing()) return;
+
+            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(PopPastes.this).edit();
+            editor.putString("cachexml", xml);
+            editor.putLong("lastdownload", new DateTime().getMillis());
+            editor.commit();
+
             Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
             alertDialog.dismiss();

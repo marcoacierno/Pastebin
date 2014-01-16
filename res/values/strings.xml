@@ -25,7 +25,7 @@
     <string name="io">IO</string>
     <string name="sharestarted">Condivisione iniziata. Puoi continuare ad usare l\'applicazione</string>
     <string name="waitdownload">Attendere mentre scarico il paste..</string>
-    <string name="fork">Crea copia del paste</string>
+    <string name="fork">Crea copia</string>
     <string name="share">Condividi</string>
     <string name="noauthor">Sconosciuto</string>
     <string name="erroreinterno">L\'errore è dovuto all\'applicazione o a Pastebin</string>

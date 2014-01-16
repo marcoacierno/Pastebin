@@ -50,11 +50,17 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Exception" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Debug Tag" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pastebin.iml" afterPath="$PROJECT_DIR$/Pastebin.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/paste.xml" afterPath="$PROJECT_DIR$/res/layout/paste.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Pastebin.iws" />
@@ -134,70 +140,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
+      <file leaf-file-name="PopPastes.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="10" selection-start="152" selection-end="152" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="527">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dimens.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/dimens.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="109" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pasterow.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/pasterow.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="46" selection-start="884" selection-end="884" vertical-scroll-proportion="-13.6" vertical-offset="51" max-vertical-offset="833">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PasteDBHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/PasteDBHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="22" selection-start="5133" selection-end="5133" vertical-scroll-proportion="0.0" vertical-offset="1367" max-vertical-offset="2227">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PastesListAdapter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="42" selection-start="3026" selection-end="3026" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1683">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExplorePaste.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="171" column="17" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.7495908" vertical-offset="1973" max-vertical-offset="2584">
+            <state line="222" column="0" selection-start="8106" selection-end="8106" vertical-scroll-proportion="1.0016366" vertical-offset="2193" max-vertical-offset="4046">
               <folding>
-                <element signature="e#3784#3834#0" expanded="true" />
+                <element signature="e#4025#4047#0" expanded="true" />
+                <element signature="e#4159#4181#0" expanded="true" />
+                <element signature="e#6288#6339#0" expanded="true" />
+                <element signature="e#10662#10745#0" expanded="true" />
+                <element signature="e#10844#10863#0" expanded="true" />
+                <element signature="e#10986#11000#0" expanded="true" />
+                <element signature="e#11052#11066#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PasteInfo.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/PasteInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="31" selection-start="3166" selection-end="3166" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="1853">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -222,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/database/SQLiteHelper.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/database/DBData.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/database/UserDBHelper.java" />
@@ -238,13 +192,10 @@
         <option value="$PROJECT_DIR$/res/layout/iopastes.xml" />
         <option value="$PROJECT_DIR$/res/layout-land/main.xml" />
         <option value="$PROJECT_DIR$/res/layout-port/main.xml" />
-        <option value="$PROJECT_DIR$/res/layout/paste.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/ErrorMessages.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/BackButtonListener.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/codeshareReceiver.java" />
@@ -252,14 +203,18 @@
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/Pastebin.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/PasteInfo.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/database/PasteDBHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java" />
         <option value="$PROJECT_DIR$/res/menu/explorepastemenu.xml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/res/layout/pasterow.xml" />
         <option value="$PROJECT_DIR$/res/values-small/dimens.xml" />
         <option value="$PROJECT_DIR$/res/values-sw320dp/dimens.xml" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java" />
+        <option value="$PROJECT_DIR$/res/layout/paste.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
       </list>
     </option>
   </component>
@@ -459,7 +414,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -652,23 +606,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pastebin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pastebin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/screenshots" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/joda-time-2.3.jar!/" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="8218bc0b 192.168.56.103:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -739,19 +708,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -778,6 +734,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -951,7 +920,11 @@
       <created>1389815800785</created>
       <updated>1389815800785</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="crash fix">
+      <created>1389815987191</created>
+      <updated>1389815987191</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -1032,7 +1005,8 @@
     <MESSAGE value="fixed dates, progress bar in messages" />
     <MESSAGE value="readme" />
     <MESSAGE value="open in browser" />
-    <option name="LAST_COMMIT_MESSAGE" value="open in browser" />
+    <MESSAGE value="crash fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="crash fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1065,15 +1039,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/DBData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="51" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="6" column="51" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="48" selection-start="2762" selection-end="2793" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="3349">
-          <folding />
+          <folding>
+            <element signature="e#4025#4047#0" expanded="true" />
+            <element signature="e#4159#4181#0" expanded="true" />
+            <element signature="e#6288#6339#0" expanded="true" />
+            <element signature="e#10662#10745#0" expanded="true" />
+            <element signature="e#10844#10863#0" expanded="true" />
+            <element signature="e#10986#11000#0" expanded="true" />
+            <element signature="e#11052#11066#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,9 +1093,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/DBData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="51" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="6" column="51" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/UserDBHelper.java">
@@ -1139,13 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="50" selection-start="1115" selection-end="1115" vertical-scroll-proportion="-0.27597955" vertical-offset="536" max-vertical-offset="4947">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/loginwindow.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -1157,21 +1128,6 @@
             <element signature="e#574#592#0" expanded="false" />
             <element signature="e#789#807#0" expanded="false" />
             <element signature="e#1110#1125#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="29" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="1564">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#481#482#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1217,16 +1173,6 @@
         <state line="148" column="69" selection-start="6581" selection-end="6581" vertical-scroll-proportion="0.0" vertical-offset="2296" max-vertical-offset="3298" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/paste.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="34" selection-start="449" selection-end="449" vertical-scroll-proportion="0.33097345" vertical-offset="0" max-vertical-offset="565">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/android/widget/ShareActionProvider.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="13" selection-start="157" selection-end="157" vertical-scroll-proportion="0.1391162" vertical-offset="0" max-vertical-offset="611" />
@@ -1249,9 +1195,7 @@
     </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/android/os/AsyncTask.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="354" max-vertical-offset="952">
-          <folding />
-        </state>
+        <state line="51" column="0" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.0" vertical-offset="354" max-vertical-offset="952" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/ErrorMessages.java">
@@ -1290,16 +1234,7 @@
     </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/android/app/AlertDialog.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="47" selection-start="4133" selection-end="4133" vertical-scroll-proportion="0.33277592" vertical-offset="1484" max-vertical-offset="2839">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="25" selection-start="1872" selection-end="1872" vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="3264">
-          <folding />
-        </state>
+        <state line="100" column="47" selection-start="4133" selection-end="4133" vertical-scroll-proportion="0.33277592" vertical-offset="1484" max-vertical-offset="2839" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
@@ -1313,16 +1248,12 @@
     </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/java/util/Collections.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="45" selection-start="4297" selection-end="4297" vertical-scroll-proportion="0.0" vertical-offset="1157" max-vertical-offset="2176">
-          <folding />
-        </state>
+        <state line="81" column="45" selection-start="4297" selection-end="4297" vertical-scroll-proportion="0.0" vertical-offset="1157" max-vertical-offset="2176" />
       </provider>
     </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/java/util/Calendar.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="22" selection-start="161" selection-end="161" vertical-scroll-proportion="0.1391162" vertical-offset="0" max-vertical-offset="2703">
-          <folding />
-        </state>
+        <state line="6" column="22" selection-start="161" selection-end="161" vertical-scroll-proportion="0.1391162" vertical-offset="0" max-vertical-offset="2703" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
@@ -1348,39 +1279,7 @@
     </entry>
     <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/java/util/ArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="19" selection-start="499" selection-end="499" vertical-scroll-proportion="0.33224222" vertical-offset="1" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="396" column="23" selection-start="14549" selection-end="14549" vertical-scroll-proportion="7.95581" vertical-offset="562" max-vertical-offset="5661">
-          <folding>
-            <element signature="e#5542#5596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="42" selection-start="3026" selection-end="3026" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1683">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/PasteInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="31" selection-start="3166" selection-end="3166" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="1853">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="26" selection-start="1868" selection-end="1868" vertical-scroll-proportion="0.2782324" vertical-offset="697" max-vertical-offset="2125">
-          <folding />
-        </state>
+        <state line="13" column="19" selection-start="499" selection-end="499" vertical-scroll-proportion="0.33224222" vertical-offset="1" max-vertical-offset="1071" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/menu.xml">
@@ -1390,26 +1289,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/PasteDBHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="22" selection-start="5133" selection-end="5133" vertical-scroll-proportion="0.0" vertical-offset="1367" max-vertical-offset="2227">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="38" selection-start="318" selection-end="331" vertical-scroll-proportion="0.30605564" vertical-offset="0" max-vertical-offset="611">
           <folding>
-            <element signature="e#393#414#0" expanded="true" />
+            <element signature="e#393#414#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="10" selection-start="152" selection-end="152" vertical-scroll-proportion="-2.72" vertical-offset="0" max-vertical-offset="527">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1423,12 +1308,71 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/database/PasteDBHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="26" selection-start="5572" selection-end="5572" vertical-scroll-proportion="0.41736227" vertical-offset="1518" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/PasteInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="31" selection-start="3166" selection-end="3166" vertical-scroll-proportion="0.0" vertical-offset="1242" max-vertical-offset="1853">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="25" selection-start="2767" selection-end="2767" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4998">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/paste.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="25" selection-start="346" selection-end="346" vertical-scroll-proportion="-5.44" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="29" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.83469725" vertical-offset="612" max-vertical-offset="1462">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="16" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33224222" vertical-offset="358" max-vertical-offset="1683">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="167" column="19" selection-start="6153" selection-end="6153" vertical-scroll-proportion="0.5564648" vertical-offset="2499" max-vertical-offset="3111">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3904#3954#0" expanded="true" />
+            <element signature="e#3998#4467#0" expanded="true" />
+            <element signature="e#4452#4453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/pasterow.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="46" selection-start="884" selection-end="884" vertical-scroll-proportion="-13.6" vertical-offset="51" max-vertical-offset="833">
+        <state line="23" column="46" selection-start="884" selection-end="884" vertical-scroll-proportion="0.5802048" vertical-offset="51" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
@@ -1440,11 +1384,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="171" column="17" selection-start="6176" selection-end="6176" vertical-scroll-proportion="0.7495908" vertical-offset="1973" max-vertical-offset="2584">
+        <state line="4" column="10" selection-start="152" selection-end="152" vertical-scroll-proportion="0.11604095" vertical-offset="0" max-vertical-offset="586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="246" column="37" selection-start="8910" selection-end="8910" vertical-scroll-proportion="0.30605564" vertical-offset="3128" max-vertical-offset="5627">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="0" selection-start="3535" selection-end="3535" vertical-scroll-proportion="1.8919804" vertical-offset="612" max-vertical-offset="2142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Android SDK/sdk/platforms/android-19/android.jar!/android/content/SharedPreferences.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="18" selection-start="19" selection-end="19" vertical-scroll-proportion="0.027823241" vertical-offset="0" max-vertical-offset="1020">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="222" column="0" selection-start="8106" selection-end="8106" vertical-scroll-proportion="1.0016366" vertical-offset="2193" max-vertical-offset="4046">
           <folding>
-            <element signature="e#3784#3834#0" expanded="true" />
+            <element signature="e#4025#4047#0" expanded="true" />
+            <element signature="e#4159#4181#0" expanded="true" />
+            <element signature="e#6288#6339#0" expanded="true" />
+            <element signature="e#10662#10745#0" expanded="true" />
+            <element signature="e#10844#10863#0" expanded="true" />
+            <element signature="e#10986#11000#0" expanded="true" />
+            <element signature="e#11052#11066#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1525,7 +1503,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>support-v4-19.0.0</last-edited>
+          <last-edited>android-support-v4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -65,7 +64,6 @@ public class UserActivity extends Activity {
     private User user;
     private EditText username;
     private EditText password;
-    protected Context applicationContext;
     private ListView pastesList;
     private PastesListAdapter adapter;
 
@@ -74,9 +72,8 @@ public class UserActivity extends Activity {
     {
         super.onCreate(savedInstanceHere);
 
-        applicationContext = this;
-
-        if (!MyActivity.apiLower11){
+        if (!MyActivity.apiLower11)
+        {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -356,7 +353,7 @@ public class UserActivity extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(applicationContext);
+            AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
             if (s == null)
             {

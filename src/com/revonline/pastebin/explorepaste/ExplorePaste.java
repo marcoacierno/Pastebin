@@ -21,10 +21,13 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.cookie.Cookie;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.CookieStore;
 
 /**
  * Created with IntelliJ IDEA.
@@ -129,7 +132,7 @@ public class ExplorePaste extends Activity
             String finalResponse = null;
 
             try{
-                HttpClient client = new DefaultHttpClient();
+                DefaultHttpClient client = new DefaultHttpClient();
                 HttpResponse response;
                 HttpGet httpGet = new HttpGet("http://pastebin.com/raw.php?i=" + pasteKey);
 

@@ -106,6 +106,7 @@ public class XMLHandler extends DefaultHandler {
         if (info != null)
         {
             data.add(info);
+            value = "Untitled";
         }
     }
 
