@@ -43,6 +43,13 @@
                 android:value="MyActivity"
                 />
         </activity>
+        <activity   android:name=".Settings"
+                    android:parentActivityName="MyActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MyActivity"
+                />
+        </activity>
 
         <service android:enabled="true" android:name=".SendCode" />
 

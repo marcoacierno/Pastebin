@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -287,7 +288,6 @@ public class UserActivity extends Activity {
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // LoginTask section; ignore it
     // ToDo: I think login code should be inside User.java but for now..
-
 
     class LoginTask extends AsyncTask<String, Void, String>
     {

@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
@@ -23,23 +25,7 @@ public class MyActivity extends Activity {
     private int visiblity;
     private EditText pasteText;
     private CodeShareReceiver codeshareResponse;
-    private static final String[] fixedLanguages = new String[]{"4cs", "6502acme", "6502kickass", "6502tasm", "abap", "actionscript",
-            "actionscript3", "ada", "algol68", "apache", "applescript", "apt_sources", "arm", "asm", "asp", "asymptote", "autoconf", "autohotkey", "autoit", "avisynth", "awk",
-            "bascomavr", "bash", "basic4gl", "bibtex", "blitzbasic", "bnf", "boo", "bf", "c", "c_mac", "cil", "csharp", "cpp",
-            "cpp-qt", "c_loadrunner", "caddcl", "cadlisp", "cfdg", "chaiscript", "clojure", "klonec", "klonecpp", "cmake", "cobol",
-            "coffeescript", "cfm", "css", "cuesheet", "d", "dcl", "dcpu16", "dcs", "delphi", "oxygene", "diff", "div", "dos", "dot", "e", "ecmascript", "eiffel", "email", "epc",
-            "erlang", "fsharp", "falcon", "fo", "f1", "fortran", "freebasic", "freeswitch", "gambas", "gml", "gdb", "genero", "genie", "gettext", "go", "groovy",
-            "gwbasic", "haskell", "haxe", "hicest", "hq9plus", "html4strict", "html5", "icon", "idl",
-            "ini", "inno", "intercal", "io", "j", "java", "java5", "javascript", "jquery", "kixtart", "latex", "ldif", "lb", "lsl2",
-            "lisp", "llvm", "locobasic", "logtalk", "lolcode", "lotusformulas",
-            "lotusscript", "lscript", "lua", "m68k", "magiksf", "make", "mapbasic", "matlab", "mirc", "mmix", "modula2", "modula3", "68000devpac", "mpasm", "mxml", "mysql",
-            "nagios", "newlisp", "text", "nsis", "oberon2", "objeck", "objc", "ocaml-brief", "ocaml", "octave", "pf", "glsl", "oobas", "oracle11", "oracle8", "oz", "parasail", "parigp",
-            "pascal", "pawn", "pcre", "per", "perl", "perl6", "php", "php-brief", "pic16", "pike", "pixelbender",
-            "plsql", "postgresql", "povray", "powershell", "powerbuilder", "proftpd", "progress", "prolog", "properties", "providex",
-            "purebasic", "pycon", "python", "pys60", "q", "qbasic", "rsplus", "rails", "rebol", "reg", "rexx", "robots", "rpmspec", "ruby", "gnuplot", "sas", "scala", "scheme",
-            "scilab", "sdlbasic", "smalltalk", "smarty", "spark", "sparql", "sql", "stonescript", "systemverilog", "tsql", "tcl", "teraterm", "thinbasic", "typoscript", "unicon", "uscript", "ups",
-            "urbi", "vala", "vbnet", "vedit", "verilog", "vhdl", "vim", "visualprolog", "vb", "visualfoxpro", "whitespace", "whois", "winbatch", "xbasic", "xml",
-            "xorg_conf", "xpp", "yaml", "z80", "zxbasic"};
+    private static String[] fixedLanguages;
     public static boolean apiLower11;
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
     public User user;
@@ -47,6 +33,7 @@ public class MyActivity extends Activity {
     private MenuItem IOmenuitem;
     private CheckBox anonimo;//true => posta come anonimo
                              //false => posta come un utente, se loggato.
+    private String[] expirationValues;
     //    private int portait = 1;
     /**
      * Called when the activity is first created.
@@ -56,6 +43,11 @@ public class MyActivity extends Activity {
         Log.d(DEBUG_TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+
+        fixedLanguages = getResources().getStringArray(R.array.fixedlanguages);
+        expirationValues = getResources().getStringArray(R.array.expirationvalues);
 
         // load user
         user = new User(this);
@@ -88,6 +80,8 @@ public class MyActivity extends Activity {
             }
         });
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewLanguage.setAdapter(adapter);
@@ -104,37 +98,41 @@ public class MyActivity extends Activity {
                 language = "text";
             }
         });
+        viewLanguage.setSelection(searchPosition(fixedLanguages, sharedPreferences.getString("pref_defaultlanguage", null)));
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.expiration, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        viewTime.setAdapter(adapter2);
+        adapter = ArrayAdapter.createFromResource(this, R.array.expiration, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        viewTime.setAdapter(adapter);
         viewTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        time = "N";
-                        break;
-                    case 1:
-                        time = "10M";
-                        break;
-                    case 2:
-                        time = "1H";
-                        break;
-                    case 3:
-                        time = "1D";
-                        break;
-                    case 4:
-                        time = "1W";
-                        break;
-                    case 5:
-                        time = "2W";
-                        break;
-                    case 6:
-                        time = "1M";
-                        break;
-                }
+                // this code is very efficient, why change?
+//                switch (position)
+//                {
+//                    case 0:
+//                        time = "N";
+//                        break;
+//                    case 1:
+//                        time = "10M";
+//                        break;
+//                    case 2:
+//                        time = "1H";
+//                        break;
+//                    case 3:
+//                        time = "1D";
+//                        break;
+//                    case 4:
+//                        time = "1W";
+//                        break;
+//                    case 5:
+//                        time = "2W";
+//                        break;
+//                    case 6:
+//                        time = "1M";
+//                        break;
+//                }
 
+                time = expirationValues[position];
                 Log.d(DEBUG_TAG, "new time =>" + time);
 
                 /***
@@ -159,9 +157,10 @@ public class MyActivity extends Activity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 //To change body of implemented methods use File | Settings | File Templates.
-                time = "N";
+                time = "N";//i should change here too, but
             }
         });
+        viewTime.setSelection(searchPosition(expirationValues, sharedPreferences.getString("pref_defaultexpiration", null)));
 
         codeshareResponse = new CodeShareReceiver();
         IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
@@ -184,6 +183,18 @@ public class MyActivity extends Activity {
         privateButton.setEnabled(user.isLogged());
 
         anonimo = (CheckBox) findViewById(R.id.postacomeanonimo);
+    }
+
+    private int searchPosition(String[] arr, String text)
+    {
+        // non cerco per text a null, o se l'array è null
+        if (text == null || arr == null) return -1;
+
+        for (int i = 0; i < arr.length; ++i)
+            if (arr[i].equals(text))
+                return i;
+
+        return -1;
     }
 
     @Override
@@ -249,34 +260,43 @@ public class MyActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
         if (apiLower11)
         {
-            MenuInflater inflater = getMenuInflater();
             inflater.inflate(R.menu.menu, menu);
 
             IOmenuitem = menu.findItem(R.id.loginmenu);
             IOmenuitem.setTitle(getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login")));
         }
+        inflater.inflate(R.menu.menuforall, menu);
+
         return super.onCreateOptionsMenu(menu);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (apiLower11)
+        Intent intent = null;
+
+        switch (item.getItemId())
         {
-            Intent intent;
-            switch (item.getItemId())
-            {
-                case R.id.popularpaste:
-                    intent = new Intent(this, PopPastes.class);
-                    startActivity(intent);
-                    break;
-                case R.id.loginmenu:
-                    intent = new Intent(this, UserActivity.class);
-                    startActivity(intent);
-                    break;
-            }
+            case R.id.popularpaste:
+                if (apiLower11) return false;
+
+                intent = new Intent(this, PopPastes.class);
+                break;
+            case R.id.loginmenu:
+                if (apiLower11) return false;
+
+                intent = new Intent(this, UserActivity.class);
+                break;
+            case R.id.opensettings:
+                intent = new Intent(this, Settings.class);
+                break;
+            default:
+                return false;
         }
+
+        startActivity(intent);
         return super.onOptionsItemSelected(item);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
