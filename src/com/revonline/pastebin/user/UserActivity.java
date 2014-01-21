@@ -61,7 +61,8 @@ import javax.xml.parsers.SAXParserFactory;
  *
  * USERACTIVITY SHOULD'T MANAGE LOGIN ACTIONS, USER.JAVA SHOULD PROVIDE LOGIN(STRING,STRING) METHOD
  */
-public class UserActivity extends Activity {
+public class UserActivity extends Activity
+{
     private User user;
     private EditText username;
     private EditText password;
@@ -99,11 +100,18 @@ public class UserActivity extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
-                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo)parent.getItemAtPosition(position)).getPasteKey());
+                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo) parent.getItemAtPosition(position)).getPasteKey());
                     startActivity(intent);
                 }
             });
             pastesList.setEmptyView(findViewById(R.id.empty));
+            // ToDo: Implement "long click" => delete paste
+//            pastesList.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View view) {
+//                    return false;
+//                }
+//            });
             new DownloadPastes().execute();
         }
     }

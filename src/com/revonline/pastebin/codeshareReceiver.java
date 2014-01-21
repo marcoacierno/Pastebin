@@ -27,7 +27,7 @@ public class CodeShareReceiver extends BroadcastReceiver {
 
     public void onReceive(final Context context, Intent intent) {
         Log.d(MyActivity.DEBUG_TAG, "CodeShareReceiver - onReceive");
-        final String finalResponse = intent.getStringExtra(SendCode.FLAG_EXTRA_HTTP_RESULT);
+        final String finalResponse = intent.getStringExtra(SendCodeService.FLAG_EXTRA_HTTP_RESULT);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         if (finalResponse == null)

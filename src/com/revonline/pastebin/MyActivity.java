@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
@@ -19,16 +21,16 @@ import com.revonline.pastebin.user.UserActivity;
 public class MyActivity extends Activity {
     public static final String DEBUG_TAG = "Debug Tag";
     private Pastebin pastebin;
-    private EditText viewPasteTitle;
+    private String pasteTitle;
     private String language;
     private String time;
     private int visiblity;
-    private EditText pasteText;
+    private String pasteCode;
     private CodeShareReceiver codeshareResponse;
     private static String[] fixedLanguages;
     public static boolean apiLower11;
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
-    public User user;
+    private User user;
     private RadioButton privateButton;
     private MenuItem IOmenuitem;
     private CheckBox anonimo;//true => posta come anonimo
@@ -55,11 +57,44 @@ public class MyActivity extends Activity {
 //        Log.d(DEBUG_TAG, "portait = " + portait);
 
         pastebin = new Pastebin(this);
-        viewPasteTitle = (EditText) findViewById(R.id.pastetitle);
+        EditText viewPasteTitle = (EditText) findViewById(R.id.pastetitle);
+        viewPasteTitle.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                pasteTitle = charSequence.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         Spinner viewLanguage = (Spinner) findViewById(R.id.spinnerlinguaggio);
         Spinner viewTime = (Spinner) findViewById(R.id.spinnerscadenza);
         RadioGroup viewVisiblity = (RadioGroup) findViewById(R.id.accessibilita);
-        pasteText = (EditText) findViewById(R.id.codearea);
+        EditText pasteText = (EditText) findViewById(R.id.codearea);
+        pasteText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+                pasteCode = charSequence.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         viewVisiblity.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -163,9 +198,6 @@ public class MyActivity extends Activity {
         viewTime.setSelection(searchPosition(expirationValues, sharedPreferences.getString("pref_defaultexpiration", null)));
 
         codeshareResponse = new CodeShareReceiver();
-        IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
-        intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
-        registerReceiver(codeshareResponse, intentFilter);
 
         apiLower11 = !(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
 
@@ -183,8 +215,23 @@ public class MyActivity extends Activity {
         privateButton.setEnabled(user.isLogged());
 
         anonimo = (CheckBox) findViewById(R.id.postacomeanonimo);
+        anonimo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                privateButton.setEnabled(!b);
+
+                if (b)
+                {
+                    if (privateButton.isChecked())
+                    {
+                        privateButton.setChecked(false);
+                    }
+                }
+            }
+        });
     }
 
+    // nel file dovrebbe essere salvato direttamente l'indice e non la stringa!
     private int searchPosition(String[] arr, String text)
     {
         // non cerco per text a null, o se l'array è null
@@ -211,6 +258,10 @@ public class MyActivity extends Activity {
 
         anonimo.setEnabled(user.isLogged());
         privateButton.setEnabled(user.isLogged());
+
+        IntentFilter intentFilter = new IntentFilter(CodeShareReceiver.SHARE_SUCCESS);
+        intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+        registerReceiver(codeshareResponse, intentFilter);
     }
 
     @SuppressLint("NewApi")
@@ -304,9 +355,8 @@ public class MyActivity extends Activity {
     {
         Log.d(MyActivity.DEBUG_TAG, "sharePaste - language => " + language + ", time = " + time);
         //String title, String code, String language, String scadenza, int visibility
-        String codice = pasteText.getText().toString();
 
-        if (codice.length() < 1)
+        if (pasteCode == null || pasteCode.length() < 1)
         {
 //            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 //            alertDialog.setTitle(R.string.errore);
@@ -318,12 +368,12 @@ public class MyActivity extends Activity {
             return;
         }
 
-        pastebin.postPaste(viewPasteTitle.getText().toString(), codice, language, time, visiblity, anonimo.isChecked(), user.getUserKey());
+        pastebin.postPaste(pasteTitle, pasteCode, language, time, visiblity, anonimo.isChecked(), user.getUserKey());
     }
 
     @Override
     protected void onPause() {
         super.onPause();    //To change body of overridden methods use File | Settings | File Templates.
-//        unregisterReceiver(codeshareResponse);
+        unregisterReceiver(codeshareResponse);
     }
 }

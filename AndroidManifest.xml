@@ -37,7 +37,8 @@
                 />
         </activity>
         <activity android:name=".user.UserActivity"
-                  android:parentActivityName="MyActivity">
+                  android:parentActivityName="MyActivity"
+                  android:label="@string/io">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MyActivity"
@@ -51,7 +52,7 @@
                 />
         </activity>
 
-        <service android:enabled="true" android:name=".SendCode" />
+        <service android:enabled="true" android:name=".SendCodeService" />
 
         <receiver android:name=".CodeShareReceiver"/>
     </application>

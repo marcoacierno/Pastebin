@@ -1,6 +1,5 @@
 package com.revonline.pastebin;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -57,7 +56,7 @@ public class Pastebin {
         }
      //http://pastebin.com/api/api_post.php
 
-        Intent intent = new Intent(context, SendCode.class);
+        Intent intent = new Intent(context, SendCodeService.class);
         intent.putExtra(EXTRA_FLAG_PASTE_ARGS, argsPair);
         intent.putExtra(EXTRA_FLAG_PASTE_NAME, title);
         intent.putExtra(EXTRA_FLAG_PASTE_LANG, language);

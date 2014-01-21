@@ -25,9 +25,9 @@ import java.util.List;
  * Time: 19.23
  * To change this template use File | Settings | File Templates.
  */
-public class SendCode extends IntentService {
-    public static final String FLAG_EXTRA_HTTP_RESULT = "SendCode.HTTP_RESULT";
-    public SendCode() {
+public class SendCodeService extends IntentService {
+    public static final String FLAG_EXTRA_HTTP_RESULT = "SendCodeService.HTTP_RESULT";
+    public SendCodeService() {
         super("sendcode");
     }
     /**
@@ -35,7 +35,7 @@ public class SendCode extends IntentService {
      *
      * @param name Used to name the worker thread, important only for debugging.
      */
-    public SendCode(String name) {
+    public SendCodeService(String name) {
         super(name);
     }
 
@@ -94,6 +94,6 @@ public class SendCode extends IntentService {
 
         sendBroadcast(broadcast);
 
-        Log.d(MyActivity.DEBUG_TAG, "SendCode - fine");
+        Log.d(MyActivity.DEBUG_TAG, "SendCodeService - fine");
     }
 }
