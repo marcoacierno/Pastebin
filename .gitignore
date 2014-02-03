@@ -215,3 +215,4 @@ pip-log.txt
 .mr.developer.cfg
 
 src\com\revonline\pastebin\SpecialKeys.java
+.idea

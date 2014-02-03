@@ -54,14 +54,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\Pastebin\.idea\libraries\support_v4_19_0_0.xml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/Settings.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/settings.xml" afterPath="$PROJECT_DIR$/res/xml/settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Marco.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/commons_validator_1_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/revonline/pastebin/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/revonline/pastebin/BuildConfig.java" />
     </list>
     <ignored path="Pastebin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -143,7 +150,7 @@
       <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="345" column="22" selection-start="12675" selection-end="12675" vertical-scroll-proportion="0.87563026" vertical-offset="5191" max-vertical-offset="6409">
+            <state line="324" column="51" selection-start="11993" selection-end="11993" vertical-scroll-proportion="0.25714287" vertical-offset="5202" max-vertical-offset="6409">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,7 +161,7 @@
       <file leaf-file-name="Pastebin.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/Pastebin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="27" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1224">
+            <state line="60" column="27" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.0" vertical-offset="1020" max-vertical-offset="1309">
               <folding />
             </state>
           </provider>
@@ -163,7 +170,7 @@
       <file leaf-file-name="SendCodeService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SendCodeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+            <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
@@ -172,7 +179,7 @@
       <file leaf-file-name="CodeShareReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+            <state line="23" column="0" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1564">
               <folding />
             </state>
           </provider>
@@ -181,10 +188,8 @@
       <file leaf-file-name="PopPastes.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="42" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="4726">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="53" column="42" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="5015">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,15 +197,8 @@
       <file leaf-file-name="settings.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/xml/settings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="19" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-              <folding>
-                <element signature="e#160#182#0" expanded="false" />
-                <element signature="e#207#236#0" expanded="false" />
-                <element signature="e#404#429#0" expanded="false" />
-                <element signature="e#480#498#0" expanded="false" />
-                <element signature="e#523#548#0" expanded="false" />
-                <element signature="e#676#703#0" expanded="false" />
-              </folding>
+            <state line="22" column="19" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="476">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -208,7 +206,7 @@
       <file leaf-file-name="menuforall.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/menu/menuforall.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state line="4" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -217,7 +215,7 @@
       <file leaf-file-name="explorepastemenu.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="50" selection-start="447" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+            <state line="14" column="50" selection-start="447" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -477,7 +475,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -686,6 +683,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -799,6 +797,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -825,19 +836,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1051,16 +1049,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6718576" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6718576" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27103302" sideWeight="0.6688963" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67001116" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32937366" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
@@ -1084,6 +1080,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67112595" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27103302" sideWeight="0.6688963" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1122,6 +1120,34 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/res/menu/menuforall.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="50" selection-start="447" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="18" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="8993">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1564">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="1" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="391">
@@ -1176,14 +1202,7 @@
     <entry file="file://$PROJECT_DIR$/res/xml/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="43" selection-start="725" selection-end="747" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="459">
-          <folding>
-            <element signature="e#160#182#0" expanded="false" />
-            <element signature="e#207#236#0" expanded="false" />
-            <element signature="e#404#429#0" expanded="false" />
-            <element signature="e#480#498#0" expanded="false" />
-            <element signature="e#523#548#0" expanded="false" />
-            <element signature="e#676#703#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1356,9 +1375,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="16" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33224222" vertical-offset="358" max-vertical-offset="1683">
-          <folding />
-        </state>
+        <state line="44" column="16" selection-start="1332" selection-end="1332" vertical-scroll-proportion="0.33224222" vertical-offset="358" max-vertical-offset="1683" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java">
@@ -1478,23 +1495,14 @@
     <entry file="file://$PROJECT_DIR$/res/xml/settings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="19" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
-          <folding>
-            <element signature="e#160#182#0" expanded="false" />
-            <element signature="e#207#236#0" expanded="false" />
-            <element signature="e#404#429#0" expanded="false" />
-            <element signature="e#480#498#0" expanded="false" />
-            <element signature="e#523#548#0" expanded="false" />
-            <element signature="e#676#703#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="42" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="4726">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1514,7 +1522,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="345" column="22" selection-start="12675" selection-end="12675" vertical-scroll-proportion="0.87563026" vertical-offset="5191" max-vertical-offset="6409">
+        <state line="324" column="51" selection-start="11993" selection-end="11993" vertical-scroll-proportion="0.25714287" vertical-offset="5202" max-vertical-offset="6409">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
