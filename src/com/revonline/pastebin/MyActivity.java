@@ -18,7 +18,8 @@ import com.revonline.pastebin.trending_pastes.PopPastes;
 import com.revonline.pastebin.user.User;
 import com.revonline.pastebin.user.UserActivity;
 
-public class MyActivity extends Activity {
+public class MyActivity extends Activity
+{
     public static final String DEBUG_TAG = "Debug Tag";
     private Pastebin pastebin;
     private String pasteTitle;
@@ -331,12 +332,12 @@ public class MyActivity extends Activity {
         switch (item.getItemId())
         {
             case R.id.popularpaste:
-                if (apiLower11) return false;
+                if (!apiLower11) return false;
 
                 intent = new Intent(this, PopPastes.class);
                 break;
             case R.id.loginmenu:
-                if (apiLower11) return false;
+                if (!apiLower11) return false;
 
                 intent = new Intent(this, UserActivity.class);
                 break;

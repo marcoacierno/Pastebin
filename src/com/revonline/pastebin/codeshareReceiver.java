@@ -22,7 +22,8 @@ import org.apache.commons.validator.routines.UrlValidator;
 //immaginarti con altri
 //la follia definitiva.
 
-public class CodeShareReceiver extends BroadcastReceiver {
+public class CodeShareReceiver extends BroadcastReceiver
+{
     public final static String SHARE_SUCCESS = "pastebin.SHARE_SUCCESS";
 
     public void onReceive(final Context context, Intent intent) {
