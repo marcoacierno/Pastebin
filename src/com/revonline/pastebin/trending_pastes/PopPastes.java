@@ -37,9 +37,11 @@ import org.xml.sax.XMLReader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -111,13 +113,10 @@ public class PopPastes extends Activity
         if (!MyActivity.apiLower11)
         {
             ActionBar actionBar = getActionBar();
-            actionBar.setTitle(R.string.pastepopolari);
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        else
-        {
-            setTitle(R.string.pastepopolari);
-        }
+
+        setTitle(R.string.pastepopolari);
 
         ListView listView = (ListView) findViewById(R.id.treadingpastes);
         listView.setAdapter(adapter);
@@ -133,7 +132,7 @@ public class PopPastes extends Activity
 
         listView.setEmptyView(findViewById(R.id.empty));
 
-        if (pasteInfos == null)
+        if (pasteInfos == null || pasteInfos.size() == 0)
         {
             new DownloadTrendingPastes().execute();
         }

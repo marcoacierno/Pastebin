@@ -30,6 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:onClick="tryLogin" />
+        android:onClick="tryLogin"
+        android:id="@+id/loginbutton" />
 
 </RelativeLayout>

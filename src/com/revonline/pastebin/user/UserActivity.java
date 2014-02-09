@@ -8,24 +8,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
-import com.revonline.pastebin.ErrorMessages;
-import com.revonline.pastebin.MyActivity;
-import com.revonline.pastebin.PasteInfo;
-import com.revonline.pastebin.R;
-import com.revonline.pastebin.SpecialKeys;
+import com.revonline.pastebin.*;
 import com.revonline.pastebin.adapters.PastesListAdapter;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
 import com.revonline.pastebin.xml.XMLHandler;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -39,6 +33,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -46,10 +43,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 /**
  * Created by Marco on 13/12/13.
@@ -66,6 +59,7 @@ public class UserActivity extends Activity
     private User user;
     private EditText username;
     private EditText password;
+    private Button loginButton;
     private ListView pastesList;
     private PastesListAdapter adapter;
 
@@ -87,6 +81,7 @@ public class UserActivity extends Activity
 
             username = (EditText) findViewById(R.id.username);
             password = (EditText) findViewById(R.id.password);
+            loginButton = (Button) findViewById(R.id.loginbutton);
         }
         else
         {
@@ -126,6 +121,7 @@ public class UserActivity extends Activity
 
         this.username.setEnabled(false);
         this.password.setEnabled(false);
+        this.loginButton.setEnabled(false);
 
         new LoginTask().execute(name, password);
     }
@@ -361,6 +357,8 @@ public class UserActivity extends Activity
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
+            if(isFinishing()) return;
+
             AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
             if (s == null)
@@ -382,6 +380,7 @@ public class UserActivity extends Activity
 
                             username.setEnabled(true);
                             password.setEnabled(true);
+                            loginButton.setEnabled(true);
                         }
                     });
 
