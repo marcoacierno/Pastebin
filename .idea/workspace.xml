@@ -52,23 +52,29 @@
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Exception" />
   </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Pastebin" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="764e0c26-7085-4c7f-b3cd-9159474c916f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Marco.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/commons_validator_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="C:\Users\Marco\Documents\GitHub\Pastebin\.idea\libraries\android_support_v4.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/revonline/pastebin/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/revonline/pastebin/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pastebin.iml" afterPath="$PROJECT_DIR$/Pastebin.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" afterPath="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/loginwindow.xml" afterPath="$PROJECT_DIR$/res/layout/loginwindow.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proguard-project.txt" afterPath="$PROJECT_DIR$/proguard-project.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.properties" afterPath="$PROJECT_DIR$/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Pastebin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -150,10 +156,26 @@
       <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="324" column="51" selection-start="11993" selection-end="11993" vertical-scroll-proportion="0.17142858" vertical-offset="5253" max-vertical-offset="6409">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="347" column="27" selection-start="12724" selection-end="12724" vertical-scroll-proportion="1.1035088" vertical-offset="4845" max-vertical-offset="6137">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="49" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1105">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpecialKeys.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,7 +192,7 @@
       <file leaf-file-name="SendCodeService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SendCodeService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1785">
+            <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1513">
               <folding />
             </state>
           </provider>
@@ -179,7 +201,16 @@
       <file leaf-file-name="CodeShareReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1564">
+            <state line="44" column="46" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0" vertical-offset="562" max-vertical-offset="1360">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="2" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="7038">
               <folding />
             </state>
           </provider>
@@ -188,7 +219,7 @@
       <file leaf-file-name="PopPastes.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="42" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="5015">
+            <state line="96" column="59" selection-start="3414" selection-end="3414" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="4998">
               <folding />
             </state>
           </provider>
@@ -203,48 +234,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menuforall.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/menuforall.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="explorepastemenu.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="50" selection-start="447" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="510">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="18" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="8993">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1564">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
+  </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="C:\Users\Marco\Documents\keystore.jks" />
+    <option name="KEY_ALIAS" value="Pastebin" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="SYNC_SETTING" value="DONT" />
@@ -265,7 +265,6 @@
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/loginListener.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/LoginListener.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/loginWindow.java" />
-        <option value="$PROJECT_DIR$/res/layout/loginwindow.xml" />
         <option value="$PROJECT_DIR$/res/menu/menu.xml" />
         <option value="$PROJECT_DIR$/res/menu/iomenu.xml" />
         <option value="$PROJECT_DIR$/res/layout/iopastes.xml" />
@@ -273,7 +272,6 @@
         <option value="$PROJECT_DIR$/res/layout-port/main.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/ErrorMessages.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/BackButtonListener.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/adapters/PastesListAdapter.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/Pastebin.java" />
@@ -288,7 +286,6 @@
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/xml/XMLHandler.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/explorepaste/ExplorePaste.java" />
         <option value="$PROJECT_DIR$/res/layout/paste.xml" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/Impostazioni.java" />
         <option value="$PROJECT_DIR$/res/layout/settings.xml" />
@@ -296,14 +293,17 @@
         <option value="$PROJECT_DIR$/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/SendCode.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/SendCodeService.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
-        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/Settings.java" />
         <option value="$PROJECT_DIR$/res/xml/settings.xml" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/codeshareReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/codeShareReceiver.java" />
-        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java" />
         <option value="$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java" />
+        <option value="$PROJECT_DIR$/res/layout/loginwindow.xml" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java" />
       </list>
     </option>
   </component>
@@ -475,6 +475,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -683,7 +684,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -716,17 +716,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="OverrideImplement.combined" value="true" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="options.lastSelected" value="vcs.Git" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/joda-time-2.3.jar!/" />
+    <property name="options.lastSelected" value="reference.idesettings.debugger.typerenderers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../keystore.jks" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.102:5555" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -754,6 +754,17 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="982" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="ExportedModule" value="Pastebin" />
+    <property name="ExportedApkPath" value="C:\Users\Marco\Documents\GitHub\Pastebin\Pastebin.apk" />
+    <property name="AndroidRunProguardForReleaseBuild" value="true" />
+    <property name="AndroidProguardConfigPaths" value="C:\Users\Marco\Documents\GitHub\Pastebin\proguard-project.txt;D:\Android SDK\sdk\tools\proguard\proguard-android.txt" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="false" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
+    <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="pastebin" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1050,7 +1061,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.6718576" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16666667" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1059,19 +1070,19 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67001116" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32937366" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.2865106" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947367" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32937366" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3563715" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2497332" sideWeight="0.67112595" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67112595" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1773163" sideWeight="0.6707317" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261339" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325054" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67001116" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32959402" sideWeight="0.67001116" order="4" side_tool="false" content_ui="tabs" />
@@ -1120,20 +1131,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/menu/menuforall.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="42" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="255">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/menu/explorepastemenu.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="50" selection-start="447" selection-end="465" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="24" column="18" selection-start="1191" selection-end="1191" vertical-scroll-proportion="0.0" vertical-offset="103" max-vertical-offset="8993">
@@ -1158,9 +1155,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="358" column="33" selection-start="13166" selection-end="13166" vertical-scroll-proportion="0.0" vertical-offset="6086" max-vertical-offset="6273">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1264,21 +1259,6 @@
         <state line="10" column="63" selection-start="313" selection-end="313" vertical-scroll-proportion="0.20272572" vertical-offset="0" max-vertical-offset="901" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/loginwindow.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="33" selection-start="454" selection-end="462" vertical-scroll-proportion="0.3625" vertical-offset="18" max-vertical-offset="680">
-          <folding>
-            <element signature="e#355#378#0" expanded="false" />
-            <element signature="e#574#592#0" expanded="false" />
-            <element signature="e#789#807#0" expanded="false" />
-            <element signature="e#1110#1125#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/menu/iomenu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="35" selection-start="141" selection-end="151" vertical-scroll-proportion="0.11584327" vertical-offset="0" max-vertical-offset="587">
@@ -1334,13 +1314,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="25" selection-start="210" selection-end="210" vertical-scroll-proportion="0.25040916" vertical-offset="0" max-vertical-offset="611">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/trendingpastes.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="33" selection-start="676" selection-end="676" vertical-scroll-proportion="0.55119455" vertical-offset="0" max-vertical-offset="586">
@@ -1382,10 +1355,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="167" column="19" selection-start="6153" selection-end="6153" vertical-scroll-proportion="0.5564648" vertical-offset="2499" max-vertical-offset="3111">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3904#3954#0" expanded="true" />
-            <element signature="e#3998#4467#0" expanded="true" />
-            <element signature="e#4452#4453#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#3904#3954#0" expanded="false" />
+            <element signature="e#3998#4467#0" expanded="false" />
+            <element signature="e#4452#4453#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1426,23 +1399,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="817" max-vertical-offset="1428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="370" column="13" selection-start="13494" selection-end="13494" vertical-scroll-proportion="0.0" vertical-offset="5049" max-vertical-offset="5746">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
@@ -1478,16 +1437,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SendCodeService.java">
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/Pastebin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="608" selection-end="608" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+        <state line="60" column="27" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1224">
           <folding />
         </state>
       </provider>
@@ -1499,33 +1451,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="1697" selection-end="1697" vertical-scroll-proportion="0.0" vertical-offset="817" max-vertical-offset="1428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Android SDK/sdk/sources/android-18/java/io/StringReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="10" selection-start="1807" selection-end="1807" vertical-scroll-proportion="0.70183486" vertical-offset="238" max-vertical-offset="4063" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/trending_pastes/PopPastes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="42" selection-start="1768" selection-end="1768" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="4726">
+        <state line="96" column="59" selection-start="3414" selection-end="3414" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="3995">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/loginwindow.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="38" selection-start="1199" selection-end="1199" vertical-scroll-proportion="-18.12" vertical-offset="108" max-vertical-offset="697">
+          <folding>
+            <element signature="e#355#378#0" expanded="false" />
+            <element signature="e#574#592#0" expanded="false" />
+            <element signature="e#789#807#0" expanded="false" />
+            <element signature="e#1110#1125#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/user/UserActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="2" selection-start="1711" selection-end="1711" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="5848">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SendCodeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="0" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/commons-validator-1.4.0.jar!/org/apache/commons/validator/routines/UrlValidator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="25" selection-start="180" selection-end="192" vertical-scroll-proportion="0.1559633" vertical-offset="0" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/CodeShareReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="46" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0" vertical-offset="562" max-vertical-offset="1360">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="43" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.0" vertical-offset="222" max-vertical-offset="1105">
+        <state line="8" column="49" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="100" max-vertical-offset="1105">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/Pastebin.java">
+    <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/SpecialKeys.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="27" selection-start="2398" selection-end="2398" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1224">
+        <state line="1" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/revonline/pastebin/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="324" column="51" selection-start="11993" selection-end="11993" vertical-scroll-proportion="0.17142858" vertical-offset="5253" max-vertical-offset="6409">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="347" column="27" selection-start="12724" selection-end="12724" vertical-scroll-proportion="1.1035088" vertical-offset="4845" max-vertical-offset="6137">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1535,10 +1540,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Pastebin</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1605,7 +1612,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>commons-validator-1.4.0</last-edited>
+          <last-edited>joda-time-2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
