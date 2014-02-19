@@ -1,33 +1,28 @@
 package com.revonline.pastebin.explorepaste;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.ProgressDialog;
+import android.app.*;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.revonline.pastebin.MyActivity;
 import com.revonline.pastebin.R;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.net.CookieStore;
+import java.io.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,6 +37,9 @@ public class ExplorePaste extends Activity
     private String pasteKey;
     private TextView textView;
     private boolean downloaded = false;
+    private int notificationDownloadID = 1; /* ToDo: nel futuro sarà usato per includere una lista dei paste download nel content text */
+    private boolean downloadConfirm = false;
+    private NotificationManager manager;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -59,8 +57,8 @@ public class ExplorePaste extends Activity
         setTitle("Paste - [" + pasteKey + "]");
 
         textView = (TextView) findViewById(R.id.codeview);
-
         downloaded = (savedInstanceState != null) && savedInstanceState.getBoolean("downloaded");
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         if (!downloaded) new DownloadRAW().execute();
     }
@@ -96,8 +94,75 @@ public class ExplorePaste extends Activity
                 intent.setData(Uri.parse("http://pastebin.com/" + pasteKey));
                 startActivity(intent);
                 break;
+            case R.id.downloadpaste:
+                String text = textView.getText().toString();
+
+                if (text.length() == 0)
+                {
+                    Toast.makeText(this, R.string.emptypaste, Toast.LENGTH_SHORT).show();
+                    break;
+                }
+
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Paste_" + pasteKey + ".txt");
+
+                if (file.exists() && !downloadConfirm)
+                {
+                    Toast.makeText(this, R.string.confirmdownload, Toast.LENGTH_SHORT).show();
+                    downloadConfirm = true;
+                    break;
+                }
+
+                downloadConfirm = false;
+                try
+                {
+                    OutputStream outputStream = new FileOutputStream(file);
+                    outputStream.write(text.getBytes());
+
+                    Toast.makeText(this, R.string.downloadok, Toast.LENGTH_SHORT).show();
+                    downloadOKNotification(getString(R.string.localdownlodok, pasteKey), file);
+                }
+                catch (IOException e)
+                {
+                    Toast.makeText(this, R.string.downloadfail, Toast.LENGTH_LONG).show();
+                   // e.printStackTrace();
+                }
+                break;
         }
         return super.onMenuItemSelected(featureId, item);    //To change body of overridden methods use File | Settings | File Templates.
+    }
+
+    private void downloadOKNotification(String content, File file)
+    {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(Uri.fromFile(file), "text/*");
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                0
+        );
+
+        Notification notification;
+        if (!MyActivity.apiLower11)
+        {
+            Notification.Builder builder = new Notification.Builder(this);
+            builder.setContentText(content);
+            builder.setSmallIcon(R.drawable.ic_action_download);
+            builder.setContentTitle("Pastebin");
+            builder.setContentIntent(pendingIntent);
+            builder.setAutoCancel(true);
+            notification = builder.build();
+        }
+        else
+        {
+            notification = new Notification();
+            notification.icon = R.drawable.ic_action_download;
+            notification.setLatestEventInfo(this, getString(R.string.app_name), content, pendingIntent);
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        }
+
+        manager.notify(notificationDownloadID, notification);
     }
 
     class DownloadRAW extends AsyncTask<Void, Void, String>

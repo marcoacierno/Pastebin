@@ -22,3 +22,8 @@
 -keep class org.** { *; }
 -dontwarn org.joda.**
 -dontwarn org.apache.commons.**
+
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+}

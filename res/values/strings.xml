@@ -61,6 +61,12 @@
     <string name="summaryscadenza">Seleziona la scadenza default da usare per tutti i nuovi paste</string>
     <string name="defaultexpiration">N</string>
     <string name="defaultlanguage">text</string>
+    <string name="download">Download</string>
+    <string name="downloadfail">Impossibile scaricare il paste..</string>
+    <string name="emptypaste">Paste vuoto</string>
+    <string name="downloadok">Il paste è stato scaricato</string>
+    <string name="confirmdownload">Il paste è già stato scaricato, per confermare il download ripremere su Download</string>
+    <string name="localdownlodok">Download del paste %s completato con successo! Clicca per aprirlo.</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>
