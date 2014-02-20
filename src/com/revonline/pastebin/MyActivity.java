@@ -1,7 +1,8 @@
 package com.revonline.pastebin;
 
 import android.annotation.SuppressLint;
-import android.app.*;
+import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -11,9 +12,11 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.*;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.*;
-
 import com.revonline.pastebin.trending_pastes.PopPastes;
 import com.revonline.pastebin.user.User;
 import com.revonline.pastebin.user.UserActivity;

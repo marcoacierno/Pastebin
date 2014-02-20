@@ -124,7 +124,7 @@ public class ExplorePaste extends Activity
                 catch (IOException e)
                 {
                     Toast.makeText(this, R.string.downloadfail, Toast.LENGTH_LONG).show();
-                   // e.printStackTrace();
+                    Log.d(MyActivity.DEBUG_TAG, Log.getStackTraceString(e));
                 }
                 break;
         }
