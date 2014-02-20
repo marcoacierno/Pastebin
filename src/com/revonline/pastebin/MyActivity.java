@@ -21,6 +21,9 @@ import com.revonline.pastebin.trending_pastes.PopPastes;
 import com.revonline.pastebin.user.User;
 import com.revonline.pastebin.user.UserActivity;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 public class MyActivity extends Activity
 {
     public static final String DEBUG_TAG = "Debug Tag";
@@ -259,6 +262,8 @@ public class MyActivity extends Activity
         //controllo se effettivamente IOmenuitem è stato creato..
         if (apiLower11 && IOmenuitem != null)
             IOmenuitem.setTitle(getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login")));
+        else
+            setSelectedNavigationItem(getActionBar(), 0);
 
         anonimo.setEnabled(user.isLogged());
         privateButton.setEnabled(user.isLogged());
@@ -313,7 +318,34 @@ public class MyActivity extends Activity
         }
     }
 
-    @Override
+    /** fixbug **/
+    private void setSelectedNavigationItem(ActionBar b, int pos) {
+        try {
+            //do the normal tab selection in case all tabs are visible
+            b.setSelectedNavigationItem(pos);
+
+            //now use reflection to select the correct Spinner if
+            // the bar's tabs have been reduced to a Spinner
+
+            View action_bar_view = findViewById(getResources().getIdentifier("action_bar", "id", "android"));
+            Class<?> action_bar_class = action_bar_view.getClass();
+            Field tab_scroll_view_prop = action_bar_class.getDeclaredField("mTabScrollView");
+            tab_scroll_view_prop.setAccessible(true);
+            //get the value of mTabScrollView in our action bar
+            Object tab_scroll_view = tab_scroll_view_prop.get(action_bar_view);
+            if (tab_scroll_view == null) return;
+            Field spinner_prop = tab_scroll_view.getClass().getDeclaredField("mTabSpinner");
+            spinner_prop.setAccessible(true);
+            //get the value of mTabSpinner in our scroll view
+            Object tab_spinner = spinner_prop.get(tab_scroll_view);
+            if (tab_spinner == null) return;
+            Method set_selection_method = tab_spinner.getClass().getSuperclass().getDeclaredMethod("setSelection", Integer.TYPE, Boolean.TYPE);
+            set_selection_method.invoke(tab_spinner, pos, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         if (apiLower11)

@@ -1,13 +1,7 @@
 package com.revonline.pastebin;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Marco
- * Date: 01/12/13
- * Time: 15.36
- * To change this template use File | Settings | File Templates.
- */
 // Qua salvo tutte le eventuali key
-public class SpecialKeys {
-    public static final String DEV_KEY = "";   // Put your DEV-KEY here
+public class SpecialKeys
+{
+    public static final String DEV_KEY = "4f97ab2715097281ade1c54208156d70";   // Put your DEV-KEY here
 }
