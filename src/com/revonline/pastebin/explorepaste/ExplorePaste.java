@@ -37,7 +37,6 @@ public class ExplorePaste extends Activity
     private String pasteKey;
     private TextView textView;
     private boolean downloaded = false;
-    private int notificationDownloadID = 1; /* ToDo: nel futuro sarà usato per includere una lista dei paste download nel content text */
     private boolean downloadConfirm = false;
     private NotificationManager manager;
 
@@ -162,6 +161,7 @@ public class ExplorePaste extends Activity
             notification.flags |= Notification.FLAG_AUTO_CANCEL;
         }
 
+        int notificationDownloadID = 1;
         manager.notify(notificationDownloadID, notification);
     }
 
