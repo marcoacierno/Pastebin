@@ -262,7 +262,8 @@ public class MyActivity extends Activity
         //controllo se effettivamente IOmenuitem è stato creato..
         if (apiLower11 && IOmenuitem != null)
             IOmenuitem.setTitle(getString(R.string.IO, (user.isLogged() ? user.getUserName() : "Login")));
-        else
+
+        if (!apiLower11)
             setSelectedNavigationItem(getActionBar(), 0);
 
         anonimo.setEnabled(user.isLogged());
@@ -318,7 +319,7 @@ public class MyActivity extends Activity
         }
     }
 
-    /** fixbug **/
+    /** fixbug -- SE CHIAMATO SU API < 11 CRASH **/
     private void setSelectedNavigationItem(ActionBar b, int pos) {
         try {
             //do the normal tab selection in case all tabs are visible
@@ -345,7 +346,8 @@ public class MyActivity extends Activity
             e.printStackTrace();
         }
     }
-     @Override
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         if (apiLower11)
@@ -362,7 +364,7 @@ public class MyActivity extends Activity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = null;
+        Intent intent;
 
         switch (item.getItemId())
         {
