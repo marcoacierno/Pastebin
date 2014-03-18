@@ -19,5 +19,4 @@
         style="@android:style/TextAppearance.Large"
         android:gravity="center">
     </TextView>
-
 </LinearLayout>
