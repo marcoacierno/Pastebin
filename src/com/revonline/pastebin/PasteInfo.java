@@ -4,8 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -129,4 +127,9 @@ public class PasteInfo implements Parcelable
             return new PasteInfo[size];
         }
     };
+
+    public void delete()
+    {
+
+    }
 }

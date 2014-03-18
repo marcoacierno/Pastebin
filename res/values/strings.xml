@@ -67,6 +67,12 @@
     <string name="downloadok">Il paste è stato scaricato</string>
     <string name="confirmdownload">Il paste è già stato scaricato, per confermare il download ripremere su Download</string>
     <string name="localdownlodok">Download del paste %s completato con successo! Clicca per aprirlo.</string>
+    <string name="deleteconfirm">Sei sicuro di voler cancellare %1$s?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="settings">Impostazioni</string>
+    <string name="visiblitapaste">Visibilità paste</string>
+    <string name="summaryprefvspaste">Seleziona la visiblità default da utilizzare per la creazione di un paste</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>

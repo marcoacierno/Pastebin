@@ -44,9 +44,12 @@ public class MyActivity extends Activity
                              //false => posta come un utente, se loggato.
     private String[] expirationValues;
     //    private int portait = 1;
-    /**
-     * Called when the activity is first created.
-     */
+
+    static
+    {
+        apiLower11 = !(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.d(DEBUG_TAG, "onCreate");
@@ -60,8 +63,6 @@ public class MyActivity extends Activity
 
         // load user
         user = new User(this);
-
-//        Log.d(DEBUG_TAG, "portait = " + portait);
 
         pastebin = new Pastebin(this);
         EditText viewPasteTitle = (EditText) findViewById(R.id.pastetitle);
@@ -112,11 +113,11 @@ public class MyActivity extends Activity
                     case R.id.access_pubblico:
                         visiblity = 0;
                         break;
-                    case R.id.access_nolista:
-                        visiblity = 2;
-                        break;
                     case R.id.access_private:
                         visiblity = 1;
+                        break;
+                    case R.id.access_nolista:
+                        visiblity = 2;
                         break;
                 }
             }
@@ -205,8 +206,6 @@ public class MyActivity extends Activity
         viewTime.setSelection(searchPosition(expirationValues, sharedPreferences.getString("pref_defaultexpiration", null)));
 
         codeshareResponse = new CodeShareReceiver();
-
-        apiLower11 = !(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
 
         initNavigation();
 
@@ -410,7 +409,8 @@ public class MyActivity extends Activity
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause()
+    {
         super.onPause();    //To change body of overridden methods use File | Settings | File Templates.
         unregisterReceiver(codeshareResponse);
     }

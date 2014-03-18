@@ -45,10 +45,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Marco on 13/12/13.
- */
-
-/**
  * THIS CODE IS VERY VERY VERY VERY VERY BAD
  * SHOULD BE IMPROVED
  *
@@ -91,22 +87,38 @@ public class UserActivity extends Activity
 
             adapter = new PastesListAdapter(this);
             pastesList.setAdapter(adapter);
-            pastesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            pastesList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                {
                     Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
                     intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo) parent.getItemAtPosition(position)).getPasteKey());
                     startActivity(intent);
                 }
             });
             pastesList.setEmptyView(findViewById(R.id.empty));
-            // ToDo: Implement "long click" => delete paste
-//            pastesList.setOnLongClickListener(new View.OnLongClickListener() {
+//            pastesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+//            {
 //                @Override
-//                public boolean onLongClick(View view) {
+//                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+//                {
+//                    final PasteInfo pasteInfo = (PasteInfo) parent.getItemAtPosition(position);
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+//                    builder.setMessage(getString(R.string.deleteconfirm, pasteInfo.getPasteName()));
+//                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+//                    {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which)
+//                        {
+//                            pasteInfo.delete();
+//                        }
+//                    });
+//                    builder.setNegativeButton(R.string.no, null);
 //                    return false;
 //                }
 //            });
+
             new DownloadPastes().execute();
         }
     }
@@ -168,6 +180,46 @@ public class UserActivity extends Activity
             startActivity(intent);
         }
     }
+
+//    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//    // Swipe to delete
+//    private class SwipeToDelete implements View.OnTouchListener
+//    {
+//        private int startX = 0;
+//        private int startY = 0;
+//
+//        @Override
+//        public boolean onTouch(View v, MotionEvent event)
+//        {
+//            Log.d(MyActivity.DEBUG_TAG, "View: " + v.getClass().getCanonicalName());
+////            int action = event.getAction();
+////
+////            switch (action)
+////            {
+////                /* slide iniziato */
+////                case MotionEvent.ACTION_DOWN:
+////                    startX = (int)event.getX();
+////                    startY = (int)event.getY();
+////                    break;
+////                /* slide terminato */
+////                case MotionEvent.ACTION_UP:
+////                    int currentX = (int) event.getX();
+////                    int currentY = (int) event.getY();
+////
+////                    int distance = currentX - startX;
+////
+////                    if (distance > 150)
+////                    {
+////                        Toast.makeText(UserActivity.this, "Reached", Toast.LENGTH_LONG).show();
+////                    }
+////
+////                    startX = 0;
+////                    startY = 0;
+////                    break;
+////            }
+//            return false;
+//        }
+//    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // DownloadPastes code, ignore it
@@ -360,6 +412,14 @@ public class UserActivity extends Activity
             if(isFinishing()) return;
 
             AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+            builder.setOnCancelListener(new DialogInterface.OnCancelListener()
+            {
+                @Override
+                public void onCancel(DialogInterface dialog)
+                {
+                    repeatLogin();
+                }
+            });
 
             if (s == null)
             {
@@ -376,11 +436,7 @@ public class UserActivity extends Activity
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 //                            username.setText(null);
-                            password.setText(null);
-
-                            username.setEnabled(true);
-                            password.setEnabled(true);
-                            loginButton.setEnabled(true);
+                            repeatLogin();
                         }
                     });
 
@@ -391,18 +447,29 @@ public class UserActivity extends Activity
                     user.setUserKey(s);
                     user.setUserName(username.getText().toString());
 
-                    builder.setMessage(R.string.loginok);
-                    builder.setPositiveButton(R.string.continua, new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            reloadWindow();
-                        }
-                    });
+//                    builder.setMessage(R.string.loginok);
+//                    builder.setPositiveButton(R.string.continua, new DialogInterface.OnClickListener()
+//                    {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            reloadWindow();
+//                        }
+//                    });
+                    reloadWindow();
                 }
             }
 
             builder.show();
+        }
+
+        // used when i need to reenable buttons
+        private void repeatLogin()
+        {
+            password.setText(null);
+
+            username.setEnabled(true);
+            password.setEnabled(true);
+            loginButton.setEnabled(true);
         }
     }
 }
