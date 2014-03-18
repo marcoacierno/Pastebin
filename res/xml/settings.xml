@@ -17,7 +17,5 @@
         android:entryValues="@array/expirationvalues"
         android:defaultValue="@string/defaultexpiration"
         android:key="pref_defaultexpiration"
-
     />
-
 </PreferenceScreen>

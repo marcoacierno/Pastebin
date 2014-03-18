@@ -22,7 +22,7 @@
             <EditText
                 android:id="@+id/codearea"
                 android:layout_width="fill_parent"
-                android:minHeight="200dip"
+                android:height="@dimen/codeminheight"
                 android:layout_height="wrap_content"
                 android:gravity="top|left"
                 android:hint="@string/writeyourcode"

@@ -14,14 +14,15 @@ import com.revonline.pastebin.collections.parcelable.ParcelableNameValuePair;
  * Time: 17.45
  * To change this template use File | Settings | File Templates.
  */
-public class Pastebin {
+public class Pastebin
+{
     private Context context;
 
-    public static final String EXTRA_FLAG_PASTE_NAME = "pastebin.EXTRA_FLAG.NAME";
-    public static final String EXTRA_FLAG_PASTE_LANG = "pastebin.EXTRA_FLAG.LANG";
-    public static final String EXTRA_FLAG_PASTE_PRIVATE = "pastebin.EXTRA_FLAG.PRIVATE";
-    public static final String EXTRA_FLAG_PASTE_SCADENZA = "pastebin.EXTRA_FLAG.SCADENZA";
-    public static final String EXTRA_FLAG_PASTE_ARGS = "pastebin.EXTRA_FLAG.ARGS";
+    public static final String EXTRA_FLAG_PASTE_NAME        = "pastebin.EXTRA_FLAG.NAME";
+    public static final String EXTRA_FLAG_PASTE_LANG        = "pastebin.EXTRA_FLAG.LANG";
+    public static final String EXTRA_FLAG_PASTE_PRIVATE     = "pastebin.EXTRA_FLAG.PRIVATE";
+    public static final String EXTRA_FLAG_PASTE_SCADENZA    = "pastebin.EXTRA_FLAG.SCADENZA";
+    public static final String EXTRA_FLAG_PASTE_ARGS        = "pastebin.EXTRA_FLAG.ARGS";
 
     public Pastebin(Context context)
     {

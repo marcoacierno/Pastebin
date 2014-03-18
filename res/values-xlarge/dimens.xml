@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- xlarge !-->
+<resources>
+    <dimen name="pastenamesize">25dip</dimen>
+    <dimen name="codeminheight">400dip</dimen>
+</resources>
