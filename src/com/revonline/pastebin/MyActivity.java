@@ -27,6 +27,7 @@ import java.lang.reflect.Method;
 public class MyActivity extends Activity
 {
     public static final String DEBUG_TAG = "Debug Tag";
+    public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
     private Pastebin pastebin;
     private String pasteTitle;
     private String language;
@@ -36,7 +37,6 @@ public class MyActivity extends Activity
     private CodeShareReceiver codeshareResponse;
     private static String[] fixedLanguages;
     public static boolean apiLower11;
-    public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
     private User user;
     private RadioButton privateButton;
     private MenuItem IOmenuitem;
@@ -44,6 +44,7 @@ public class MyActivity extends Activity
                              //false => posta come un utente, se loggato.
     private String[] expirationValues;
     //    private int portait = 1;
+    private EditText pasteText;
 
     static
     {
@@ -51,7 +52,8 @@ public class MyActivity extends Activity
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         Log.d(DEBUG_TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -63,8 +65,23 @@ public class MyActivity extends Activity
 
         // load user
         user = new User(this);
-
         pastebin = new Pastebin(this);
+        codeshareResponse = new CodeShareReceiver();
+
+        initUI(); // prepare UI elements
+        initNavigation();
+
+        // if it's a fork
+        String fork = getIntent().getStringExtra(EXTRA_FLAG_FORK);
+        if (fork != null)
+        {
+            pasteText.setText(fork);
+        }
+    }
+
+    // sad, the design is very bad now
+    private void initUI()
+    {
         EditText viewPasteTitle = (EditText) findViewById(R.id.pastetitle);
         viewPasteTitle.addTextChangedListener(new TextWatcher() {
             @Override
@@ -86,7 +103,7 @@ public class MyActivity extends Activity
         Spinner viewLanguage = (Spinner) findViewById(R.id.spinnerlinguaggio);
         Spinner viewTime = (Spinner) findViewById(R.id.spinnerscadenza);
         RadioGroup viewVisiblity = (RadioGroup) findViewById(R.id.accessibilita);
-        EditText pasteText = (EditText) findViewById(R.id.codearea);
+        pasteText = (EditText) findViewById(R.id.codearea);
         pasteText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -203,18 +220,8 @@ public class MyActivity extends Activity
                 time = "N";//i should change here too, but
             }
         });
+
         viewTime.setSelection(searchPosition(expirationValues, sharedPreferences.getString("pref_defaultexpiration", null)));
-
-        codeshareResponse = new CodeShareReceiver();
-
-        initNavigation();
-
-        String fork = getIntent().getStringExtra(EXTRA_FLAG_FORK);
-
-        if (fork != null)
-        {
-            pasteText.setText(fork);
-        }
 
         Log.d(DEBUG_TAG, "user.isLogged() => " + user.isLogged());
         privateButton = (RadioButton)findViewById(R.id.access_private);
