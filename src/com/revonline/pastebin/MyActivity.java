@@ -28,6 +28,7 @@ public class MyActivity extends Activity
 {
     public static final String DEBUG_TAG = "Debug Tag";
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
+
     private Pastebin pastebin;
     private String pasteTitle;
     private String language;
@@ -35,17 +36,15 @@ public class MyActivity extends Activity
     private int visiblity;
     private String pasteCode;
     private CodeShareReceiver codeshareResponse;
-    private static String[] fixedLanguages;
-    public static boolean apiLower11;
     private User user;
     private RadioButton privateButton;
     private MenuItem IOmenuitem;
-    private CheckBox anonimo;//true => posta come anonimo
-                             //false => posta come un utente, se loggato.
+    private CheckBox anonimo;//true => posta come anonimo -- false => posta come un utente, se loggato.
     private String[] expirationValues;
-    //    private int portait = 1;
     private EditText pasteText;
+    private String[] fixedLanguages;
 
+    public static boolean apiLower11;
     static
     {
         apiLower11 = !(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
@@ -402,12 +401,6 @@ public class MyActivity extends Activity
 
         if (pasteCode == null || pasteCode.length() < 1)
         {
-//            AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-//            alertDialog.setTitle(R.string.errore);
-//            alertDialog.setMessage(R.string.cannotbeblank);
-//            alertDialog.setPositiveButton(R.string.OK, null);
-//            alertDialog.show();
-//
             Toast.makeText(this, R.string.cannotbeblank, Toast.LENGTH_SHORT).show();
             return;
         }

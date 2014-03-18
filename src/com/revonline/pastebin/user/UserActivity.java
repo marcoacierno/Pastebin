@@ -3,7 +3,6 @@ package com.revonline.pastebin.user;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,10 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.*;
 import com.revonline.pastebin.*;
 import com.revonline.pastebin.adapters.PastesListAdapter;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
@@ -58,6 +54,7 @@ public class UserActivity extends Activity
     private Button loginButton;
     private ListView pastesList;
     private PastesListAdapter adapter;
+    private TextView listViewEmptyText;
 
     @Override
     public void onCreate(Bundle savedInstanceHere)
@@ -97,7 +94,8 @@ public class UserActivity extends Activity
                     startActivity(intent);
                 }
             });
-            pastesList.setEmptyView(findViewById(R.id.empty));
+            listViewEmptyText = (TextView) findViewById(R.id.empty);
+            pastesList.setEmptyView(listViewEmptyText);
 //            pastesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
 //            {
 //                @Override
@@ -225,20 +223,20 @@ public class UserActivity extends Activity
     // DownloadPastes code, ignore it
     class DownloadPastes extends AsyncTask<Void, Void, String>
     {
-        ProgressDialog alertDialog;
+//        ProgressDialog alertDialog;
 
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
-            alertDialog = new ProgressDialog(UserActivity.this);
-            alertDialog.setMessage(UserActivity.this.getString(R.string.waitdownloadlist));
-            alertDialog.setCancelable(false);
-            alertDialog.show();
+
+            listViewEmptyText.setText(R.string.waitdownloadlist);
         }
 
         List<PasteInfo> pasteInfos;
         @Override
-        protected String doInBackground(Void... params) {
+        protected String doInBackground(Void... params)
+        {
             HttpClient client = new DefaultHttpClient();
             HttpPost post = new HttpPost("http://pastebin.com/api/api_post.php");
             HttpResponse response;
@@ -294,14 +292,16 @@ public class UserActivity extends Activity
         }
 
         @Override
-        protected void onPostExecute(String xml) {
+        protected void onPostExecute(String xml)
+        {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
             Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
-            alertDialog.dismiss();
-            if (pasteInfos != null && pasteInfos.size() > 0)
+//            alertDialog.dismiss();
+            if (pasteInfos != null /*&& pasteInfos.size() > 0*/)
             {
                 adapter.setPasteInfoList(pasteInfos);
+                listViewEmptyText.setText(R.string.norecords);
             }
             else
             {

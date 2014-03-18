@@ -35,7 +35,7 @@
     <string name="blankcode">Non hai scritto nessuna riga di codice!</string>
     <string name="maxpastesize">E\' stato raggiunto il peso massimo di un paste</string>
     <string name="norecords">Nessun risultato</string>
-    <string name="waitdownloadlist">Attendere mentre scarico la lista..</string>
+    <string name="waitdownloadlist">Attendere mentre scarico la lista…</string>
     <string name="profile">Profilo</string>
     <string name="retry">Riprova</string>
     <string name="nopastes">Nessun paste pubblicato</string>
@@ -73,6 +73,7 @@
     <string name="settings">Impostazioni</string>
     <string name="visiblitapaste">Visibilità paste</string>
     <string name="summaryprefvspaste">Seleziona la visiblità default da utilizzare per la creazione di un paste</string>
+    <string name="loading">Loading...</string>
     <string-array name="expiration">
         <item>Mai</item>
         <item>10 Minuti</item>
