@@ -18,6 +18,7 @@
     <orderEntry type="library" name="joda-time-2.3" level="project" />
     <orderEntry type="library" name="joda-convert-1.5" level="project" />
     <orderEntry type="library" name="commons-validator-1.4.0" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
   </component>
 </module>
 
