@@ -94,6 +94,7 @@ public class UserActivity extends Activity
                     startActivity(intent);
                 }
             });
+
             listViewEmptyText = (TextView) findViewById(R.id.empty);
             pastesList.setEmptyView(listViewEmptyText);
 //            pastesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()

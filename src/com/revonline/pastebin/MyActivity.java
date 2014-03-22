@@ -55,7 +55,7 @@ public class MyActivity extends Activity
     {
         Log.d(DEBUG_TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.codeshare);
 
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
@@ -241,6 +241,7 @@ public class MyActivity extends Activity
                 }
             }
         });
+
     }
 
     // nel file dovrebbe essere salvato direttamente l'indice e non la stringa!
@@ -301,7 +302,7 @@ public class MyActivity extends Activity
             actionBar.setListNavigationCallbacks(adapter, new ActionBar.OnNavigationListener() {
                 @Override
                 public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-                    Intent intent;
+                    Intent intent = null;
                     switch (itemPosition)
                     {
                         // Crea paste
@@ -310,14 +311,15 @@ public class MyActivity extends Activity
                             break;
                         case 1:
                             intent = new Intent(getApplicationContext(), PopPastes.class);
-                            startActivity(intent);
                             break;
                         case 2:
                             intent = new Intent(getApplicationContext(), UserActivity.class);
-                            startActivity(intent);
                             break;
+                        default:
+                            return false;
                     }
 
+                    startActivity(intent);
                     return false;  //To change body of implemented methods use File | Settings | File Templates.
                 }
             });
