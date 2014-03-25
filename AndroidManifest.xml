@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.revonline.pastebin"
-          android:versionCode="4"
-          android:versionName="1.1.2">
+          android:versionCode="5"
+          android:versionName="1.1.3">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -14,8 +14,9 @@
         android:theme="@android:style/Theme.Holo.Light"
         android:allowBackup="true"
         >
+
         <activity
-            android:name="MyActivity"
+            android:name=".ShareCodeActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden"
             >
@@ -25,32 +26,32 @@
             </intent-filter>
         </activity>
         <activity android:name=".explorepaste.ExplorePaste"
-                  android:parentActivityName="MyActivity"
+                  android:parentActivityName=".ShareCodeActivity"
         >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MyActivity" />
+                android:value="ShareCodeActivity" />
         </activity>
         <activity android:name=".trending_pastes.PopPastes"
-                  android:parentActivityName="MyActivity">
+                  android:parentActivityName=".ShareCodeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MyActivity"
+                android:value="ShareCodeActivity"
                 />
         </activity>
         <activity android:name=".user.UserActivity"
-                  android:parentActivityName="MyActivity"
+                  android:parentActivityName=".ShareCodeActivity"
                   android:label="@string/io">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MyActivity"
+                android:value="ShareCodeActivity"
                 />
         </activity>
         <activity   android:name=".Settings"
-                    android:parentActivityName="MyActivity">
+                    android:parentActivityName=".ShareCodeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MyActivity"
+                android:value="ShareCodeActivity"
                 />
         </activity>
 

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import com.revonline.pastebin.MyActivity;
+import com.revonline.pastebin.ShareCodeActivity;
 import com.revonline.pastebin.PasteInfo;
 
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d(MyActivity.DEBUG_TAG, "onUpgrade, oldVersion: " + oldVersion + ", newVersion: " + newVersion);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "onUpgrade, oldVersion: " + oldVersion + ", newVersion: " + newVersion);
         //To change body of implemented methods use File | Settings | File Templates.
         db.execSQL(DROP_TABLE);
         onCreate(db);
@@ -64,7 +64,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public void addPaste(String name, String language, String scadenza, int tipo, String key)
     {
-        Log.d(MyActivity.DEBUG_TAG, "addPaste with: " + name + ", " + language + ", " + scadenza + ", " + tipo + ", " + key);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "addPaste with: " + name + ", " + language + ", " + scadenza + ", " + tipo + ", " + key);
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -81,7 +81,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public List<PasteInfo> getAllPastes()
     {
-        Log.d(MyActivity.DEBUG_TAG, "getAllPastes");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "getAllPastes");
 
         SQLiteDatabase db = getReadableDatabase();
         /**table	The table name to compile the query against.
@@ -96,7 +96,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
          public Cursor query (String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)*/
         Cursor cursor = db.query(TABLE_NAME, new String[]{KEY_ID, KEY_NAME, KEY_LANGUAGE, KEY_SCADENZA, KEY_TIPO, KEY_KEY, KEY_TIME}, null, null, null, null, null, null );
 
-        Log.d(MyActivity.DEBUG_TAG, "Count = " + cursor.getCount());
+        Log.d(ShareCodeActivity.DEBUG_TAG, "Count = " + cursor.getCount());
 
         //String pasteName, String pasteAuthor, String pasteLanguage, GregorianCalendar pasteData, String pasteKey
         List<PasteInfo> list = new ArrayList<PasteInfo>();
@@ -125,12 +125,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
                 list.add(pasteInfo);
 
-                Log.d(MyActivity.DEBUG_TAG, "moveToNext");
+                Log.d(ShareCodeActivity.DEBUG_TAG, "moveToNext");
             } while(cursor.moveToNext());
         }
         else
         {
-            Log.d(MyActivity.DEBUG_TAG, "moveToFirst returns false");
+            Log.d(ShareCodeActivity.DEBUG_TAG, "moveToFirst returns false");
         }
 
         return list;
