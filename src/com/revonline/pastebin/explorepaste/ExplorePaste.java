@@ -13,8 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.revonline.pastebin.MyActivity;
+import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
+import com.revonline.pastebin.ShareCodeActivity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -35,6 +36,7 @@ public class ExplorePaste extends Activity
 {
     public static final String FLAG_EXTRA_PASTE_URL = "PASTE.EXTRA.PASTE_URL";
     private String pasteKey;
+    private PasteInfo paste;
     private TextView textView;
     private boolean downloaded = false;
     private boolean downloadConfirm = false;
@@ -45,15 +47,20 @@ public class ExplorePaste extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paste);
 
-        if (!MyActivity.apiLower11)
+        paste = getIntent().getParcelableExtra(FLAG_EXTRA_PASTE_URL);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "paste obj: " + paste);
+        pasteKey = paste.getPasteKey();
+
+        if (!ShareCodeActivity.apiLower11)
         {
             ActionBar actionBar = getActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setSubtitle(getString(R.string.language, paste.getPasteLanguage()));
         }
 
-        pasteKey = getIntent().getStringExtra(FLAG_EXTRA_PASTE_URL);
-        Log.d(MyActivity.DEBUG_TAG, "pasteKey==" + pasteKey);
-        setTitle("Paste - [" + pasteKey + "]");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "pasteKey==" + pasteKey);
+        setTitle(paste.getPasteName());
 
         textView = (TextView) findViewById(R.id.codeview);
         downloaded = (savedInstanceState != null) && savedInstanceState.getBoolean("downloaded");
@@ -83,9 +90,9 @@ public class ExplorePaste extends Activity
         switch (item.getItemId())
         {
             case R.id.forkpaste:
-                intent = new Intent(this, MyActivity.class);
+                intent = new Intent(this, ShareCodeActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra(MyActivity.EXTRA_FLAG_FORK, textView.getText().toString());
+                intent.putExtra(ShareCodeActivity.EXTRA_FLAG_FORK, textView.getText().toString());
                 startActivity(intent);
                 break;
             case R.id.openinbrowser:
@@ -118,12 +125,12 @@ public class ExplorePaste extends Activity
                     outputStream.write(text.getBytes());
 
                     Toast.makeText(this, R.string.downloadok, Toast.LENGTH_SHORT).show();
-                    downloadOKNotification(getString(R.string.localdownlodok, pasteKey), file);
+                    downloadOKNotification(getString(R.string.localdownlodok, paste.getPasteName(), pasteKey), file);
                 }
                 catch (IOException e)
                 {
                     Toast.makeText(this, R.string.downloadfail, Toast.LENGTH_LONG).show();
-                    Log.d(MyActivity.DEBUG_TAG, Log.getStackTraceString(e));
+                    Log.d(ShareCodeActivity.DEBUG_TAG, Log.getStackTraceString(e));
                 }
                 break;
         }
@@ -143,7 +150,7 @@ public class ExplorePaste extends Activity
         );
 
         Notification notification;
-        if (!MyActivity.apiLower11)
+        if (!ShareCodeActivity.apiLower11)
         {
             Notification.Builder builder = new Notification.Builder(this);
             builder.setContentText(content);

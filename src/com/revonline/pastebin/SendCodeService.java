@@ -41,7 +41,7 @@ public class SendCodeService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Log.d(MyActivity.DEBUG_TAG, "onHandleIntent");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "onHandleIntent");
 
         ArgsPair args = intent.getParcelableExtra(Pastebin.EXTRA_FLAG_PASTE_ARGS);
 
@@ -94,6 +94,6 @@ public class SendCodeService extends IntentService {
 
         sendBroadcast(broadcast);
 
-        Log.d(MyActivity.DEBUG_TAG, "SendCodeService - fine");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "SendCodeService - fine");
     }
 }

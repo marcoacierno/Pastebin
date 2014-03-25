@@ -34,7 +34,7 @@ public class Pastebin
         // anonimo => true se il paste deve essere anonimo
         // false => se il paste deve essere dell'utente (se loggato)
 
-        Log.d(MyActivity.DEBUG_TAG, "visibility => " + visibility);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "visibility => " + visibility);
 
         if (code.length() < 1)
         {
@@ -64,7 +64,7 @@ public class Pastebin
         intent.putExtra(EXTRA_FLAG_PASTE_PRIVATE, visibilita);
         intent.putExtra(EXTRA_FLAG_PASTE_SCADENZA, scadenza);
 
-        Log.d(MyActivity.DEBUG_TAG, "launch service");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "launch service");
         context.startService(intent);
 
         Toast.makeText(context, R.string.sharestarted, Toast.LENGTH_LONG).show();

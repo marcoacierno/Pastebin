@@ -75,7 +75,7 @@ public class PopPastes extends Activity
 
             long lastDownload = sharedPreferences.getLong("lastdownload", 0);
 
-            Log.d(MyActivity.DEBUG_TAG, "lastDownload=>"+lastDownload);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "lastDownload=>"+lastDownload);
 
             if (cached_xml != null)
             {
@@ -84,7 +84,7 @@ public class PopPastes extends Activity
                         new DateTime()
                 ).getHours();
 
-                Log.d(MyActivity.DEBUG_TAG, "diff: " + hours);
+                Log.d(ShareCodeActivity.DEBUG_TAG, "diff: " + hours);
 
                 // non è passata un'ora, quindi uso la cache
                 if (hours == 0)
@@ -110,7 +110,7 @@ public class PopPastes extends Activity
             }
         }
 
-        if (!MyActivity.apiLower11)
+        if (!ShareCodeActivity.apiLower11)
         {
             ActionBar actionBar = getActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -125,7 +125,9 @@ public class PopPastes extends Activity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
-                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo)parent.getItemAtPosition(position)).getPasteKey());
+                //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemIdAtPosition(position));
+                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (PasteInfo)parent.getItemAtPosition(position));
+//                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo)parent.getItemAtPosition(position)).getPasteKey());
                 startActivity(intent);
             }
         });
@@ -146,8 +148,8 @@ public class PopPastes extends Activity
     protected void onSaveInstanceState(Bundle outState)
     {
         outState.putParcelableArrayList(KEY_POP_PASTES, pasteInfos);
-        Log.d(MyActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
-        Log.d(MyActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
+        Log.d(ShareCodeActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
 
         super.onSaveInstanceState(outState);
     }
@@ -218,7 +220,7 @@ public class PopPastes extends Activity
                     response.getEntity().writeTo(outputStream);
                     outputStream.close();
                     bodyresponse = outputStream.toString();
-                    Log.d(MyActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
+                    Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
 
                     SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
                     SAXParser parser = saxParserFactory.newSAXParser();
@@ -258,7 +260,7 @@ public class PopPastes extends Activity
             editor.putLong("lastdownload", new DateTime().getMillis());
             editor.commit();
 
-            Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
             alertDialog.dismiss();
             if (pasteInfos != null && pasteInfos.size() > 0)

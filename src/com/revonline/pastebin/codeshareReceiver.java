@@ -27,7 +27,7 @@ public class CodeShareReceiver extends BroadcastReceiver
     public final static String SHARE_SUCCESS = "pastebin.SHARE_SUCCESS";
 
     public void onReceive(final Context context, Intent intent) {
-        Log.d(MyActivity.DEBUG_TAG, "CodeShareReceiver - onReceive");
+        Log.d(ShareCodeActivity.DEBUG_TAG, "CodeShareReceiver - onReceive");
         final String finalResponse = intent.getStringExtra(SendCodeService.FLAG_EXTRA_HTTP_RESULT);
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -40,13 +40,13 @@ public class CodeShareReceiver extends BroadcastReceiver
             return;
         }
 
-        Log.d(MyActivity.DEBUG_TAG, "finalResponse = " + finalResponse);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "finalResponse = " + finalResponse);
 
         UrlValidator urlValidator = new UrlValidator();
         if (!urlValidator.isValid(finalResponse))
         {
-            Log.d(MyActivity.DEBUG_TAG, "finalResponse => " + finalResponse);
-            Log.d(MyActivity.DEBUG_TAG, "errors.get(finalResponse) => " + ErrorMessages.errors.get(finalResponse));
+            Log.d(ShareCodeActivity.DEBUG_TAG, "finalResponse => " + finalResponse);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "errors.get(finalResponse) => " + ErrorMessages.errors.get(finalResponse));
             String response = context.getString(ErrorMessages.errors.get(finalResponse));
 
             alertDialog.setTitle(R.string.errore);

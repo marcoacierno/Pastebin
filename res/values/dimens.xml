@@ -2,5 +2,5 @@
 <!-- normal !-->
 <resources>
     <dimen name="pastenamesize">15dip</dimen>
-    <dimen name="codeminheight">300dip</dimen>
+    <dimen name="codeminheight">270dip</dimen>
 </resources>

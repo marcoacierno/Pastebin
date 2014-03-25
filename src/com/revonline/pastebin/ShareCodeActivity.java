@@ -24,7 +24,7 @@ import com.revonline.pastebin.user.UserActivity;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-public class MyActivity extends Activity
+public class ShareCodeActivity extends Activity
 {
     public static final String DEBUG_TAG = "Debug Tag";
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
@@ -260,7 +260,7 @@ public class MyActivity extends Activity
     @Override
     public void onResume()
     {
-        Log.d(DEBUG_TAG, "onResume MyActivity");
+        Log.d(DEBUG_TAG, "onResume ShareCodeActivity");
         super.onResume();
         user.update();
 
@@ -302,7 +302,7 @@ public class MyActivity extends Activity
             actionBar.setListNavigationCallbacks(adapter, new ActionBar.OnNavigationListener() {
                 @Override
                 public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-                    Intent intent = null;
+                    Intent intent;
                     switch (itemPosition)
                     {
                         // Crea paste
@@ -311,15 +311,16 @@ public class MyActivity extends Activity
                             break;
                         case 1:
                             intent = new Intent(getApplicationContext(), PopPastes.class);
+                            startActivity(intent);
                             break;
                         case 2:
                             intent = new Intent(getApplicationContext(), UserActivity.class);
+                            startActivity(intent);
                             break;
-                        default:
-                            return false;
                     }
 
-                    startActivity(intent);
+
+
                     return false;  //To change body of implemented methods use File | Settings | File Templates.
                 }
             });
@@ -398,7 +399,7 @@ public class MyActivity extends Activity
 
     public void sharePaste(View view)
     {
-        Log.d(MyActivity.DEBUG_TAG, "sharePaste - language => " + language + ", time = " + time);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "sharePaste - language => " + language + ", time = " + time);
         //String title, String code, String language, String scadenza, int visibility
 
         if (pasteCode == null || pasteCode.length() < 1)

@@ -61,7 +61,7 @@ public class UserActivity extends Activity
     {
         super.onCreate(savedInstanceHere);
 
-        if (!MyActivity.apiLower11)
+        if (!ShareCodeActivity.apiLower11)
         {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
@@ -90,7 +90,9 @@ public class UserActivity extends Activity
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id)
                 {
                     Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
-                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo) parent.getItemAtPosition(position)).getPasteKey());
+                    //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemAtPosition(position));
+                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (PasteInfo)parent.getItemAtPosition(position));
+                    //intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo) parent.getItemAtPosition(position)).getPasteKey());
                     startActivity(intent);
                 }
             });
@@ -139,7 +141,7 @@ public class UserActivity extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        if (MyActivity.apiLower11)
+//        if (ShareCodeActivity.apiLower11)
 //        {
 //
 //        }
@@ -170,7 +172,7 @@ public class UserActivity extends Activity
     @SuppressLint("NewApi")
     private void reloadWindow()
     {
-        if (!MyActivity.apiLower11)
+        if (!ShareCodeActivity.apiLower11)
             recreate();
         else
         {
@@ -190,7 +192,7 @@ public class UserActivity extends Activity
 //        @Override
 //        public boolean onTouch(View v, MotionEvent event)
 //        {
-//            Log.d(MyActivity.DEBUG_TAG, "View: " + v.getClass().getCanonicalName());
+//            Log.d(ShareCodeActivity.DEBUG_TAG, "View: " + v.getClass().getCanonicalName());
 ////            int action = event.getAction();
 ////
 ////            switch (action)
@@ -262,7 +264,7 @@ public class UserActivity extends Activity
                     response.getEntity().writeTo(outputStream);
                     outputStream.close();
                     bodyresponse = outputStream.toString();
-                    Log.d(MyActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
+                    Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
 
                     SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
                     SAXParser parser = saxParserFactory.newSAXParser();
@@ -296,7 +298,7 @@ public class UserActivity extends Activity
         protected void onPostExecute(String xml)
         {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
-            Log.d(MyActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
 //            alertDialog.dismiss();
             if (pasteInfos != null /*&& pasteInfos.size() > 0*/)
@@ -308,7 +310,7 @@ public class UserActivity extends Activity
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
-                Log.d(MyActivity.DEBUG_TAG, "xml => " + xml);
+                Log.d(ShareCodeActivity.DEBUG_TAG, "xml => " + xml);
                 if (ErrorMessages.errors.containsKey(xml))
                 {
                     builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));

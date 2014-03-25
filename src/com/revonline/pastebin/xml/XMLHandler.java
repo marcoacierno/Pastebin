@@ -1,7 +1,7 @@
 package com.revonline.pastebin.xml;
 
 import android.util.Log;
-import com.revonline.pastebin.MyActivity;
+import com.revonline.pastebin.ShareCodeActivity;
 import com.revonline.pastebin.PasteInfo;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -30,21 +30,21 @@ public class XMLHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         onElement = true;
-        Log.d(MyActivity.DEBUG_TAG, "uri => " + uri);
-        Log.d(MyActivity.DEBUG_TAG, "localName => " + localName);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "uri => " + uri);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "localName => " + localName);
 
         if (localName.equals(XML_ROOT_ELEMENT))
         {
-            Log.d(MyActivity.DEBUG_TAG, "root element");
+            Log.d(ShareCodeActivity.DEBUG_TAG, "root element");
 
             if (info != null)
             {
-                Log.d(MyActivity.DEBUG_TAG, "add new item");
+                Log.d(ShareCodeActivity.DEBUG_TAG, "add new item");
                 data.add(info);
                 info = null;
             }
 
-            Log.d(MyActivity.DEBUG_TAG, "creo..");
+            Log.d(ShareCodeActivity.DEBUG_TAG, "creo..");
             info = new PasteInfo();
         }
     }
@@ -69,7 +69,7 @@ public class XMLHandler extends DefaultHandler {
         if (localName.equals(XML_PASTE_KEY))
         {
             info.setPasteKey(value);
-            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste key " + value);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste key " + value);
         }
         else if (localName.equals(XML_PASTE_DATE))
         {
@@ -78,17 +78,17 @@ public class XMLHandler extends DefaultHandler {
             long time = Long.parseLong(value) * 1000;
             info.getPasteData().setTimeInMillis(time);
 
-            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste date -- temp removed... " + time);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste date -- temp removed... " + time);
         }
         else if (localName.equals(XML_PASTE_TITLE))
         {
             info.setPasteName(value);
-            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste name " + value);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste name " + value);
         }
         else if (localName.equals(XML_PASTE_LANGUAGE))
         {
             info.setPasteLanguage(value);
-            Log.d(MyActivity.DEBUG_TAG, "XML PARSER -- paste language " + value);
+            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste language " + value);
         }
     }
 
