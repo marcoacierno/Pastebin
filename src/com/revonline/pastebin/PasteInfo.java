@@ -3,6 +3,7 @@ package com.revonline.pastebin;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Calendar;
  * Time: 15.48
  * To change this template use File | Settings | File Templates.
  */
-public class PasteInfo implements Parcelable
+public class PasteInfo implements Parcelable, Serializable
 {
     public int sqlID;
     private String pasteName;

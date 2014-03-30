@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.TimingLogger;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,10 +39,7 @@ import org.xml.sax.XMLReader;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +53,7 @@ import java.util.List;
 public class PopPastes extends Activity
 {
     public static final String KEY_POP_PASTES = "poppastes";
+    public static final String CACHE_PASTES = "pastes";
     private PastesListAdapter adapter;
     private ArrayList<PasteInfo> pasteInfos;
 
@@ -71,17 +71,18 @@ public class PopPastes extends Activity
         {
             //
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            String cached_xml = sharedPreferences.getString("cachexml", null);
+//            String cached_xml = sharedPreferences.getString("cachexml", null);
 
             long lastDownload = sharedPreferences.getLong("lastdownload", 0);
 
             Log.d(ShareCodeActivity.DEBUG_TAG, "lastDownload=>"+lastDownload);
 
-            if (cached_xml != null)
+            File file = new File(getCacheDir(), CACHE_PASTES);
+            if (file.exists())
             {
                 int hours = Hours.hoursBetween(
                         new DateTime(lastDownload),
-                        new DateTime()
+                        DateTime.now()
                 ).getHours();
 
                 Log.d(ShareCodeActivity.DEBUG_TAG, "diff: " + hours);
@@ -89,23 +90,65 @@ public class PopPastes extends Activity
                 // non è passata un'ora, quindi uso la cache
                 if (hours == 0)
                 {
+                    ObjectInputStream objectInputStream = null;
+                    pasteInfos = new ArrayList<PasteInfo>();
+
+                    TimingLogger logger = new TimingLogger(ShareCodeActivity.DEBUG_TAG, "recent pastes restore");
+
                     try
                     {
-                        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-                        SAXParser parser = saxParserFactory.newSAXParser();
-                        XMLReader reader = parser.getXMLReader();
-                        XMLHandler handler = new XMLHandler();
-                        reader.setContentHandler(handler);
-                        reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
+                        objectInputStream = new ObjectInputStream(new FileInputStream(file));
 
-                        pasteInfos = handler.data;
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                        while (true)
+                        {
+                            try
+                            {
+                                pasteInfos.add((PasteInfo) objectInputStream.readObject());
+                            }
+                            catch (ClassNotFoundException e)
+                            {
+                                break;
+                            }
+                            catch (EOFException e)
+                            {
+                                break;
+                            }
+                        }
+
+                        logger.addSplit("restore");
+                        logger.dumpToLog();
+
+//                        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+//                        SAXParser parser = saxParserFactory.newSAXParser();
+//                        XMLReader reader = parser.getXMLReader();
+//                        XMLHandler handler = new XMLHandler();
+//                        reader.setContentHandler(handler);
+//                        reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
+//
+//                        pasteInfos = handler.data;
+                    }
+                    catch (IOException e)
+                    {
                         e.printStackTrace();
                     }
+                    finally
+                    {
+                        if (objectInputStream != null)
+                        {
+                            try
+                            {
+                                objectInputStream.close();
+                            }
+                            catch (IOException e)
+                            {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    file.delete();// passata un'ora, cancello il file
                 }
             }
         }
@@ -126,8 +169,7 @@ public class PopPastes extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
                 //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemIdAtPosition(position));
-                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (PasteInfo)parent.getItemAtPosition(position));
-//                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo)parent.getItemAtPosition(position)).getPasteKey());
+                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (Parcelable)parent.getItemAtPosition(position));
                 startActivity(intent);
             }
         });
@@ -148,8 +190,8 @@ public class PopPastes extends Activity
     protected void onSaveInstanceState(Bundle outState)
     {
         outState.putParcelableArrayList(KEY_POP_PASTES, pasteInfos);
-        Log.d(ShareCodeActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
-        Log.d(ShareCodeActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
+//        Log.d(ShareCodeActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
+//        Log.d(ShareCodeActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
 
         super.onSaveInstanceState(outState);
     }
@@ -220,6 +262,7 @@ public class PopPastes extends Activity
                     response.getEntity().writeTo(outputStream);
                     outputStream.close();
                     bodyresponse = outputStream.toString();
+
                     Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
 
                     SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
@@ -256,11 +299,43 @@ public class PopPastes extends Activity
             if (PopPastes.this.isFinishing()) return;
 
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(PopPastes.this).edit();
-            editor.putString("cachexml", xml);
+//            editor.putString("cachexml", xml);
             editor.putLong("lastdownload", new DateTime().getMillis());
             editor.commit();
 
-            Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+            // cache it
+            File file = new File(getCacheDir(), CACHE_PASTES);
+            ObjectOutputStream outputStream = null;
+
+            try
+            {
+                outputStream = new ObjectOutputStream(new FileOutputStream(file));
+
+                for (PasteInfo pasteInfo : pasteInfos)
+                {
+                    outputStream.writeObject(pasteInfo);
+                }
+
+                outputStream.flush();
+            }
+            catch (FileNotFoundException ignored)   { }
+            catch (IOException ignored)             { }
+            finally
+            {
+                if (outputStream != null)
+                {
+                    try
+                    {
+                        outputStream.close();
+                    }
+                    catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+//            Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
 
             alertDialog.dismiss();
             if (pasteInfos != null && pasteInfos.size() > 0)

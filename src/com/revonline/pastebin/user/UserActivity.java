@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,7 +92,7 @@ public class UserActivity extends Activity
                 {
                     Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
                     //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemAtPosition(position));
-                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (PasteInfo)parent.getItemAtPosition(position));
+                    intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (Parcelable)parent.getItemAtPosition(position));
                     //intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, ((PasteInfo) parent.getItemAtPosition(position)).getPasteKey());
                     startActivity(intent);
                 }

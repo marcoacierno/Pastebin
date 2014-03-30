@@ -26,7 +26,7 @@ import java.lang.reflect.Method;
 
 public class ShareCodeActivity extends Activity
 {
-    public static final String DEBUG_TAG = "Debug Tag";
+    public static final String DEBUG_TAG = "DebugTag";
     public static final String EXTRA_FLAG_FORK = "EXTRA.FLAG_FORK";
 
     private Pastebin pastebin;
