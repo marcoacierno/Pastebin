@@ -1,17 +1,17 @@
 package com.revonline.pastebin.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.revonline.pastebin.ShareCodeActivity;
-import com.revonline.pastebin.R;
 import com.revonline.pastebin.PasteInfo;
+import com.revonline.pastebin.R;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -90,7 +90,7 @@ public class PastesListAdapter extends BaseAdapter {
         viewHolder.subText.setText((author == null ? context.getString(R.string.noauthor) : author) + " - " + pasteInfo.getPasteLanguage());
         Calendar date = pasteInfo.getPasteData();
         viewHolder.time.setText(String.format("%02d/%02d/%d", date.get(Calendar.DAY_OF_MONTH), (date.get(Calendar.MONTH) + 1), date.get(Calendar.YEAR)));
-        Log.d(ShareCodeActivity.DEBUG_TAG, "date == " + date);
+//        Log.d(ShareCodeActivity.DEBUG_TAG, "date == " + date);
 
         return convertView;  //To change body of implemented methods use File | Settings | File Templates.
     }
