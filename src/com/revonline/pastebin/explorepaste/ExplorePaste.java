@@ -60,7 +60,7 @@ public class ExplorePaste extends Activity
         }
 
         Log.d(ShareCodeActivity.DEBUG_TAG, "pasteKey==" + pasteKey);
-        setTitle(paste.getPasteName());
+        setTitle(paste.getPasteName().isEmpty() ? "N/D" : paste.getPasteName());
 
         textView = (TextView) findViewById(R.id.codeview);
         downloaded = (savedInstanceState != null) && savedInstanceState.getBoolean("downloaded");
