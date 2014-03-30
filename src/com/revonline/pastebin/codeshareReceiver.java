@@ -5,11 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
-
 import com.revonline.pastebin.database.PasteDBHelper;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
 import org.apache.commons.validator.routines.UrlValidator;
+import org.joda.time.DateTime;
+
+import java.util.Calendar;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +29,7 @@ public class CodeShareReceiver extends BroadcastReceiver
 {
     public final static String SHARE_SUCCESS = "pastebin.SHARE_SUCCESS";
 
-    public void onReceive(final Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
         Log.d(ShareCodeActivity.DEBUG_TAG, "CodeShareReceiver - onReceive");
         final String finalResponse = intent.getStringExtra(SendCodeService.FLAG_EXTRA_HTTP_RESULT);
 
@@ -59,12 +62,22 @@ public class CodeShareReceiver extends BroadcastReceiver
             alertDialog.setMessage(context.getString(R.string.uploadsuccess, finalResponse));
             final String key = finalResponse.substring(finalResponse.lastIndexOf('/') + 1);
 
-            AlertDialog.Builder builder = alertDialog.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
+            alertDialog.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     //To change body of implemented methods use File | Settings | File Templates.
                     Intent explore = new Intent(context, ExplorePaste.class);
-                    explore.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, key);
+                    PasteInfo pasteInfo = new PasteInfo(
+                            intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME),
+                            null,
+                            intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
+                            null,
+                            key
+                    );
+                    pasteInfo.setPasteData(Calendar.getInstance());
+                    pasteInfo.getPasteData().setTimeInMillis(DateTime.now().toInstant().getMillis());
+
+                    explore.putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable) pasteInfo);
                     context.startActivity(explore);
                 }
             });
