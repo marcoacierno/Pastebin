@@ -169,7 +169,7 @@ public class PopPastes extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
                 //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemIdAtPosition(position));
-                intent.putExtra(ExplorePaste.FLAG_EXTRA_PASTE_URL, (Parcelable)parent.getItemAtPosition(position));
+                intent.putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable)parent.getItemAtPosition(position));
                 startActivity(intent);
             }
         });

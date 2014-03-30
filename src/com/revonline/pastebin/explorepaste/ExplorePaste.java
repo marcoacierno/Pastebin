@@ -34,7 +34,7 @@ import java.io.*;
  */
 public class ExplorePaste extends Activity
 {
-    public static final String FLAG_EXTRA_PASTE_URL = "PASTE.EXTRA.PASTE_URL";
+    public static final String EXTRA_PASTE_INFO = "PASTE.EXTRA.PASTE_URL";
     private String pasteKey;
     private PasteInfo paste;
     private TextView textView;
@@ -47,7 +47,7 @@ public class ExplorePaste extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paste);
 
-        paste = getIntent().getParcelableExtra(FLAG_EXTRA_PASTE_URL);
+        paste = getIntent().getParcelableExtra(EXTRA_PASTE_INFO);
         Log.d(ShareCodeActivity.DEBUG_TAG, "paste obj: " + paste);
         pasteKey = paste.getPasteKey();
 

@@ -241,7 +241,6 @@ public class ShareCodeActivity extends Activity
                 }
             }
         });
-
     }
 
     // nel file dovrebbe essere salvato direttamente l'indice e non la stringa!
