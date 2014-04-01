@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- normal !-->
 <resources>
-    <dimen name="pastenamesize">15dip</dimen>
+    <dimen name="pastenamesize">13dip</dimen>
     <dimen name="codeminheight">270dip</dimen>
+    <dimen name="subtitlePaste">10dp</dimen>
 </resources>

@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.revonline.pastebin.*;
 import com.revonline.pastebin.adapters.PastesListAdapter;
@@ -133,6 +135,24 @@ public class UserActivity extends Activity
         String name = username.getText().toString();
         String password = this.password.getText().toString();
 
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        boolean failed = false;
+
+        if (name.length() == 0)
+        {
+            username.startAnimation(shake);
+            failed = true;
+        }
+
+        if (password.length() == 0)
+        {
+            this.password.startAnimation(shake);
+            failed = true;
+        }
+
+        if (failed)
+            return;
+
         this.username.setEnabled(false);
         this.password.setEnabled(false);
         this.loginButton.setEnabled(false);
@@ -142,10 +162,6 @@ public class UserActivity extends Activity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        if (ShareCodeActivity.apiLower11)
-//        {
-//
-//        }
         if (user.isLogged())
         {
             getMenuInflater().inflate(R.menu.iomenu, menu);
@@ -169,7 +185,6 @@ public class UserActivity extends Activity
         return super.onMenuItemSelected(featureId, item);
     }
 
-    // già gestisco di mio il problema quindi..
     @SuppressLint("NewApi")
     private void reloadWindow()
     {

@@ -3,4 +3,5 @@
 <resources>
     <dimen name="pastenamesize">25dip</dimen>
     <dimen name="codeminheight">400dip</dimen>
+    <dimen name="subtitlePaste">20dp</dimen>
 </resources>

@@ -6,13 +6,6 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.Calendar;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Marco
- * Date: 01/12/13
- * Time: 15.48
- * To change this template use File | Settings | File Templates.
- */
 public class PasteInfo implements Parcelable, Serializable
 {
     public int sqlID;
