@@ -24,8 +24,8 @@
     <string name="pastepopolari">Trending Pastes</string>
     <string name="io">Me</string>
     <string name="sharestarted">Sharing… You can continue to use the application</string>
-    <string name="waitdownload">Please wait until i download the paste…</string>
-    <string name="fork">Crea copia</string>
+    <string name="waitdownload">Wait, downloading paste…</string>
+    <string name="fork">Fork</string>
     <string name="share">Share</string>
     <string name="noauthor">Unknown</string>
     <string name="erroreinterno">Something went wrong in Pastebin or Application</string>
@@ -35,7 +35,7 @@
     <string name="blankcode">Code area is empty!</string>
     <string name="maxpastesize">You reached the max size of a paste!</string>
     <string name="norecords">No results!</string>
-    <string name="waitdownloadlist">Wait while download the list…</string>
+    <string name="waitdownloadlist">Wait, downloading pastes list…</string>
     <string name="profile">Profile</string>
     <string name="retry">Retry</string>
     <string name="nopastes">No pastes</string>
@@ -58,7 +58,7 @@
     <string name="preflanguage">Default language</string>
     <string name="summarypreflanguage">Select the default language to be used for new pastes</string>
     <string name="opensettings">Open settings</string>
-    <string name="summaryscadenza">Select the default expiration to be used for all new pastes</string>
+    <string name="summaryscadenza">Select the default expiration to be used for new pastes</string>
     <string name="defaultexpiration">N</string>
     <string name="defaultlanguage">text</string>
     <string name="download">Download</string>

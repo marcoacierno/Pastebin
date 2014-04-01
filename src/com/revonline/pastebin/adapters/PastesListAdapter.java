@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -89,7 +91,9 @@ public class PastesListAdapter extends BaseAdapter {
         String author = pasteInfo.getPasteAuthor();
         viewHolder.subText.setText((author == null ? context.getString(R.string.noauthor) : author) + " - " + pasteInfo.getPasteLanguage());
         Calendar date = pasteInfo.getPasteData();
-        viewHolder.time.setText(String.format("%02d/%02d/%d", date.get(Calendar.DAY_OF_MONTH), (date.get(Calendar.MONTH) + 1), date.get(Calendar.YEAR)));
+        DateFormat format = new SimpleDateFormat("MMMM E dd, yyyy HH:MM");
+        viewHolder.time.setText(format.format(date.getTime()));
+//        viewHolder.time.setText(String.format("%02d/%02d/%d", date.get(Calendar.DAY_OF_MONTH), (date.get(Calendar.MONTH) + 1), date.get(Calendar.YEAR)));
 //        Log.d(ShareCodeActivity.DEBUG_TAG, "date == " + date);
 
         return convertView;  //To change body of implemented methods use File | Settings | File Templates.

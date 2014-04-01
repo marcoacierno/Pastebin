@@ -42,7 +42,6 @@ public class SendCodeService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d(ShareCodeActivity.DEBUG_TAG, "onHandleIntent");
-
         ArgsPair args = intent.getParcelableExtra(Pastebin.EXTRA_FLAG_PASTE_ARGS);
 
         if (args == null)
