@@ -119,9 +119,10 @@ public class ExplorePaste extends Activity
                 }
 
                 downloadConfirm = false;
+                OutputStream outputStream = null;
                 try
                 {
-                    OutputStream outputStream = new FileOutputStream(file);
+                    outputStream = new FileOutputStream(file);
                     outputStream.write(text.getBytes());
 
                     Toast.makeText(this, R.string.downloadok, Toast.LENGTH_SHORT).show();
@@ -131,6 +132,20 @@ public class ExplorePaste extends Activity
                 {
                     Toast.makeText(this, R.string.downloadfail, Toast.LENGTH_LONG).show();
                     Log.d(ShareCodeActivity.DEBUG_TAG, Log.getStackTraceString(e));
+                }
+                finally
+                {
+                    if (outputStream != null)
+                    {
+                        try
+                        {
+                            outputStream.close();
+                        }
+                        catch (IOException e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
                 }
                 break;
         }
