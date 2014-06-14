@@ -60,7 +60,8 @@ public class ExplorePaste extends Activity
         }
 
         Log.d(ShareCodeActivity.DEBUG_TAG, "pasteKey==" + pasteKey);
-        setTitle(paste.getPasteName().isEmpty() ? "N/D" : paste.getPasteName());
+        String pasteName = paste.getPasteName() == null || paste.getPasteName().isEmpty() ? "N/D" : paste.getPasteName();
+        setTitle(pasteName);
 
         textView = (TextView) findViewById(R.id.codeview);
         downloaded = (savedInstanceState != null) && savedInstanceState.getBoolean("downloaded");
@@ -143,7 +144,7 @@ public class ExplorePaste extends Activity
                         }
                         catch (IOException e)
                         {
-                            e.printStackTrace();
+                            Log.d(ShareCodeActivity.DEBUG_TAG, "Exception in ExplorePaste", e);
                         }
                     }
                 }
@@ -196,6 +197,14 @@ public class ExplorePaste extends Activity
             super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
 
             alertDialog = new ProgressDialog(ExplorePaste.this);
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel), new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    finish();
+                }
+            });
             alertDialog.setMessage(ExplorePaste.this.getString(R.string.waitdownload));
             alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
                 @Override

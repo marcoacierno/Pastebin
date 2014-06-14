@@ -57,7 +57,7 @@
     <string name="openbrowser">Open with a Browser</string>
     <string name="preflanguage">Default language</string>
     <string name="summarypreflanguage">Select the default language to be used for new pastes</string>
-    <string name="opensettings">Open settings</string>
+    <string name="opensettings">Settings</string>
     <string name="summaryscadenza">Select the default expiration to be used for new pastes</string>
     <string name="defaultexpiration">N</string>
     <string name="defaultlanguage">text</string>
@@ -75,6 +75,7 @@
     <string name="summaryprefvspaste">Select the default visibility to be used for new pastes</string>
     <string name="loading">Loading…</string>
     <string name="language">Language: %1$s</string>
+    <string name="cancel">Cancel</string>
     <string-array name="expiration">
         <item>Never</item>
         <item>10 Minutes</item>

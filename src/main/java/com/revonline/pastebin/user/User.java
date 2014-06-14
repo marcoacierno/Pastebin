@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-/**
- * Created by Marco on 13/12/13.
- */
 public class User
 {
     private final static String KEY_NAME = "name";
@@ -61,11 +58,11 @@ public class User
         editor.putString(KEY_NAME, name);
         editor.commit();
     }
-
-    public void login()
-    {
-
-    }
+//
+//    public void login()
+//    {
+//
+//    }
 
     public void logout()
     {

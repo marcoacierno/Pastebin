@@ -1,0 +1,64 @@
+com.revonline.pastebin.BuildConfig
+com.revonline.pastebin.CodeShareReceiver:
+    public static final java.lang.String SHARE_SUCCESS
+com.revonline.pastebin.ErrorMessages:
+    12:12:public ErrorMessages()
+com.revonline.pastebin.PasteInfo:
+    52:53:public void setPasteAuthor(java.lang.String)
+    80:80:public int getSqlID()
+    84:85:public void setSqlID(int)
+com.revonline.pastebin.Pastebin:
+    public static final java.lang.String EXTRA_FLAG_PASTE_NAME
+    public static final java.lang.String EXTRA_FLAG_PASTE_LANG
+    public static final java.lang.String EXTRA_FLAG_PASTE_PRIVATE
+    public static final java.lang.String EXTRA_FLAG_PASTE_SCADENZA
+    public static final java.lang.String EXTRA_FLAG_PASTE_ARGS
+com.revonline.pastebin.R
+com.revonline.pastebin.R$anim
+com.revonline.pastebin.R$array
+com.revonline.pastebin.R$attr
+com.revonline.pastebin.R$dimen
+com.revonline.pastebin.R$drawable
+com.revonline.pastebin.R$id
+com.revonline.pastebin.R$layout
+com.revonline.pastebin.R$menu
+com.revonline.pastebin.R$string
+com.revonline.pastebin.R$xml
+com.revonline.pastebin.ShareCodeActivity:
+    public static final java.lang.String DEBUG_TAG
+    public static final java.lang.String EXTRA_FLAG_FORK
+com.revonline.pastebin.SpecialKeys
+com.revonline.pastebin.adapters.PastesListAdapter:
+    27:38:public PastesListAdapter(android.content.Context,java.util.List)
+com.revonline.pastebin.database.DBData
+com.revonline.pastebin.database.PasteDBHelper:
+    private static final int DATABASE_VERSION
+    private static final java.lang.String TABLE_NAME
+    private static final java.lang.String KEY_ID
+    private static final java.lang.String KEY_NAME
+    private static final java.lang.String KEY_LANGUAGE
+    private static final java.lang.String KEY_SCADENZA
+    private static final java.lang.String KEY_TIPO
+    private static final java.lang.String KEY_KEY
+    private static final java.lang.String KEY_TIME
+    private static final java.lang.String CREATE_TABLE
+    private static final java.lang.String DROP_TABLE
+    83:134:public java.util.List getAllPastes()
+com.revonline.pastebin.database.SQLiteHelper
+com.revonline.pastebin.database.UserDBHelper
+com.revonline.pastebin.explorepaste.ExplorePaste:
+    public static final java.lang.String EXTRA_PASTE_INFO
+com.revonline.pastebin.service.SendCodeService:
+    public static final java.lang.String FLAG_EXTRA_HTTP_RESULT
+com.revonline.pastebin.trending_pastes.PopPastes:
+    public static final java.lang.String KEY_POP_PASTES
+    public static final java.lang.String CACHE_PASTES
+com.revonline.pastebin.user.User:
+    private static final java.lang.String KEY_NAME
+    private static final java.lang.String KEY_KEY
+com.revonline.pastebin.xml.XMLHandler:
+    private static final java.lang.String XML_ROOT_ELEMENT
+    private static final java.lang.String XML_PASTE_KEY
+    private static final java.lang.String XML_PASTE_DATE
+    private static final java.lang.String XML_PASTE_TITLE
+    private static final java.lang.String XML_PASTE_LANGUAGE
