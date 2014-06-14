@@ -67,11 +67,11 @@ public class PastesListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
 
         if (convertView == null)
         {
-            convertView = inflater.inflate(R.layout.pasterow, null);
+            convertView = inflater.inflate(R.layout.pasterow, parent, false);
 
             viewHolder = new ViewHolder();
 

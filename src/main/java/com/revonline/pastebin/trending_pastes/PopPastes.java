@@ -222,6 +222,14 @@ public class PopPastes extends Activity
             alertDialog = new ProgressDialog(PopPastes.this);
             alertDialog.setMessage(PopPastes.this.getString(R.string.waitdownloadlist));
             alertDialog.setCancelable(false);
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel), new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialog, int which)
+                {
+                    finish();
+                }
+            });
             alertDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
                 @Override
                 public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent keyEvent)
@@ -278,16 +286,8 @@ public class PopPastes extends Activity
                 {
                     response.getEntity().getContent().close();
                 }
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (SAXException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (IOException | SAXException | ParserConfigurationException e) {
+                Log.d(ShareCodeActivity.DEBUG_TAG, "Exception: ", e);
             }
 
             return bodyresponse;  //To change body of implemented methods use File | Settings | File Templates.
@@ -297,6 +297,7 @@ public class PopPastes extends Activity
         protected void onPostExecute(String xml) {
             super.onPostExecute(xml);    //To change body of overridden methods use File | Settings | File Templates.
             if (PopPastes.this.isFinishing()) return;
+            if (pasteInfos == null) return;
 
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(PopPastes.this).edit();
 //            editor.putString("cachexml", xml);
