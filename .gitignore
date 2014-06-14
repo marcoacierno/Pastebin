@@ -1,3 +1,7 @@
+# this file just makes impossible commit changes
+gen/com/revonline/pastebin/BuildConfig.java
+
+
 #################
 ## Eclipse
 #################
