@@ -475,6 +475,7 @@ public class UserActivity extends Activity
 //                        }
 //                    });
                     reloadWindow();
+                    return;
                 }
             }
 
