@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
 import com.revonline.pastebin.ShareCodeActivity;
+import com.revonline.pastebin.notification.CompatibleNotification;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -165,26 +166,15 @@ public class ExplorePaste extends Activity
                 0
         );
 
-        Notification notification;
-        if (!ShareCodeActivity.apiLower11)
-        {
-            Notification.Builder builder = new Notification.Builder(this);
-            builder.setContentText(content);
-            builder.setSmallIcon(R.drawable.ic_action_download);
-            builder.setContentTitle("Pastebin");
-            builder.setContentIntent(pendingIntent);
-            builder.setAutoCancel(true);
-            notification = builder.build();
-        }
-        else
-        {
-            notification = new Notification();
-            notification.icon = R.drawable.ic_action_download;
-            notification.setLatestEventInfo(this, getString(R.string.app_name), content, pendingIntent);
-            notification.flags |= Notification.FLAG_AUTO_CANCEL;
-        }
+        Notification notification = CompatibleNotification.createNotification(this)
+                .setSmallIcon(R.drawable.ic_action_download)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true)
+                .setContentText(content)
+                .create();
 
-        int notificationDownloadID = 1;
+        final int notificationDownloadID = 1;
         manager.notify(notificationDownloadID, notification);
     }
 
