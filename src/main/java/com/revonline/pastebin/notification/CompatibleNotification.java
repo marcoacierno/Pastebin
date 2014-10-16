@@ -15,7 +15,7 @@ import com.revonline.pastebin.ShareCodeActivity;
  */
 public abstract class CompatibleNotification {
     public static CompatibleNotification createNotification(Context context) {
-        return ShareCodeActivity.apiLower11 ? new RecentNotificationAPI(context) :
+        return !ShareCodeActivity.apiLower11 ? new RecentNotificationAPI(context) :
                 new OlderNotificationAPI(context);
     }
 
