@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pastebin</string>
-    <string name="writeyourcode">Write code here</string>
-    <string name="privato">Private</string>
-    <string name="publico">Public</string>
-    <string name="nolista">Unlisted</string>
-    <string name="expirationprompt">Select…</string>
-    <string name="scadenza">Paste Expiration</string>
-    <string name="title">Title</string>
-    <string name="titolopaste">Paste title</string>
-    <string name="linguaggio">Language</string>
-    <string name="linguaggiprompt">Languages</string>
-    <string name="posta">Submit</string>
-    <string name="cannotbeblank">You cannot left code area blank!</string> <!-- You cannot left code area blank !-->
-    <string name="errore">Error</string>
-    <string name="close">Close</string>
-    <string name="result">Result</string>
-    <string name="open">Open</string>
-    <string name="favourite">Favourites</string>
-    <string name="nointernet">Make sure you\'re connected to internet and try again</string>
+    <string name="writeyourcode">Scrivi qui il codice</string>
+    <string name="privato">Privato</string>
+    <string name="publico">Pubblico</string>
+    <string name="nolista">Non in lista</string>
+    <string name="expirationprompt">Seleziona…</string>
+    <string name="scadenza">Scadenza paste</string>
+    <string name="title">Titolo</string>
+    <string name="titolopaste">Titolo paste</string>
+    <string name="linguaggio">Linguaggio</string>
+    <string name="linguaggiprompt">Linguaggi</string>
+    <string name="posta">Invia</string>
+    <string name="cannotbeblank">La sezione codice non può essere vuota!</string>
+    <string name="errore">Errore</string>
+    <string name="close">Chiudi</string>
+    <string name="result">Risultato</string>
+    <string name="open">Apri</string>
+    <string name="favourite">Preferita</string>
+    <string name="nointernet">Assicurati di essere connesso ad internet e riprova</string>
     <string name="OK">OK</string>
-    <string name="createpaste">Create paste</string>
-    <string name="pastepopolari">Trending Pastes</string>
-    <string name="io">Me</string>
-    <string name="sharestarted">Sharing… You can continue to use the application</string>
-    <string name="waitdownload">Wait, downloading paste…</string>
-    <string name="fork">Fork</string>
-    <string name="share">Share</string>
-    <string name="noauthor">Unknown</string>
-    <string name="erroreinterno">Something went wrong in Pastebin or Application</string>
-    <string name="blockedip">Your IP is blocked</string>
-    <string name="maxunlimitedpastes">You reached the maximum number of 25 unlisted pastes for your free account</string>
-    <string name="maxprivatepastes">You reached the maximum number of 10 private pastes for your free account</string>
-    <string name="blankcode">Code area is empty!</string>
-    <string name="maxpastesize">You reached the max size of a paste!</string>
-    <string name="norecords">No results!</string>
-    <string name="waitdownloadlist">Wait, downloading pastes list…</string>
-    <string name="profile">Profile</string>
-    <string name="retry">Retry</string>
-    <string name="nopastes">No pastes</string>
-    <string name="maxpastes">You reached the maximum pastes per 24h</string>
-    <string name="msgerrore">Error: %1$s. Try again.</string>
-    <string name="uploadsuccess">The paste has been published successfully! URL: %1$s</string>
-    <string name="IO">Me [%1$s]</string>
-    <string name="invaliddata">There was an error with your login details!</string>
-    <string name="accountnoactive">Account not active!</string>
-    <string name="loginok">Login ok!</string>
-    <string name="backtohome">Back to home</string>
-    <string name="loginpastebin">To use this page you need to log in to your Pastebin account</string>
+    <string name="createpaste">Crea paste</string>
+    <string name="pastepopolari">Paste popolari</string>
+    <string name="io">IO</string>
+    <string name="sharestarted">Condivisione iniziata. Puoi continuare ad usare l\'applicazione</string>
+    <string name="waitdownload">Attendere mentre scarico il paste..</string>
+    <string name="fork">Crea copia</string>
+    <string name="share">Condividi</string>
+    <string name="noauthor">Sconosciuto</string>
+    <string name="erroreinterno">L\'errore è dovuto all\'applicazione o a Pastebin</string>
+    <string name="blockedip">Il tuo IP è stato bloccato da Pastebin</string>
+    <string name="maxunlimitedpastes">E\' stato raggiunto il limite di paste non elencati per il tuo account</string>
+    <string name="maxprivatepastes">E\' stato raggiunto il numero massimo di paste privati per il tuo account</string>
+    <string name="blankcode">Non hai scritto nessuna riga di codice!</string>
+    <string name="maxpastesize">E\' stato raggiunto il peso massimo di un paste</string>
+    <string name="norecords">Nessun risultato</string>
+    <string name="waitdownloadlist">Attendere mentre scarico la lista…</string>
+    <string name="profile">Profilo</string>
+    <string name="retry">Riprova</string>
+    <string name="nopastes">Nessun paste pubblicato</string>
+    <string name="maxpastes">Hai raggiunto il limite di paste in 24h</string>
+    <string name="msgerrore">Si è verificato un errore %1$s. Riprova.</string>
+    <string name="uploadsuccess">Il paste è stato pubblicato con successo! URL: %1$s</string>
+    <string name="IO">Io [%1$s]</string>
+    <string name="invaliddata">I dati forniti sono errati!</string>
+    <string name="accountnoactive">L\'Account specificato non è attivo!</string>
+    <string name="loginok">Login avvenuto con successo!</string>
+    <string name="backtohome">Torna alla pagina principale</string>
+    <string name="loginpastebin">Per utilizzare questa scheda devi loggarti nel tuo account Pastebin</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="continua">Continue</string>
+    <string name="continua">Continua</string>
     <string name="logout">Logout</string>
-    <string name="useanonimo">Paste as a guest</string>
-    <string name="openbrowser">Open with a Browser</string>
-    <string name="preflanguage">Default language</string>
-    <string name="summarypreflanguage">Select the default language to be used for new pastes</string>
-    <string name="opensettings">Settings</string>
-    <string name="summaryscadenza">Select the default expiration to be used for new pastes</string>
+    <string name="useanonimo">Posta come anonimo</string>
+    <string name="openbrowser">Apri su Internet</string>
+    <string name="preflanguage">Linguaggio default</string>
+    <string name="summarypreflanguage">Seleziona il linguaggio che vuoi usare di default per ogni tuo nuovo paste</string>
+    <string name="opensettings">Apri impostazioni</string>
+    <string name="summaryscadenza">Seleziona la scadenza default da usare per tutti i nuovi paste</string>
     <string name="defaultexpiration">N</string>
     <string name="defaultlanguage">text</string>
     <string name="download">Download</string>
-    <string name="downloadfail">Unable to download the paste..</string>
-    <string name="emptypaste">Empty paste</string>
-    <string name="downloadok">Paste downloaded!</string>
-    <string name="confirmdownload">The paste has been already downloaded, click again on \"Download\" to confirm.</string>
-    <string name="localdownlodok">Download of %2$s (%1$s) finished! Click to open.</string>
-    <string name="deleteconfirm">Are you sure you want to delete %1$s?</string>
-    <string name="yes">Yes</string>
+    <string name="downloadfail">Impossibile scaricare il paste..</string>
+    <string name="emptypaste">Paste vuoto</string>
+    <string name="downloadok">Il paste è stato scaricato</string>
+    <string name="confirmdownload">Il paste è già stato scaricato, per confermare il download ripremere su Download</string>
+    <string name="localdownlodok">Download del paste %2$s (%1$s) completato con successo! Clicca per aprirlo.</string>
+    <string name="deleteconfirm">Sei sicuro di voler cancellare %1$s?</string>
+    <string name="yes">Si</string>
     <string name="no">No</string>
-    <string name="settings">Settings</string>
-    <string name="visiblitapaste">Paste Exposure</string>
-    <string name="summaryprefvspaste">Select the default visibility to be used for new pastes</string>
+    <string name="settings">Impostazioni</string>
+    <string name="visiblitapaste">Visibilità paste</string>
+    <string name="summaryprefvspaste">Seleziona la visiblità default da utilizzare per la creazione di un paste</string>
     <string name="loading">Loading…</string>
-    <string name="language">Language: %1$s</string>
-    <string name="cancel">Cancel</string>
+    <string name="language">Linguaggio: %1$s</string>
+    <string name="cancel">Cancella</string>
     <string-array name="expiration">
-        <item>Never</item>
-        <item>10 Minutes</item>
-        <item>1 Hour</item>
-        <item>1 Day</item>
-        <item>1 Week</item>
-        <item>2 Weeks</item>
-        <item>1 Month</item>
+        <item>Mai</item>
+        <item>10 Minuti</item>
+        <item>1 Ora</item>
+        <item>1 Giorno</item>
+        <item>1 Settimana</item>
+        <item>2 Settimane</item>
+        <item>1 Mese</item>
     </string-array>
     <string-array name="expirationvalues">
         <item>N</item>
