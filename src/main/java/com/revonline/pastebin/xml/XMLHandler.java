@@ -1,53 +1,40 @@
 package com.revonline.pastebin.xml;
 
 import android.util.Log;
-import com.revonline.pastebin.ShareCodeActivity;
+
 import com.revonline.pastebin.PasteInfo;
+import com.revonline.pastebin.ShareCodeActivity;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Marco
- * Date: 01/12/13
- * Time: 16.45
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: Marco Date: 01/12/13 Time: 16.45 To change this template use
+ * File | Settings | File Templates.
  */
 public class XMLHandler extends DefaultHandler {
-    private static final String XML_ROOT_ELEMENT = "paste";
-    private static final String XML_PASTE_KEY = "paste_key";
-    private static final String XML_PASTE_DATE = "paste_date";
-    private static final String XML_PASTE_TITLE = "paste_title";
-    private static final String XML_PASTE_LANGUAGE = "paste_format_long";
-    private boolean onElement;
-    private String value;
-    public ArrayList<PasteInfo> data = new ArrayList<PasteInfo>();
-    private PasteInfo info = null;
 
-    @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        onElement = true;
-        Log.d(ShareCodeActivity.DEBUG_TAG, "uri => " + uri);
-        Log.d(ShareCodeActivity.DEBUG_TAG, "localName => " + localName);
+  private static final String XML_ROOT_ELEMENT = "paste";
+  private static final String XML_PASTE_KEY = "paste_key";
+  private static final String XML_PASTE_DATE = "paste_date";
+  private static final String XML_PASTE_TITLE = "paste_title";
+  private static final String XML_PASTE_LANGUAGE = "paste_format_long";
+  public ArrayList<PasteInfo> data = new ArrayList<>();
+  private boolean onElement;
+  private String value;
+  private PasteInfo info = null;
 
-        if (localName.equals(XML_ROOT_ELEMENT))
-        {
-            Log.d(ShareCodeActivity.DEBUG_TAG, "root element");
-
-            if (info != null)
-            {
-                Log.d(ShareCodeActivity.DEBUG_TAG, "add new item");
-                data.add(info);
-                info = null;
-            }
-
-            Log.d(ShareCodeActivity.DEBUG_TAG, "creo..");
-            info = new PasteInfo();
-        }
+  @Override
+  public void endDocument() throws SAXException {
+    if (info != null) {
+      data.add(info);
+      value = "Untitled";
     }
+  }
 
     /*
     function timeToDate(f){
@@ -62,53 +49,62 @@ public class XMLHandler extends DefaultHandler {
 
      */
 
-    @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
-        onElement = false;
+  @Override
+  public void startElement(String uri, String localName, String qName, Attributes attributes)
+    throws SAXException {
+    onElement = true;
+    Log.d(ShareCodeActivity.DEBUG_TAG, "uri => " + uri);
+    Log.d(ShareCodeActivity.DEBUG_TAG, "localName => " + localName);
 
-        if (localName.equals(XML_PASTE_KEY))
-        {
-            info.setPasteKey(value);
-            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste key " + value);
-        }
-        else if (localName.equals(XML_PASTE_DATE))
-        {
-            info.setPasteData(Calendar.getInstance());
-            // SEMBRA ANDARE IN OVERFLOW MA NON DOVREBBE
-            long time = Long.parseLong(value) * 1000;
-            info.getPasteData().setTimeInMillis(time);
+    if (localName.equals(XML_ROOT_ELEMENT)) {
+      Log.d(ShareCodeActivity.DEBUG_TAG, "root element");
 
-            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste date -- temp removed... " + time);
-        }
-        else if (localName.equals(XML_PASTE_TITLE))
-        {
-            info.setPasteName(value);
-            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste name " + value);
-        }
-        else if (localName.equals(XML_PASTE_LANGUAGE))
-        {
-            info.setPasteLanguage(value);
-            Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste language " + value);
-        }
+      if (info != null) {
+        Log.d(ShareCodeActivity.DEBUG_TAG, "add new item");
+        data.add(info);
+        info = null;
+      }
+
+      Log.d(ShareCodeActivity.DEBUG_TAG, "creo..");
+      info = new PasteInfo();
     }
+  }
 
-    @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
-        if (onElement)
-        {
-            value = new String(ch, start, length);
-            onElement = false;
-        }
-    }
+  @Override
+  public void endElement(String uri, String localName, String qName) throws SAXException {
+    onElement = false;
 
-    @Override
-    public void endDocument() throws SAXException {
-        if (info != null)
-        {
-            data.add(info);
-            value = "Untitled";
-        }
+    switch (localName) {
+      case XML_PASTE_KEY:
+        info.setPasteKey(value);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste key " + value);
+        break;
+      case XML_PASTE_DATE:
+        info.setPasteData(Calendar.getInstance());
+        // SEMBRA ANDARE IN OVERFLOW MA NON DOVREBBE
+        long time = Long.parseLong(value) * 1000;
+        info.getPasteData().setTimeInMillis(time);
+
+        Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste date -- temp removed... " + time);
+        break;
+      case XML_PASTE_TITLE:
+        info.setPasteName(value);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste name " + value);
+        break;
+      case XML_PASTE_LANGUAGE:
+        info.setPasteLanguage(value);
+        Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste language " + value);
+        break;
     }
+  }
+
+  @Override
+  public void characters(char[] ch, int start, int length) throws SAXException {
+    if (onElement) {
+      value = new String(ch, start, length);
+      onElement = false;
+    }
+  }
 
     /*
      <paste>

@@ -12,7 +12,8 @@
     <string name="linguaggio">Language</string>
     <string name="linguaggiprompt">Languages</string>
     <string name="posta">Submit</string>
-    <string name="cannotbeblank">You cannot left code area blank!</string> <!-- You cannot left code area blank !-->
+    <string name="cannotbeblank">You cannot left code area blank!</string>
+    <!-- You cannot left code area blank !-->
     <string name="errore">Error</string>
     <string name="close">Close</string>
     <string name="result">Result</string>
@@ -30,8 +31,12 @@
     <string name="noauthor">Unknown</string>
     <string name="erroreinterno">Something went wrong in Pastebin or Application</string>
     <string name="blockedip">Your IP is blocked</string>
-    <string name="maxunlimitedpastes">You reached the maximum number of 25 unlisted pastes for your free account</string>
-    <string name="maxprivatepastes">You reached the maximum number of 10 private pastes for your free account</string>
+    <string name="maxunlimitedpastes">You reached the maximum number of 25 unlisted pastes for your
+        free account
+    </string>
+    <string name="maxprivatepastes">You reached the maximum number of 10 private pastes for your
+        free account
+    </string>
     <string name="blankcode">Code area is empty!</string>
     <string name="maxpastesize">You reached the max size of a paste!</string>
     <string name="norecords">No results!</string>
@@ -47,7 +52,8 @@
     <string name="accountnoactive">Account not active!</string>
     <string name="loginok">Login ok!</string>
     <string name="backtohome">Back to home</string>
-    <string name="loginpastebin">To use this page you need to log in to your Pastebin account</string>
+    <string name="loginpastebin">To use this page you need to log in to your Pastebin account
+    </string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -56,7 +62,8 @@
     <string name="useanonimo">Paste as a guest</string>
     <string name="openbrowser">Open with a Browser</string>
     <string name="preflanguage">Default language</string>
-    <string name="summarypreflanguage">Select the default language to be used for new pastes</string>
+    <string name="summarypreflanguage">Select the default language to be used for new pastes
+    </string>
     <string name="opensettings">Settings</string>
     <string name="summaryscadenza">Select the default expiration to be used for new pastes</string>
     <string name="defaultexpiration">N</string>
@@ -65,14 +72,17 @@
     <string name="downloadfail">Unable to download the paste..</string>
     <string name="emptypaste">Empty paste</string>
     <string name="downloadok">Paste downloaded!</string>
-    <string name="confirmdownload">The paste has been already downloaded, click again on \"Download\" to confirm.</string>
+    <string name="confirmdownload">The paste has been already downloaded, click again on
+        \"Download\" to confirm.
+    </string>
     <string name="localdownlodok">Download of %2$s (%1$s) finished! Click to open.</string>
     <string name="deleteconfirm">Are you sure you want to delete %1$s?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="settings">Settings</string>
     <string name="visiblitapaste">Paste Exposure</string>
-    <string name="summaryprefvspaste">Select the default visibility to be used for new pastes</string>
+    <string name="summaryprefvspaste">Select the default visibility to be used for new pastes
+    </string>
     <string name="loading">Loading…</string>
     <string name="language">Language: %1$s</string>
     <string name="cancel">Cancel</string>

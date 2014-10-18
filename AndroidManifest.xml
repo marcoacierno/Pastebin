@@ -4,22 +4,22 @@
           android:versionCode="9"
           android:versionName="1.4.1">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
-    <uses-sdk android:maxSdkVersion="19" android:minSdkVersion="8" android:targetSdkVersion="19"  />
+    <uses-sdk android:maxSdkVersion="19" android:minSdkVersion="8" android:targetSdkVersion="19"/>
     <application
-        android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
-        android:theme="@android:style/Theme.Holo.Light"
-        android:allowBackup="true"
-        >
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_launcher"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:allowBackup="true"
+            >
 
         <activity
-            android:name=".ShareCodeActivity"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="stateHidden"
-            >
+                android:name=".ShareCodeActivity"
+                android:label="@string/app_name"
+                android:windowSoftInputMode="stateHidden"
+                >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -27,35 +27,35 @@
         </activity>
         <activity android:name=".explorepaste.ExplorePaste"
                   android:parentActivityName=".ShareCodeActivity"
-        >
+                >
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShareCodeActivity" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="ShareCodeActivity"/>
         </activity>
         <activity android:name=".trending_pastes.PopPastes"
                   android:parentActivityName=".ShareCodeActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShareCodeActivity"
-                />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="ShareCodeActivity"
+                    />
         </activity>
         <activity android:name=".user.UserActivity"
                   android:parentActivityName=".ShareCodeActivity"
                   android:label="@string/io">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShareCodeActivity"
-                />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="ShareCodeActivity"
+                    />
         </activity>
-        <activity   android:name=".Settings"
-                    android:parentActivityName=".ShareCodeActivity">
+        <activity android:name=".Settings"
+                  android:parentActivityName=".ShareCodeActivity">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShareCodeActivity"
-                />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="ShareCodeActivity"
+                    />
         </activity>
 
-        <service android:enabled="true" android:name=".service.SendCodeService" />
+        <service android:enabled="true" android:name=".service.SendCodeService"/>
         <receiver android:name=".CodeShareReceiver"/>
     </application>
 </manifest>

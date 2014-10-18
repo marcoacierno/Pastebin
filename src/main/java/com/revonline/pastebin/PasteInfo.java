@@ -6,113 +6,112 @@ import android.os.Parcelable;
 import java.io.Serializable;
 import java.util.Calendar;
 
-public class PasteInfo implements Parcelable, Serializable
-{
-    public int sqlID;
-    private String pasteName;
-    private String pasteAuthor;
-    private String pasteLanguage;
-    private Calendar pasteData;
-    private String pasteKey;
+public class PasteInfo implements Parcelable, Serializable {
 
-    public PasteInfo(Parcel in)
-    {
-        readFromParcel(in);
+  public static final Parcelable.Creator<PasteInfo> CREATOR
+    = new Parcelable.Creator<PasteInfo>() {
+    public PasteInfo createFromParcel(Parcel in) {
+      return new PasteInfo(in);
     }
 
-    public PasteInfo(String pasteName, String pasteAuthor, String pasteLanguage, Calendar pasteData, String pasteKey) {
-        this.pasteName = pasteName;
-        this.pasteAuthor = pasteAuthor;
-        this.pasteLanguage = pasteLanguage;
-        this.pasteData = pasteData;
-        this.pasteKey = pasteKey;
+    public PasteInfo[] newArray(int size) {
+      return new PasteInfo[size];
     }
+  };
+  public int sqlID;
+  private String pasteName;
+  private String pasteAuthor;
+  private String pasteLanguage;
+  private Calendar pasteData;
+  private String pasteKey;
 
-    public PasteInfo() { }
+  public PasteInfo(Parcel in) {
+    readFromParcel(in);
+  }
 
-    public String getPasteName() {
-        return pasteName;
-    }
+  private void readFromParcel(Parcel in) {
+    sqlID = in.readInt();
+    pasteName = in.readString();
+    pasteAuthor = in.readString();
+    pasteLanguage = in.readString();
+    pasteData = (Calendar) in.readSerializable();
+    pasteKey = in.readString();
+  }
 
-    public void setPasteName(String pasteName) {
-        this.pasteName = pasteName;
-    }
+  public PasteInfo(String pasteName, String pasteAuthor, String pasteLanguage, Calendar pasteData,
+                   String pasteKey) {
+    this.pasteName = pasteName;
+    this.pasteAuthor = pasteAuthor;
+    this.pasteLanguage = pasteLanguage;
+    this.pasteData = pasteData;
+    this.pasteKey = pasteKey;
+  }
 
-    public String getPasteAuthor() {
-        return pasteAuthor;
-    }
+  public PasteInfo() {
+  }
 
-    public void setPasteAuthor(String pasteAuthor) {
-        this.pasteAuthor = pasteAuthor;
-    }
+  public String getPasteName() {
+    return pasteName;
+  }
 
-    public String getPasteLanguage() {
-        return pasteLanguage;
-    }
+  public void setPasteName(String pasteName) {
+    this.pasteName = pasteName;
+  }
 
-    public void setPasteLanguage(String pasteLanguage) {
-        this.pasteLanguage = pasteLanguage;
-    }
+  public String getPasteAuthor() {
+    return pasteAuthor;
+  }
 
-    public Calendar getPasteData() {
-        return pasteData;
-    }
+  public void setPasteAuthor(String pasteAuthor) {
+    this.pasteAuthor = pasteAuthor;
+  }
 
-    public void setPasteData(Calendar pasteData) {
-        this.pasteData = pasteData;
-    }
+  public String getPasteLanguage() {
+    return pasteLanguage;
+  }
 
-    public String getPasteKey() {
-        return pasteKey;
-    }
+  public void setPasteLanguage(String pasteLanguage) {
+    this.pasteLanguage = pasteLanguage;
+  }
 
-    public void setPasteKey(String pasteKey) {
-        this.pasteKey = pasteKey;
-    }
+  public Calendar getPasteData() {
+    return pasteData;
+  }
 
-    public int getSqlID() {
-        return sqlID;
-    }
+  public void setPasteData(Calendar pasteData) {
+    this.pasteData = pasteData;
+  }
 
-    public void setSqlID(int sqlID) {
-        this.sqlID = sqlID;
-    }
+  public String getPasteKey() {
+    return pasteKey;
+  }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+  public void setPasteKey(String pasteKey) {
+    this.pasteKey = pasteKey;
+  }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(sqlID);
-        parcel.writeString(pasteName);
-        parcel.writeString(pasteAuthor);
-        parcel.writeString(pasteLanguage);
-        parcel.writeSerializable(pasteData);
-        parcel.writeString(pasteKey);
-    }
+  public int getSqlID() {
+    return sqlID;
+  }
 
-    private void readFromParcel(Parcel in)
-    {
-        sqlID = in.readInt();
-        pasteName = in.readString();
-        pasteAuthor = in.readString();
-        pasteLanguage = in.readString();
-        pasteData = (Calendar) in.readSerializable();
-        pasteKey = in.readString();
-    }
+  public void setSqlID(int sqlID) {
+    this.sqlID = sqlID;
+  }
 
-    public static final Parcelable.Creator<PasteInfo> CREATOR
-            = new Parcelable.Creator<PasteInfo>() {
-        public PasteInfo createFromParcel(Parcel in) {
-            return new PasteInfo(in);
-        }
+  @Override
+  public int describeContents() {
+    return 0;
+  }
 
-        public PasteInfo[] newArray(int size) {
-            return new PasteInfo[size];
-        }
-    };
+  @Override
+  public void writeToParcel(Parcel parcel, int i) {
+    parcel.writeInt(sqlID);
+    parcel.writeString(pasteName);
+    parcel.writeString(pasteAuthor);
+    parcel.writeString(pasteLanguage);
+    parcel.writeSerializable(pasteData);
+    parcel.writeString(pasteKey);
+  }
 
 //    public void delete()
 //    {

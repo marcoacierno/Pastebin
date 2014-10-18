@@ -2,13 +2,13 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/popularpaste"
-        android:title="@string/pastepopolari"
-        />
+            android:id="@+id/popularpaste"
+            android:title="@string/pastepopolari"
+            />
 
     <item
-        android:id="@+id/loginmenu"
-        android:title="@string/IO"
-    />
+            android:id="@+id/loginmenu"
+            android:title="@string/IO"
+            />
 
 </menu>

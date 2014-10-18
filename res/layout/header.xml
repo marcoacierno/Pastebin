@@ -6,12 +6,12 @@
               android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/headerTitle"
-        android:layout_width="match_parent"
-        android:layout_height="30dip"
-        android:text="Header"
-        android:textAlignment="center"
-        android:background="#bbff93"
-        />
+            android:id="@+id/headerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dip"
+            android:text="Header"
+            android:textAlignment="center"
+            android:background="#bbff93"
+            />
 
 </LinearLayout>
