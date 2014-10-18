@@ -221,3 +221,5 @@ pip-log.txt
 src\com\revonline\pastebin\SpecialKeys.java
 .idea/
 /src/main/java/com/revonline/pastebin/SpecialKeys.java
+target/
+Pastebin.apk
