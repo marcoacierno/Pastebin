@@ -223,3 +223,4 @@ src\com\revonline\pastebin\SpecialKeys.java
 /src/main/java/com/revonline/pastebin/SpecialKeys.java
 target/
 Pastebin.apk
+proguard_logs/
