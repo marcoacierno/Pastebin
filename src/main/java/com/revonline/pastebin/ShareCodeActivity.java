@@ -40,7 +40,7 @@ public class ShareCodeActivity extends Activity
     private RadioButton privateButton;
     private MenuItem IOmenuitem;
     private CheckBox anonimo;//true => posta come anonimo -- false => posta come un utente, se loggato.
-    private String[] expirationValues;
+//    private String[] expirationValues;
     private EditText pasteText;
     private String[] fixedLanguages;
 
@@ -60,7 +60,7 @@ public class ShareCodeActivity extends Activity
         PreferenceManager.setDefaultValues(this, R.xml.settings, false);
 
         fixedLanguages = getResources().getStringArray(R.array.fixedlanguages);
-        expirationValues = getResources().getStringArray(R.array.expirationvalues);
+//        expirationValues = getResources().getStringArray(R.array.expirationvalues);
 
         // load user
         user = new User(this);
@@ -141,7 +141,9 @@ public class ShareCodeActivity extends Activity
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.languages, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                                                                             R.array.languages,
+                                                                             android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewLanguage.setAdapter(adapter);
         viewLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -159,39 +161,40 @@ public class ShareCodeActivity extends Activity
         });
         viewLanguage.setSelection(searchPosition(fixedLanguages, sharedPreferences.getString("pref_defaultlanguage", null)));
 
-        adapter = ArrayAdapter.createFromResource(this, R.array.expiration, android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.expiration,
+                                                  android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         viewTime.setAdapter(adapter);
         viewTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // this code is very efficient, why change?
-//                switch (position)
-//                {
-//                    case 0:
-//                        time = "N";
-//                        break;
-//                    case 1:
-//                        time = "10M";
-//                        break;
-//                    case 2:
-//                        time = "1H";
-//                        break;
-//                    case 3:
-//                        time = "1D";
-//                        break;
-//                    case 4:
-//                        time = "1W";
-//                        break;
-//                    case 5:
-//                        time = "2W";
-//                        break;
-//                    case 6:
-//                        time = "1M";
-//                        break;
-//                }
+                switch (position)
+                {
+                    case 0:
+                        time = "N";
+                        break;
+                    case 1:
+                        time = "10M";
+                        break;
+                    case 2:
+                        time = "1H";
+                        break;
+                    case 3:
+                        time = "1D";
+                        break;
+                    case 4:
+                        time = "1W";
+                        break;
+                    case 5:
+                        time = "2W";
+                        break;
+                    case 6:
+                        time = "1M";
+                        break;
+                }
 
-                time = expirationValues[position];
+//                time = expirationValues[position - 1];
                 Log.d(DEBUG_TAG, "new time =>" + time);
 
                 /***
@@ -220,7 +223,7 @@ public class ShareCodeActivity extends Activity
             }
         });
 
-        viewTime.setSelection(searchPosition(expirationValues, sharedPreferences.getString("pref_defaultexpiration", null)));
+        viewTime.setSelection(searchExpirationTimeFromString(sharedPreferences.getString("pref_defaultexpiration", null)));
 
         Log.d(DEBUG_TAG, "user.isLogged() => " + user.isLogged());
         privateButton = (RadioButton)findViewById(R.id.access_private);
@@ -244,7 +247,7 @@ public class ShareCodeActivity extends Activity
     }
 
     // nel file dovrebbe essere salvato direttamente l'indice e non la stringa!
-    private int searchPosition(String[] arr, String text)
+    private static int searchPosition(String[] arr, String text)
     {
         // non cerco per text a null, o se l'array è null
         if (text == null || arr == null) return -1;
@@ -254,6 +257,28 @@ public class ShareCodeActivity extends Activity
                 return i;
 
         return -1;
+    }
+
+    private static int searchExpirationTimeFromString(String text) {
+        switch (text)
+        {
+            case "N":
+                return 0;
+            case "10M":
+                return 1;
+            case "1H":
+                return 2;
+            case "1D":
+                return 3;
+            case "1W":
+                return 4;
+            case "2W":
+                return 5;
+            case "1M":
+                return 6;
+        }
+
+        return 0;
     }
 
     @Override
