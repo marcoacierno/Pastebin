@@ -25,6 +25,7 @@ public class PastesListAdapter extends BaseAdapter {
   private Context context;
   private List<PasteInfo> pasteInfoList = new ArrayList<>();
   private LayoutInflater inflater;
+  private final static DateFormat format = new SimpleDateFormat("MMMM E dd, yyyy HH:MM");
 
   public PastesListAdapter(Context context) {
     this.context = context;
@@ -91,7 +92,6 @@ public class PastesListAdapter extends BaseAdapter {
       (author == null ? context.getString(R.string.noauthor) : author) + " - " + pasteInfo
         .getPasteLanguage());
     Calendar date = pasteInfo.getPasteData();
-    DateFormat format = new SimpleDateFormat("MMMM E dd, yyyy HH:MM");
     viewHolder.time.setText(format.format(date.getTime()));
 //        viewHolder.time.setText(String.format("%02d/%02d/%d", date.get(Calendar.DAY_OF_MONTH), (date.get(Calendar.MONTH) + 1), date.get(Calendar.YEAR)));
 //        Log.d(ShareCodeActivity.DEBUG_TAG, "date == " + date);
