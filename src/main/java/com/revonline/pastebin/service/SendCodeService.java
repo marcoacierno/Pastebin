@@ -103,16 +103,6 @@ public class SendCodeService extends IntentService {
 
     sendBroadcast(broadcast);
 
-
-    final Notification notification = CompatibleNotification.createNotification(this)
-        .setContentTitle(getString(R.string.pasteshared, name))
-        .setContentText(getString(R.string.clicktosee))
-        .setSmallIcon(R.drawable.ic_action_share)
-        .create();
-
-    final NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-    manager.notify(3, notification);
-
     Log.d(ShareCodeActivity.DEBUG_TAG, "SendCodeService - fine");
   }
 }

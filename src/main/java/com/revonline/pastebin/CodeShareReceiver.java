@@ -1,6 +1,8 @@
 package com.revonline.pastebin;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -12,6 +14,7 @@ import android.util.Log;
 
 import com.revonline.pastebin.database.PasteDBHelper;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
+import com.revonline.pastebin.notification.CompatibleNotification;
 import com.revonline.pastebin.service.SendCodeService;
 
 import org.apache.commons.validator.routines.UrlValidator;
@@ -61,13 +64,14 @@ public class CodeShareReceiver extends BroadcastReceiver {
       alertDialog.setMessage(context.getString(R.string.uploadsuccess, finalResponse));
       final String key = finalResponse.substring(finalResponse.lastIndexOf('/') + 1);
 
+      final String name = intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME);
       alertDialog.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
           //To change body of implemented methods use File | Settings | File Templates.
           Intent explore = new Intent(context, ExplorePaste.class);
           PasteInfo pasteInfo = new PasteInfo(
-            intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME),
+              name,
             null,
             intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
             null,
@@ -103,11 +107,21 @@ public class CodeShareReceiver extends BroadcastReceiver {
 
       //(String name, String language, String scadenza, int tipo, String url)
       pasteDBHelper.addPaste(
-        intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME),
+          name,
         intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
         intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_SCADENZA),
         intent.getIntExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE, 0),
         key);
+
+
+      final Notification notification = CompatibleNotification.createNotification(context)
+        .setContentTitle(context.getString(R.string.pasteshared, name))
+        .setContentText(context.getString(R.string.clicktosee))
+        .setSmallIcon(R.drawable.ic_action_share)
+        .create();
+
+      final NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(3, notification);
     }
     alertDialog.show();
   }
