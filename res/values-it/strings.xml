@@ -111,4 +111,5 @@
     </string-array>
     <string name="clicktosee">Clicca per aprire il paste</string>
     <string name="pasteshared">%s è stato condiviso!</string>
+    <string name="copyUrl">Copia Url</string>
 </resources>

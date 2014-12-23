@@ -2,6 +2,8 @@ package com.revonline.pastebin;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -80,6 +82,18 @@ public class CodeShareReceiver extends BroadcastReceiver {
       });
 
       alertDialog.setNegativeButton(R.string.close, null);
+
+      if (!ShareCodeActivity.apiLower11) {
+        alertDialog.setNeutralButton(context.getString(R.string.copyUrl), new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(final DialogInterface dialog, final int which) {
+            final ClipboardManager clipboardManager = ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE));
+            final ClipData.Item item = new ClipData.Item(finalResponse);
+            final ClipData clipData = new ClipData("Pastebin Url", new String[]{"text/text"}, item);
+            clipboardManager.setPrimaryClip(clipData);
+          }
+        });
+      }
 
       PasteDBHelper pasteDBHelper = new PasteDBHelper(context);
 
