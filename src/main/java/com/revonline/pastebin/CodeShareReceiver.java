@@ -83,17 +83,21 @@ public class CodeShareReceiver extends BroadcastReceiver {
 
       alertDialog.setNegativeButton(R.string.close, null);
 
-      if (!ShareCodeActivity.apiLower11) {
-        alertDialog.setNeutralButton(context.getString(R.string.copyUrl), new DialogInterface.OnClickListener() {
-          @Override
-          public void onClick(final DialogInterface dialog, final int which) {
+      alertDialog.setNeutralButton(context.getString(R.string.copyUrl), new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(final DialogInterface dialog, final int which) {
+          if (!ShareCodeActivity.apiLower11) {
             final ClipboardManager clipboardManager = ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE));
             final ClipData.Item item = new ClipData.Item(finalResponse);
             final ClipData clipData = new ClipData("Pastebin Url", new String[]{"text/text"}, item);
             clipboardManager.setPrimaryClip(clipData);
+          } else {
+            final android.text.ClipboardManager clipboardManager
+                = (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboardManager.setText(finalResponse);
           }
-        });
-      }
+        }
+      });
 
       PasteDBHelper pasteDBHelper = new PasteDBHelper(context);
 
