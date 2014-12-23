@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 
 /**
@@ -21,6 +22,7 @@ public class RecentNotificationAPI extends CompatibleNotification {
   RecentNotificationAPI(final Context context) {
     this.context = context;
     builder = new Notification.Builder(context);
+    builder.setContentIntent(PendingIntent.getActivity(context.getApplicationContext(), 0, new Intent(), 0));
   }
 
   @Override

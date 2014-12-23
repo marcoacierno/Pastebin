@@ -3,6 +3,7 @@ package com.revonline.pastebin.notification;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 
 /**
  * Implementazione di CompatileNotification per supportare i device con level API inferiore a 11
@@ -20,6 +21,7 @@ public class OlderNotificationAPI extends CompatibleNotification {
 
   OlderNotificationAPI(final Context context) {
     this.context = context;
+    notification.contentIntent = PendingIntent.getActivity(context.getApplicationContext(), 0, new Intent(), 0);
   }
 
   @Override
