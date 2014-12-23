@@ -109,4 +109,6 @@
         <item>1W</item>
         <item>1M</item>
     </string-array>
+    <string name="clicktosee">Clicca per aprire il paste</string>
+    <string name="pasteshared">%s è stato condiviso!</string>
 </resources>
