@@ -28,6 +28,12 @@ public class Pastebin {
 
   public void postPaste(String title, String code, String language, String scadenza, int visibility,
                         boolean anonimo, String key) {
+    if (title == null) {
+      // it's not localized because it's not localized by pastebin
+      // Untitled is the default name of a no-title
+      title = "Untitled";
+    }
+
     // anonimo => true se il paste deve essere anonimo
     // false => se il paste deve essere dell'utente (se loggato)
 
