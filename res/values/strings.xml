@@ -89,6 +89,7 @@
     <string name="pasteshared">%s shared</string>
     <string name="clicktosee">Click here to open the paste</string>
     <string name="copyUrl">Copy url</string>
+    <string name="localpastes">Local pastes</string>
     <string-array name="expiration">
         <item>Never</item>
         <item>10 Minutes</item>

@@ -26,6 +26,7 @@ import com.revonline.pastebin.R;
 import com.revonline.pastebin.ShareCodeActivity;
 import com.revonline.pastebin.SpecialKeys;
 import com.revonline.pastebin.adapters.PastesListAdapter;
+import com.revonline.pastebin.database.PasteDBHelper;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
 import com.revonline.pastebin.xml.XMLHandler;
 
@@ -67,6 +68,7 @@ public class UserActivity extends Activity {
   private ListView pastesList;
   private PastesListAdapter adapter;
   private TextView listViewEmptyText;
+  private boolean showLocalPastes;
 
   @Override
   public void onCreate(Bundle savedInstanceHere) {
@@ -105,27 +107,6 @@ public class UserActivity extends Activity {
 
       listViewEmptyText = (TextView) findViewById(R.id.empty);
       pastesList.setEmptyView(listViewEmptyText);
-//            pastesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-//            {
-//                @Override
-//                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-//                {
-//                    final PasteInfo pasteInfo = (PasteInfo) parent.getItemAtPosition(position);
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
-//                    builder.setMessage(getString(R.string.deleteconfirm, pasteInfo.getPasteName()));
-//                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
-//                    {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which)
-//                        {
-//                            pasteInfo.delete();
-//                        }
-//                    });
-//                    builder.setNegativeButton(R.string.no, null);
-//                    return false;
-//                }
-//            });
-
       new DownloadPastes().execute();
     }
   }
@@ -138,9 +119,29 @@ public class UserActivity extends Activity {
           user.logout();
           reloadWindow();
           break;
+        case R.id.userLocalPastes:
+          showLocalPastes = !showLocalPastes;
+          updatePastesListView();
+          break;
       }
     }
     return super.onMenuItemSelected(featureId, item);
+  }
+
+  private void updatePastesListView() {
+    if (showLocalPastes) {
+      showUserPastes();
+    } else {
+      // yyeeeeaaaaaah it's bad, but for now it works >_<
+      // i wrote this code YEARS AGO! so don't blame me
+      //
+      new DownloadPastes().execute();
+    }
+  }
+
+  private void showUserPastes() {
+    adapter.setPasteInfoList(new PasteDBHelper(this).getAllPastes());
+    adapter.notifyDataSetChanged();
   }
 
   @Override
@@ -194,46 +195,6 @@ public class UserActivity extends Activity {
 
     new LoginTask().execute(name, password);
   }
-
-//    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//    // Swipe to delete
-//    private class SwipeToDelete implements View.OnTouchListener
-//    {
-//        private int startX = 0;
-//        private int startY = 0;
-//
-//        @Override
-//        public boolean onTouch(View v, MotionEvent event)
-//        {
-//            Log.d(ShareCodeActivity.DEBUG_TAG, "View: " + v.getClass().getCanonicalName());
-////            int action = event.getAction();
-////
-////            switch (action)
-////            {
-////                /* slide iniziato */
-////                case MotionEvent.ACTION_DOWN:
-////                    startX = (int)event.getX();
-////                    startY = (int)event.getY();
-////                    break;
-////                /* slide terminato */
-////                case MotionEvent.ACTION_UP:
-////                    int currentX = (int) event.getX();
-////                    int currentY = (int) event.getY();
-////
-////                    int distance = currentX - startX;
-////
-////                    if (distance > 150)
-////                    {
-////                        Toast.makeText(UserActivity.this, "Reached", Toast.LENGTH_LONG).show();
-////                    }
-////
-////                    startX = 0;
-////                    startY = 0;
-////                    break;
-////            }
-//            return false;
-//        }
-//    }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
   // DownloadPastes code, ignore it

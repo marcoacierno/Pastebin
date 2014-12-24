@@ -4,7 +4,11 @@
     <item
             android:id="@+id/userlogout"
             android:title="@string/logout"
-            android:showAsAction="ifRoom"
+            android:showAsAction="always"
             android:icon="@drawable/ic_action_cancel"
             />
+    <item android:id="@+id/userLocalPastes"
+          android:title="@string/localpastes"
+          android:showAsAction="ifRoom"
+          android:icon="@drawable/ic_action_computer" />
 </menu>
