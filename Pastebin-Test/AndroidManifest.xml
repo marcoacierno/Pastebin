@@ -7,7 +7,7 @@
   <instrumentation
       android:targetPackage="com.revonline.pastebin"
       android:name="android.test.InstrumentationTestRunner" />
-  <application android:icon="@drawable/icon" android:label="@string/app_name">
+  <application>
     <uses-library android:name="android.test.runner" />
   </application>
 </manifest>
