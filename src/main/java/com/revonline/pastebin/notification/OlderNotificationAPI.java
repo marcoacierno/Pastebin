@@ -21,7 +21,7 @@ public class OlderNotificationAPI extends CompatibleNotification {
 
   OlderNotificationAPI(final Context context) {
     this.context = context;
-    notification.contentIntent = PendingIntent.getActivity(context.getApplicationContext(), 0, new Intent(), 0);
+    pendingIntent = notification.contentIntent = PendingIntent.getActivity(context.getApplicationContext(), 0, new Intent(), 0);
   }
 
   @Override
