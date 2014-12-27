@@ -50,16 +50,18 @@ public class PasteDBHelper extends SQLiteOpenHelper implements DBData {
           "addPaste with: " + name + ", " + language + ", " + scadenza + ", " + tipo + ", " + key);
 
     SQLiteDatabase db = getWritableDatabase();
+    try {
+      ContentValues contentValues = new ContentValues();
+      contentValues.put(KEY_NAME, name);
+      contentValues.put(KEY_LANGUAGE, language);
+      contentValues.put(KEY_SCADENZA, scadenza);
+      contentValues.put(KEY_TIPO, tipo);
+      contentValues.put(KEY_KEY, key);
 
-    ContentValues contentValues = new ContentValues();
-    contentValues.put(KEY_NAME, name);
-    contentValues.put(KEY_LANGUAGE, language);
-    contentValues.put(KEY_SCADENZA, scadenza);
-    contentValues.put(KEY_TIPO, tipo);
-    contentValues.put(KEY_KEY, key);
-
-    db.insert(TABLE_NAME, null, contentValues);
-    db.close();
+      db.insert(TABLE_NAME, null, contentValues);
+    } finally {
+      db.close();
+    }
   }  @Override
   public void onCreate(SQLiteDatabase db) {
     //To change body of implemented methods use File | Settings | File Templates.
@@ -70,57 +72,63 @@ public class PasteDBHelper extends SQLiteOpenHelper implements DBData {
     Log.d(ShareCodeActivity.DEBUG_TAG, "getAllPastes");
 
     SQLiteDatabase db = getReadableDatabase();
-    /**table	The table name to compile the query against.
-     columns	A list of which columns to return. Passing null will return all columns, which is discouraged to prevent reading data from storage that isn't going to be used.
-     selection	A filter declaring which rows to return, formatted as an SQL WHERE clause (excluding the WHERE itself). Passing null will return all rows for the given table.
-     selectionArgs	You may include ?s in selection, which will be replaced by the values from selectionArgs, in order that they appear in the selection. The values will be bound as Strings.
-     groupBy	A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
-     having	A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
-     orderBy	How to order the rows, formatted as an SQL ORDER BY clause (excluding the ORDER BY itself). Passing null will use the default sort order, which may be unordered.
-     limit	Limits the number of rows returned by the query, formatted as LIMIT clause. Passing null denotes no LIMIT clause.
+    try {
+      /**table	The table name to compile the query against.
+       columns	A list of which columns to return. Passing null will return all columns, which is discouraged to prevent reading data from storage that isn't going to be used.
+       selection	A filter declaring which rows to return, formatted as an SQL WHERE clause (excluding the WHERE itself). Passing null will return all rows for the given table.
+       selectionArgs	You may include ?s in selection, which will be replaced by the values from selectionArgs, in order that they appear in the selection. The values will be bound as Strings.
+       groupBy	A filter declaring how to group rows, formatted as an SQL GROUP BY clause (excluding the GROUP BY itself). Passing null will cause the rows to not be grouped.
+       having	A filter declare which row groups to include in the cursor, if row grouping is being used, formatted as an SQL HAVING clause (excluding the HAVING itself). Passing null will cause all row groups to be included, and is required when row grouping is not being used.
+       orderBy	How to order the rows, formatted as an SQL ORDER BY clause (excluding the ORDER BY itself). Passing null will use the default sort order, which may be unordered.
+       limit	Limits the number of rows returned by the query, formatted as LIMIT clause. Passing null denotes no LIMIT clause.
 
-     public Cursor query (String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)*/
-    Cursor
-      cursor =
-      db.query(TABLE_NAME,
-               new String[]{KEY_ID, KEY_NAME, KEY_LANGUAGE, KEY_SCADENZA, KEY_TIPO, KEY_KEY,
-                            KEY_TIME}, null, null, null, null, null, null);
+       public Cursor query (String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy, String limit)*/
+      Cursor
+          cursor =
+          db.query(TABLE_NAME,
+              new String[]{KEY_ID, KEY_NAME, KEY_LANGUAGE, KEY_SCADENZA, KEY_TIPO, KEY_KEY,
+                  KEY_TIME}, null, null, null, null, null, null);
 
-    Log.d(ShareCodeActivity.DEBUG_TAG, "Count = " + cursor.getCount());
+      Log.d(ShareCodeActivity.DEBUG_TAG, "Count = " + cursor.getCount());
 
-    //String pasteName, String pasteAuthor, String pasteLanguage, GregorianCalendar pasteData, String pasteKey
-    List<PasteInfo> list = new ArrayList<>();
+      //String pasteName, String pasteAuthor, String pasteLanguage, GregorianCalendar pasteData, String pasteKey
+      List<PasteInfo> list = new ArrayList<>();
 
-    if (cursor.moveToFirst()) {
-      PasteInfo pasteInfo;
+      if (cursor.moveToFirst()) {
+        PasteInfo pasteInfo;
 
-      int idxID = cursor.getColumnIndex(KEY_ID);
-      int idxName = cursor.getColumnIndex(KEY_NAME);
-      int idxLang = cursor.getColumnIndex(KEY_LANGUAGE);
-      int idxKey = cursor.getColumnIndex(KEY_KEY);
-      int idxTime = cursor.getColumnIndex(KEY_TIME);
+        int idxID = cursor.getColumnIndex(KEY_ID);
+        int idxName = cursor.getColumnIndex(KEY_NAME);
+        int idxLang = cursor.getColumnIndex(KEY_LANGUAGE);
+        int idxKey = cursor.getColumnIndex(KEY_KEY);
+        int idxTime = cursor.getColumnIndex(KEY_TIME);
 
-      do {
-        pasteInfo = new PasteInfo();
+        do {
+          pasteInfo = new PasteInfo();
 
-        pasteInfo.setPasteName(cursor.getString(idxName));
-        pasteInfo.setPasteLanguage(cursor.getString(idxLang));
-        pasteInfo.setSqlID(cursor.getInt(idxID));
-        pasteInfo.setPasteKey(cursor.getString(idxKey));
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(cursor.getInt(idxTime) * 1000);
-        pasteInfo.setPasteData(calendar);
+          pasteInfo.setPasteName(cursor.getString(idxName));
+          pasteInfo.setPasteLanguage(cursor.getString(idxLang));
+          pasteInfo.setSqlID(cursor.getInt(idxID));
+          pasteInfo.setPasteKey(cursor.getString(idxKey));
+          Calendar calendar = Calendar.getInstance();
+          calendar.setTimeInMillis(cursor.getInt(idxTime) * 1000);
+          pasteInfo.setPasteData(calendar);
 
-        list.add(pasteInfo);
+          list.add(pasteInfo);
 
-        Log.d(ShareCodeActivity.DEBUG_TAG, "moveToNext");
-      } while (cursor.moveToNext());
-    } else {
-      Log.d(ShareCodeActivity.DEBUG_TAG, "moveToFirst returns false");
+          Log.d(ShareCodeActivity.DEBUG_TAG, "moveToNext");
+        } while (cursor.moveToNext());
+      } else {
+        Log.d(ShareCodeActivity.DEBUG_TAG, "moveToFirst returns false");
+      }
+
+      return list;
+    } finally {
+      db.close();
     }
+  }
 
-    return list;
-  }  @Override
+  @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     Log.d(ShareCodeActivity.DEBUG_TAG,
           "onUpgrade, oldVersion: " + oldVersion + ", newVersion: " + newVersion);
