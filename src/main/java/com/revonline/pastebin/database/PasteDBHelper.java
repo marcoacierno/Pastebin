@@ -58,6 +58,7 @@ public class PasteDBHelper extends SQLiteOpenHelper {
       contentValues.put(KEY_SCADENZA, scadenza);
       contentValues.put(KEY_TIPO, tipo);
       contentValues.put(KEY_KEY, key);
+      contentValues.put(KEY_TIME, Calendar.getInstance().getTimeInMillis());
 
       db.insert(TABLE_NAME, null, contentValues);
     } finally {
@@ -88,7 +89,7 @@ public class PasteDBHelper extends SQLiteOpenHelper {
           cursor =
           db.query(TABLE_NAME,
               new String[]{KEY_ID, KEY_NAME, KEY_LANGUAGE, KEY_SCADENZA, KEY_TIPO, KEY_KEY,
-                  KEY_TIME}, null, null, null, null, null, null);
+                  KEY_TIME}, null, null, null, null, KEY_TIME, null);
 
       Log.d(ShareCodeActivity.DEBUG_TAG, "Count = " + cursor.getCount());
 
@@ -112,7 +113,7 @@ public class PasteDBHelper extends SQLiteOpenHelper {
           pasteInfo.setSqlID(cursor.getInt(idxID));
           pasteInfo.setPasteKey(cursor.getString(idxKey));
           Calendar calendar = Calendar.getInstance();
-          calendar.setTimeInMillis(cursor.getInt(idxTime) * 1000);
+          calendar.setTimeInMillis(cursor.getInt(idxTime));
           pasteInfo.setPasteData(calendar);
 
           list.add(pasteInfo);
