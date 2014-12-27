@@ -5,8 +5,6 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -92,9 +90,9 @@ public class CodeShareReceiver extends BroadcastReceiver {
         @Override
         public void onClick(final DialogInterface dialog, final int which) {
           if (!ShareCodeActivity.apiLower11) {
-            final ClipboardManager clipboardManager = ((ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE));
-            final ClipData.Item item = new ClipData.Item(finalResponse);
-            final ClipData clipData = new ClipData("Pastebin Url", new String[]{"text/text"}, item);
+            final android.content.ClipboardManager clipboardManager = ((android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE));
+            final android.content.ClipData.Item item = new android.content.ClipData.Item(finalResponse);
+            final android.content.ClipData clipData = new android.content.ClipData("Pastebin Url", new String[]{"text/text"}, item);
             clipboardManager.setPrimaryClip(clipData);
           } else {
             final android.text.ClipboardManager clipboardManager
@@ -114,7 +112,6 @@ public class CodeShareReceiver extends BroadcastReceiver {
         intent.getIntExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE, 0),
         key);
 
-
       final Notification notification = CompatibleNotification.createNotification(context)
         .setContentTitle(context.getString(R.string.pasteshared, name))
         .setContentText(context.getString(R.string.clicktosee))
@@ -122,7 +119,7 @@ public class CodeShareReceiver extends BroadcastReceiver {
         .create();
 
       final NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(3, notification);
+      manager.notify(3, notification);
     }
     alertDialog.show();
   }
