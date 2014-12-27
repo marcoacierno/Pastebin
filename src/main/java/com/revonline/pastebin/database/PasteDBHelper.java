@@ -113,7 +113,7 @@ public class PasteDBHelper extends SQLiteOpenHelper {
           pasteInfo.setSqlID(cursor.getInt(idxID));
           pasteInfo.setPasteKey(cursor.getString(idxKey));
           Calendar calendar = Calendar.getInstance();
-          calendar.setTimeInMillis(cursor.getInt(idxTime));
+          calendar.setTimeInMillis(cursor.getLong(idxTime));
           pasteInfo.setPasteData(calendar);
 
           list.add(pasteInfo);
