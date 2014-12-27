@@ -133,6 +133,7 @@ public class CodeShareReceiver extends BroadcastReceiver {
         .setContentText(context.getString(R.string.clicktosee))
         .setSmallIcon(R.drawable.ic_action_share)
         .setContentIntent(pendingIntent)
+        .setAutoCancel(true)
         .create();
 
       final NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
