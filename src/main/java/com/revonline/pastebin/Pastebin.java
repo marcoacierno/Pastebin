@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.revonline.pastebin.collections.parcelable.ArgsPair;
 import com.revonline.pastebin.collections.parcelable.ParcelableNameValuePair;
-import com.revonline.pastebin.service.SendCodeService;
+import com.revonline.pastebin.codeshare.SendCodeService;
 
 /**
  * Created with IntelliJ IDEA. User: Marco Date: 30/11/13 Time: 17.45 To change this template use

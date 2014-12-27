@@ -1,24 +1,14 @@
-package com.revonline.pastebin.service;
+package com.revonline.pastebin.codeshare;
 
 import android.app.IntentService;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 
-import com.revonline.pastebin.CodeShareReceiver;
-import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.Pastebin;
-import com.revonline.pastebin.R;
 import com.revonline.pastebin.ShareCodeActivity;
 import com.revonline.pastebin.collections.parcelable.ArgsPair;
 import com.revonline.pastebin.collections.parcelable.ParcelableNameValuePair;
 
-import com.revonline.pastebin.explorepaste.ExplorePaste;
-import com.revonline.pastebin.notification.CompatibleNotification;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;

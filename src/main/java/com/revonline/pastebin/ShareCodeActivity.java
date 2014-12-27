@@ -26,6 +26,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.revonline.pastebin.codeshare.CodeShareReceiver;
 import com.revonline.pastebin.trending_pastes.PopPastes;
 import com.revonline.pastebin.user.User;
 import com.revonline.pastebin.user.UserActivity;
