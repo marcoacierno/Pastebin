@@ -8,7 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  *
  */
-public class UserDBHelper extends SQLiteOpenHelper implements DBData {
+public class UserDBHelper extends SQLiteOpenHelper {
+  public static final String DATABASE_NAME = "pastebindb.db";
 
   private static final int DATABASE_VERSION = 1;
   private static final String KEY_USERNAME = "username";
