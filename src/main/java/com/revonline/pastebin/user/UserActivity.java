@@ -200,11 +200,12 @@ public class UserActivity extends Activity {
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.offlinepastesmenu, menu);
+
     if (user.isLogged()) {
       getMenuInflater().inflate(R.menu.iomenu, menu);
     }
 
-    getMenuInflater().inflate(R.menu.offlinepastesmenu, menu);
     showLocalPastesMenuItem = menu.findItem(R.id.userLocalPastes);
     updateMenuItemLocalPastesText();
 
