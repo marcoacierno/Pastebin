@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/userLocalPastes"
+        android:title="@string/localpastes"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_computer" />
+</menu>

@@ -48,6 +48,7 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -61,6 +62,7 @@ import javax.xml.parsers.SAXParserFactory;
  */
 public class UserActivity extends Activity {
 
+  private static final String EXTRA_FORCE_LOGGED_VIEW = "EXTRA_FORCE_LOGGED_VIEW";
   private User user;
   private EditText username;
   private EditText password;
@@ -69,6 +71,8 @@ public class UserActivity extends Activity {
   private PastesListAdapter adapter;
   private TextView listViewEmptyText;
   private boolean showLocalPastes;
+  private DownloadPastes downloadPastesTask;
+  private MenuItem showLocalPastesMenuItem;
 
   @Override
   public void onCreate(Bundle savedInstanceHere) {
@@ -79,8 +83,14 @@ public class UserActivity extends Activity {
     }
 
     user = new User(this);
+    final Bundle extras = getIntent().getExtras();
 
-    if (!user.isLogged()) {
+    boolean forceLoggedView = false;
+    if (extras != null) {
+      forceLoggedView = extras.getBoolean(EXTRA_FORCE_LOGGED_VIEW);
+    }
+
+    if (!user.isLogged() && !forceLoggedView) {
       setContentView(R.layout.loginwindow);
 
       username = (EditText) findViewById(R.id.username);
@@ -107,35 +117,79 @@ public class UserActivity extends Activity {
 
       listViewEmptyText = (TextView) findViewById(R.id.empty);
       pastesList.setEmptyView(listViewEmptyText);
-      new DownloadPastes().execute();
+
+      if (user.isLogged()) {
+        new DownloadPastes().execute();
+      } else {
+        showUserPastes();
+        showLocalPastes = true;
+      }
     }
   }
 
   @Override
   public boolean onMenuItemSelected(int featureId, MenuItem item) {
-    if (user.isLogged()) {
-      switch (item.getItemId()) {
-        case R.id.userlogout:
-          user.logout();
-          reloadWindow();
-          break;
-        case R.id.userLocalPastes:
-          showLocalPastes = !showLocalPastes;
-          updatePastesListView();
-          break;
-      }
+    switch (item.getItemId()) {
+      case R.id.userlogout:
+        if (!user.isLogged()) {
+          return super.onMenuItemSelected(featureId, item);
+        }
+
+        user.logout();
+        reloadWindow();
+        break;
+      case R.id.userLocalPastes:
+        showLocalPastes = !showLocalPastes;
+        updateMenuItemLocalPastesText();
+        updatePastesListView();
+        break;
     }
+
     return super.onMenuItemSelected(featureId, item);
+  }
+
+  private void updateMenuItemLocalPastesText() {
+    showLocalPastesMenuItem.setTitle(!showLocalPastes ? R.string.localpastes : R.string.accountpastes);
   }
 
   private void updatePastesListView() {
     if (showLocalPastes) {
+      if (downloadPastesTask != null) {
+        downloadPastesTask.cancel(true);
+        downloadPastesTask = null;
+      }
+
+      if (!user.isLogged()) {
+        Intent intent = getIntent();
+
+        intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, true);
+        finish();
+
+        startActivity(intent);
+        return;
+      }
+
       showUserPastes();
     } else {
       // yyeeeeaaaaaah it's bad, but for now it works >_<
       // i wrote this code YEARS AGO! so don't blame me
       //
-      new DownloadPastes().execute();
+      if (downloadPastesTask != null) {
+        return;
+      }
+
+      if (!user.isLogged()) {
+        Intent intent = getIntent();
+        intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, false);
+        finish();
+        startActivity(intent);
+        return;
+      }
+
+      adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
+
+      downloadPastesTask = new DownloadPastes();
+      downloadPastesTask.execute();
     }
   }
 
@@ -149,6 +203,10 @@ public class UserActivity extends Activity {
     if (user.isLogged()) {
       getMenuInflater().inflate(R.menu.iomenu, menu);
     }
+
+    getMenuInflater().inflate(R.menu.offlinepastesmenu, menu);
+    showLocalPastesMenuItem = menu.findItem(R.id.userLocalPastes);
+    updateMenuItemLocalPastesText();
 
     return super.onCreateOptionsMenu(menu);
   }
@@ -272,7 +330,11 @@ public class UserActivity extends Activity {
       super.onPostExecute(
         xml);    //To change body of overridden methods use File | Settings | File Templates.
       Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+      if (isCancelled()) {
+        return;
+      }
 
+      downloadPastesTask = null;
 //            alertDialog.dismiss();
       if (pasteInfos != null /*&& pasteInfos.size() > 0*/) {
         adapter.setPasteInfoList(pasteInfos);
