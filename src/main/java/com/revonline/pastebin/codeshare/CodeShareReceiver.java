@@ -3,10 +3,12 @@ package com.revonline.pastebin.codeshare;
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 
@@ -63,27 +65,30 @@ public class CodeShareReceiver extends BroadcastReceiver {
       alertDialog.setMessage(context.getString(R.string.msgerrore, response));
       alertDialog.setNegativeButton(R.string.close, null);
     } else {
+      final Intent explore = new Intent(context, ExplorePaste.class);
+
+      final String key = finalResponse.substring(finalResponse.lastIndexOf('/') + 1);
+      final String name = intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME);
+
+      PasteInfo pasteInfo = new PasteInfo(
+          name,
+          null,
+          intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
+          null,
+          key
+      );
+
+      pasteInfo.setPasteData(Calendar.getInstance());
+      pasteInfo.getPasteData().setTimeInMillis(DateTime.now().toInstant().getMillis());
+
+      explore.putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable) pasteInfo);
+
       alertDialog.setTitle(R.string.result);
       alertDialog.setMessage(context.getString(R.string.uploadsuccess, finalResponse));
-      final String key = finalResponse.substring(finalResponse.lastIndexOf('/') + 1);
-
-      final String name = intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_NAME);
       alertDialog.setPositiveButton(R.string.open, new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
           //To change body of implemented methods use File | Settings | File Templates.
-          Intent explore = new Intent(context, ExplorePaste.class);
-          PasteInfo pasteInfo = new PasteInfo(
-              name,
-            null,
-            intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG),
-            null,
-            key
-          );
-          pasteInfo.setPasteData(Calendar.getInstance());
-          pasteInfo.getPasteData().setTimeInMillis(DateTime.now().toInstant().getMillis());
-
-          explore.putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable) pasteInfo);
           context.startActivity(explore);
         }
       });
@@ -116,10 +121,18 @@ public class CodeShareReceiver extends BroadcastReceiver {
         intent.getIntExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE, 0),
         key);
 
+      final PendingIntent pendingIntent = PendingIntent.getActivity(
+          context,
+          3,
+          explore,
+          PendingIntent.FLAG_UPDATE_CURRENT
+      );
+
       final Notification notification = CompatibleNotification.createNotification(context)
         .setContentTitle(context.getString(R.string.pasteshared, name))
         .setContentText(context.getString(R.string.clicktosee))
         .setSmallIcon(R.drawable.ic_action_share)
+        .setContentIntent(pendingIntent)
         .create();
 
       final NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
