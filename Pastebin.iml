@@ -16,6 +16,8 @@
       <sourceFolder url="file://$MODULE_DIR$/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/r" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/tests/src" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/tests/res" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target/MANIFEST.MF" />
       <excludeFolder url="file://$MODULE_DIR$/target/classes" />
       <excludeFolder url="file://$MODULE_DIR$/target/generated-sources/annotations" />
