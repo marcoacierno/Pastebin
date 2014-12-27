@@ -246,9 +246,6 @@ $outputFile2 = fopen("fixedlanguages.txt", "w");
 fwrite($outputFile, "<string-array name=\"languages\">");
 fwrite($outputFile2, "<string-array name=\"fixedlanguages\">");
 
-$output1 = "";
-$output2 = "";
-
 foreach($strings as $str) {
   $splits = split("=", $str);
 
@@ -263,3 +260,4 @@ fwrite($outputFile, "</string-array>");
 fwrite($outputFile2, "</string-array>");
 
 fclose($outputFile);
+fclose($outputFile2);

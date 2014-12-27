@@ -63,6 +63,10 @@ public class RecentNotificationAPI extends CompatibleNotification {
 
   @Override
   public Notification create() {
+    if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 16) {
+      return builder.getNotification();
+    }
+    
     return builder.build();
   }
 }

@@ -43,11 +43,9 @@ public class Pastebin {
       return;
     }
 
-    String visibilita = String.valueOf(visibility);
-
     ArgsPair argsPair = new ArgsPair();
     argsPair.add(new ParcelableNameValuePair("api_option", "paste"));
-    argsPair.add(new ParcelableNameValuePair("api_paste_private", visibilita));
+    argsPair.add(new ParcelableNameValuePair("api_paste_private", String.valueOf(visibility)));
     argsPair.add(new ParcelableNameValuePair("api_paste_name", title));
     argsPair.add(new ParcelableNameValuePair("api_paste_expire_date", scadenza));
     argsPair.add(new ParcelableNameValuePair("api_paste_format", language));
@@ -62,7 +60,7 @@ public class Pastebin {
     intent.putExtra(EXTRA_FLAG_PASTE_ARGS, argsPair);
     intent.putExtra(EXTRA_FLAG_PASTE_NAME, title);
     intent.putExtra(EXTRA_FLAG_PASTE_LANG, language);
-    intent.putExtra(EXTRA_FLAG_PASTE_PRIVATE, visibilita);
+    intent.putExtra(EXTRA_FLAG_PASTE_PRIVATE, visibility);
     intent.putExtra(EXTRA_FLAG_PASTE_SCADENZA, scadenza);
 
     Log.d(ShareCodeActivity.DEBUG_TAG, "launch service");

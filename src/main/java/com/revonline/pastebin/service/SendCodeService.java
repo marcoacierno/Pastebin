@@ -97,7 +97,7 @@ public class SendCodeService extends IntentService {
     broadcast.putExtra(Pastebin.EXTRA_FLAG_PASTE_LANG,
                        intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_LANG));
     broadcast.putExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE,
-                       intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE));
+                       intent.getIntExtra(Pastebin.EXTRA_FLAG_PASTE_PRIVATE, 0));
     broadcast.putExtra(Pastebin.EXTRA_FLAG_PASTE_SCADENZA,
                        intent.getStringExtra(Pastebin.EXTRA_FLAG_PASTE_SCADENZA));
 
