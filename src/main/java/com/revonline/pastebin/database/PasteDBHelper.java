@@ -18,7 +18,8 @@ import java.util.List;
  * Created with IntelliJ IDEA. User: Marco Date: 30/11/13 Time: 22.06 To change this template use
  * File | Settings | File Templates.
  */
-public class PasteDBHelper extends SQLiteOpenHelper implements DBData {
+public class PasteDBHelper extends SQLiteOpenHelper {
+  public static final String DATABASE_NAME = "pastebindb.db";
 
   private static final int DATABASE_VERSION = 1;
   private static final String TABLE_NAME = "pastes";
