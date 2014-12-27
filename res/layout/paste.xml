@@ -5,16 +5,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <ScrollView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
-    <TextView
-        android:id="@+id/codeview"
-        android:freezesText="true"
-        android:textIsSelectable="true"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:text="@string/waitdownload"
-        />
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+        <TextView
+                android:id="@+id/codeview"
+                android:freezesText="true"
+                android:textIsSelectable="true"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="@string/waitdownload"
+                />
 
     </ScrollView>
 </LinearLayout>

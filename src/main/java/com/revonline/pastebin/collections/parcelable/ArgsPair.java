@@ -7,53 +7,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Marco
- * Date: 30/11/13
- * Time: 21.57
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: Marco Date: 30/11/13 Time: 21.57 To change this template use
+ * File | Settings | File Templates.
  */
 public class ArgsPair implements Parcelable {
-    List<ParcelableNameValuePair> pairs = new ArrayList<ParcelableNameValuePair>();
 
-    public void add(ParcelableNameValuePair basicNameValuePair)
-    {
-        pairs.add(basicNameValuePair);
+  public static final Creator CREATOR = new Creator() {
+    public ArgsPair createFromParcel(Parcel in) {
+      return new ArgsPair(in);
     }
 
-    public ArgsPair() { }
-
-    public ArgsPair(Parcel in)
-    {
-        readFromParcel(in);
+    public ArgsPair[] newArray(int size) {
+      return new ArgsPair[size];
     }
+  };
+  List<ParcelableNameValuePair> pairs = new ArrayList<>();
 
-    @Override
-    public int describeContents() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
-    }
+  public ArgsPair() {
+  }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags)
-    {
-        dest.writeTypedList(pairs);
-    }
+  public ArgsPair(Parcel in) {
+    readFromParcel(in);
+  }
 
-    @SuppressWarnings("unchecked")
-    public void readFromParcel(Parcel in)
-    {
-        in.readTypedList(pairs, ParcelableNameValuePair.CREATOR);
-    }
+  @SuppressWarnings("unchecked")
+  public void readFromParcel(Parcel in) {
+    in.readTypedList(pairs, ParcelableNameValuePair.CREATOR);
+  }
 
-    public List<ParcelableNameValuePair> getList() { return pairs; }
+  public void add(ParcelableNameValuePair basicNameValuePair) {
+    pairs.add(basicNameValuePair);
+  }
 
-    public static final Creator CREATOR = new Creator() {
-        public ArgsPair createFromParcel(Parcel in) {
-            return new ArgsPair(in);
-        }
+  @Override
+  public int describeContents() {
+    return 0;  //To change body of implemented methods use File | Settings | File Templates.
+  }
 
-        public ArgsPair[] newArray(int size) {
-            return new ArgsPair[size];
-        }
-    };
+  @Override
+  public void writeToParcel(Parcel dest, int flags) {
+    dest.writeTypedList(pairs);
+  }
+
+  public List<ParcelableNameValuePair> getList() {
+    return pairs;
+  }
 }

@@ -1,89 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pastebin</string>
-    <string name="writeyourcode">Scrivi qui il codice</string>
-    <string name="privato">Privato</string>
-    <string name="publico">Pubblico</string>
-    <string name="nolista">Non in lista</string>
-    <string name="expirationprompt">Seleziona…</string>
-    <string name="scadenza">Scadenza paste</string>
-    <string name="title">Titolo</string>
-    <string name="titolopaste">Titolo paste</string>
-    <string name="linguaggio">Linguaggio</string>
-    <string name="linguaggiprompt">Linguaggi</string>
-    <string name="posta">Invia</string>
-    <string name="cannotbeblank">La sezione codice non può essere vuota!</string>
-    <string name="errore">Errore</string>
-    <string name="close">Chiudi</string>
-    <string name="result">Risultato</string>
-    <string name="open">Apri</string>
-    <string name="favourite">Preferita</string>
-    <string name="nointernet">Assicurati di essere connesso ad internet e riprova</string>
+    <string name="writeyourcode">Write code here</string>
+    <string name="privato">Private</string>
+    <string name="publico">Public</string>
+    <string name="nolista">Unlisted</string>
+    <string name="expirationprompt">Select…</string>
+    <string name="scadenza">Paste Expiration</string>
+    <string name="title">Title</string>
+    <string name="titolopaste">Paste title</string>
+    <string name="linguaggio">Language</string>
+    <string name="linguaggiprompt">Languages</string>
+    <string name="posta">Submit</string>
+    <string name="cannotbeblank">You cannot left code area blank!</string>
+    <!-- You cannot left code area blank !-->
+    <string name="errore">Error</string>
+    <string name="close">Close</string>
+    <string name="result">Result</string>
+    <string name="open">Open</string>
+    <string name="favourite">Favourites</string>
+    <string name="nointernet">Make sure you\'re connected to internet and try again</string>
     <string name="OK">OK</string>
-    <string name="createpaste">Crea paste</string>
-    <string name="pastepopolari">Paste popolari</string>
-    <string name="io">IO</string>
-    <string name="sharestarted">Condivisione iniziata. Puoi continuare ad usare l\'applicazione</string>
-    <string name="waitdownload">Attendere mentre scarico il paste..</string>
-    <string name="fork">Crea copia</string>
-    <string name="share">Condividi</string>
-    <string name="noauthor">Sconosciuto</string>
-    <string name="erroreinterno">L\'errore è dovuto all\'applicazione o a Pastebin</string>
-    <string name="blockedip">Il tuo IP è stato bloccato da Pastebin</string>
-    <string name="maxunlimitedpastes">E\' stato raggiunto il limite di paste non elencati per il tuo account</string>
-    <string name="maxprivatepastes">E\' stato raggiunto il numero massimo di paste privati per il tuo account</string>
-    <string name="blankcode">Non hai scritto nessuna riga di codice!</string>
-    <string name="maxpastesize">E\' stato raggiunto il peso massimo di un paste</string>
-    <string name="norecords">Nessun risultato</string>
-    <string name="waitdownloadlist">Attendere mentre scarico la lista…</string>
-    <string name="profile">Profilo</string>
-    <string name="retry">Riprova</string>
-    <string name="nopastes">Nessun paste pubblicato</string>
-    <string name="maxpastes">Hai raggiunto il limite di paste in 24h</string>
-    <string name="msgerrore">Si è verificato un errore %1$s. Riprova.</string>
-    <string name="uploadsuccess">Il paste è stato pubblicato con successo! URL: %1$s</string>
-    <string name="IO">Io [%1$s]</string>
-    <string name="invaliddata">I dati forniti sono errati!</string>
-    <string name="accountnoactive">L\'Account specificato non è attivo!</string>
-    <string name="loginok">Login avvenuto con successo!</string>
-    <string name="backtohome">Torna alla pagina principale</string>
-    <string name="loginpastebin">Per utilizzare questa scheda devi loggarti nel tuo account Pastebin</string>
+    <string name="createpaste">Create paste</string>
+    <string name="pastepopolari">Trending Pastes</string>
+    <string name="io">Me</string>
+    <string name="sharestarted">Sharing… You can continue to use the application</string>
+    <string name="waitdownload">Wait, downloading paste…</string>
+    <string name="fork">Fork</string>
+    <string name="share">Share</string>
+    <string name="noauthor">Unknown</string>
+    <string name="erroreinterno">Something went wrong in Pastebin or Application</string>
+    <string name="blockedip">Your IP is blocked</string>
+    <string name="maxunlimitedpastes">You reached the maximum number of 25 unlisted pastes for your
+        free account
+    </string>
+    <string name="maxprivatepastes">You reached the maximum number of 10 private pastes for your
+        free account
+    </string>
+    <string name="blankcode">Code area is empty!</string>
+    <string name="maxpastesize">You reached the max size of a paste!</string>
+    <string name="norecords">No results!</string>
+    <string name="waitdownloadlist">Wait, downloading pastes list…</string>
+    <string name="profile">Profile</string>
+    <string name="retry">Retry</string>
+    <string name="nopastes">No pastes</string>
+    <string name="maxpastes">You reached the maximum pastes per 24h</string>
+    <string name="msgerrore">Error: %1$s. Try again.</string>
+    <string name="uploadsuccess">The paste has been published successfully! URL: %1$s</string>
+    <string name="IO">Me [%1$s]</string>
+    <string name="invaliddata">There was an error with your login details!</string>
+    <string name="accountnoactive">Account not active!</string>
+    <string name="loginok">Login ok!</string>
+    <string name="backtohome">Back to home</string>
+    <string name="loginpastebin">To use this page you need to log in to your Pastebin account
+    </string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="continua">Continua</string>
+    <string name="continua">Continue</string>
     <string name="logout">Logout</string>
-    <string name="useanonimo">Posta come anonimo</string>
-    <string name="openbrowser">Apri su Internet</string>
-    <string name="preflanguage">Linguaggio default</string>
-    <string name="summarypreflanguage">Seleziona il linguaggio che vuoi usare di default per ogni tuo nuovo paste</string>
-    <string name="opensettings">Apri impostazioni</string>
-    <string name="summaryscadenza">Seleziona la scadenza default da usare per tutti i nuovi paste</string>
+    <string name="useanonimo">Paste as a guest</string>
+    <string name="openbrowser">Open with a Browser</string>
+    <string name="preflanguage">Default language</string>
+    <string name="summarypreflanguage">Select the default language to be used for new pastes
+    </string>
+    <string name="opensettings">Settings</string>
+    <string name="summaryscadenza">Select the default expiration to be used for new pastes</string>
     <string name="defaultexpiration">N</string>
     <string name="defaultlanguage">text</string>
     <string name="download">Download</string>
-    <string name="downloadfail">Impossibile scaricare il paste..</string>
-    <string name="emptypaste">Paste vuoto</string>
-    <string name="downloadok">Il paste è stato scaricato</string>
-    <string name="confirmdownload">Il paste è già stato scaricato, per confermare il download ripremere su Download</string>
-    <string name="localdownlodok">Download del paste %2$s (%1$s) completato con successo! Clicca per aprirlo.</string>
-    <string name="deleteconfirm">Sei sicuro di voler cancellare %1$s?</string>
-    <string name="yes">Si</string>
+    <string name="downloadfail">Unable to download the paste..</string>
+    <string name="emptypaste">Empty paste</string>
+    <string name="downloadok">Paste downloaded!</string>
+    <string name="confirmdownload">The paste has been already downloaded, click again on
+        \"Download\" to confirm.
+    </string>
+    <string name="localdownlodok">Download of %2$s (%1$s) finished! Click to open.</string>
+    <string name="deleteconfirm">Are you sure you want to delete %1$s?</string>
+    <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="settings">Impostazioni</string>
-    <string name="visiblitapaste">Visibilità paste</string>
-    <string name="summaryprefvspaste">Seleziona la visiblità default da utilizzare per la creazione di un paste</string>
+    <string name="settings">Settings</string>
+    <string name="visiblitapaste">Paste Exposure</string>
+    <string name="summaryprefvspaste">Select the default visibility to be used for new pastes
+    </string>
     <string name="loading">Loading…</string>
-    <string name="language">Linguaggio: %1$s</string>
-    <string name="cancel">Cancella</string>
-    <string-array name="expiration">
-        <item>Mai</item>
-        <item>10 Minuti</item>
-        <item>1 Ora</item>
-        <item>1 Giorno</item>
-        <item>1 Settimana</item>
-        <item>2 Settimane</item>
-        <item>1 Mese</item>
+    <string name="language">Language: %1$s</string>
+    <string name="cancel">Cancel</string>
+    <string name="pasteshared">%s shared</string>
+    <string name="clicktosee">Click here to open the paste</string>
+    <string name="copyUrl">Copy url</string>
+    <string name="localpastes">Local pastes</string>
+  <string name="accountpastes">Account pastes</string>
+  <string-array name="expiration">
+        <item>Never</item>
+        <item>10 Minutes</item>
+        <item>1 Hour</item>
+        <item>1 Day</item>
+        <item>1 Week</item>
+        <item>2 Weeks</item>
+        <item>1 Month</item>
     </string-array>
     <string-array name="expirationvalues">
         <item>N</item>
@@ -93,446 +108,6 @@
         <item>1W</item>
         <item>1M</item>
     </string-array>
-    <string-array name="languages">
-        <item>4CS</item>
-        <item>6502 ACME Cross Assembler</item>
-        <item>6502 Kick Assembler</item>
-        <item>6502 TASM/64TASS</item>
-        <item>ABAP</item>
-        <item>ActionScript</item>
-        <item>ActionScript 3</item>
-        <item>Ada</item>
-        <item>ALGOL 68</item>
-        <item>Apache Log</item>
-        <item>AppleScript</item>
-        <item>APT Sources</item>
-        <item>ARM</item>
-        <item>ASM (NASM)</item>
-        <item>ASP</item>
-        <item>Asymptote</item>
-        <item>autoconf</item>
-        <item>Autohotkey</item>
-        <item>AutoIt</item>
-        <item>Avisynth</item>
-        <item>Awk</item>
-        <item>BASCOM AVR</item>
-        <item>Bash</item>
-        <item>Basic4GL</item>
-        <item>BibTeX</item>
-        <item>Blitz Basic</item>
-        <item>BNF</item>
-        <item>BOO</item>
-        <item>BrainFuck</item>
-        <item>C</item>
-        <item>C for Macs</item>
-        <item>C Intermediate Language</item>
-        <item>C#</item>
-        <item>C++</item>
-        <item>C++ (with QT extensions)</item>
-        <item>C: Loadrunner</item>
-        <item>CAD DCL</item>
-        <item>CAD Lisp</item>
-        <item>CFDG</item>
-        <item>ChaiScript</item>
-        <item>Clojure</item>
-        <item>Clone C</item>
-        <item>Clone C++</item>
-        <item>CMake</item>
-        <item>COBOL</item>
-        <item>CoffeeScript</item>
-        <item>ColdFusion</item>
-        <item>CSS</item>
-        <item>Cuesheet</item>
-        <item>D</item>
-        <item>DCL</item>
-        <item>DCPU-16</item>
-        <item>DCS</item>
-        <item>Delphi</item>
-        <item>Delphi Prism (Oxygene)</item>
-        <item>Diff</item>
-        <item>DIV</item>
-        <item>DOS</item>
-        <item>DOT</item>
-        <item>E</item>
-        <item>ECMAScript</item>
-        <item>Eiffel</item>
-        <item>Email</item>
-        <item>EPC</item>
-        <item>Erlang</item>
-        <item>F#</item>
-        <item>Falcon</item>
-        <item>FO Language</item>
-        <item>Formula One</item>
-        <item>Fortran</item>
-        <item>FreeBasic</item>
-        <item>FreeSWITCH</item>
-        <item>GAMBAS</item>
-        <item>Game Maker</item>
-        <item>GDB</item>
-        <item>Genero</item>
-        <item>Genie</item>
-        <item>GetText</item>
-        <item>Go</item>
-        <item>Groovy</item>
-        <item>GwBasic</item>
-        <item>Haskell</item>
-        <item>Haxe</item>
-        <item>HicEst</item>
-        <item>HQ9 Plus</item>
-        <item>HTML</item>
-        <item>HTML 5</item>
-        <item>Icon</item>
-        <item>IDL</item>
-        <item>INI file</item>
-        <item>Inno Script</item>
-        <item>INTERCAL</item>
-        <item>IO</item>
-        <item>J</item>
-        <item>Java</item>
-        <item>Java 5</item>
-        <item>JavaScript</item>
-        <item>jQuery</item>
-        <item>KiXtart</item>
-        <item>Latex</item>
-        <item>LDIF</item>
-        <item>Liberty BASIC</item>
-        <item>Linden Scripting</item>
-        <item>Lisp</item>
-        <item>LLVM</item>
-        <item>Loco Basic</item>
-        <item>Logtalk</item>
-        <item>LOL Code</item>
-        <item>Lotus Formulas</item>
-        <item>Lotus Script</item>
-        <item>LScript</item>
-        <item>Lua</item>
-        <item>M68000 Assembler</item>
-        <item>MagikSF</item>
-        <item>Make</item>
-        <item>MapBasic</item>
-        <item>MatLab</item>
-        <item>mIRC</item>
-        <item>MIX Assembler</item>
-        <item>Modula 2</item>
-        <item>Modula 3</item>
-        <item>Motorola 68000 HiSoft Dev</item>
-        <item>MPASM</item>
-        <item>MXML</item>
-        <item>MySQL</item>
-        <item>Nagios</item>
-        <item>newLISP</item>
-        <item>None</item>
-        <item>NullSoft Installer</item>
-        <item>Oberon 2</item>
-        <item>Objeck Programming Langua</item>
-        <item>Objective C</item>
-        <item>OCalm Brief</item>
-        <item>OCaml</item>
-        <item>Octave</item>
-        <item>OpenBSD PACKET FILTER</item>
-        <item>OpenGL Shading</item>
-        <item>Openoffice BASIC</item>
-        <item>Oracle 11</item>
-        <item>Oracle 8</item>
-        <item>Oz</item>
-        <item>ParaSail</item>
-        <item>PARI/GP</item>
-        <item>Pascal</item>
-        <item>PAWN</item>
-        <item>PCRE</item>
-        <item>Per</item>
-        <item>Perl</item>
-        <item>Perl 6</item>
-        <item>PHP</item>
-        <item>PHP Brief</item>
-        <item>Pic 16</item>
-        <item>Pike</item>
-        <item>Pixel Bender</item>
-        <item>PL/SQL</item>
-        <item>PostgreSQL</item>
-        <item>POV-Ray</item>
-        <item>Power Shell</item>
-        <item>PowerBuilder</item>
-        <item>ProFTPd</item>
-        <item>Progress</item>
-        <item>Prolog</item>
-        <item>Properties</item>
-        <item>ProvideX</item>
-        <item>PureBasic</item>
-        <item>PyCon</item>
-        <item>Python</item>
-        <item>Python for S60</item>
-        <item>q/kdb+</item>
-        <item>QBasic</item>
-        <item>R</item>
-        <item>Rails</item>
-        <item>REBOL</item>
-        <item>REG</item>
-        <item>Rexx</item>
-        <item>Robots</item>
-        <item>RPM Spec</item>
-        <item>Ruby</item>
-        <item>Ruby Gnuplot</item>
-        <item>SAS</item>
-        <item>Scala</item>
-        <item>Scheme</item>
-        <item>Scilab</item>
-        <item>SdlBasic</item>
-        <item>Smalltalk</item>
-        <item>Smarty</item>
-        <item>SPARK</item>
-        <item>SPARQL</item>
-        <item>SQL</item>
-        <item>StoneScript</item>
-        <item>SystemVerilog</item>
-        <item>T-SQL</item>
-        <item>TCL</item>
-        <item>Tera Term</item>
-        <item>thinBasic</item>
-        <item>TypoScript</item>
-        <item>Unicon</item>
-        <item>UnrealScript</item>
-        <item>UPC</item>
-        <item>Urbi</item>
-        <item>Vala</item>
-        <item>VB.NET</item>
-        <item>Vedit</item>
-        <item>VeriLog</item>
-        <item>VHDL</item>
-        <item>VIM</item>
-        <item>Visual Pro Log</item>
-        <item>VisualBasic</item>
-        <item>VisualFoxPro</item>
-        <item>WhiteSpace</item>
-        <item>WHOIS</item>
-        <item>Winbatch</item>
-        <item>XBasic</item>
-        <item>XML</item>
-        <item>Xorg Config</item>
-        <item>XPP</item>
-        <item>YAML</item>
-        <item>Z80 Assembler</item>
-        <item>ZXBasic</item>
-    </string-array>
-    <string-array name="fixedlanguages">
-        <item>4cs</item>
-        <item>6502acme</item>
-        <item>6502kickass</item>
-        <item>6502tasm</item>
-        <item>abap</item>
-        <item>actionscript</item>
-        <item>actionscript3</item>
-        <item>ada</item>
-        <item>algol68</item>
-        <item>apache</item>
-        <item>applescript</item>
-        <item>apt_sources</item>
-        <item>arm</item>
-        <item>asm</item>
-        <item>asp</item>
-        <item>asymptote</item>
-        <item>autoconf</item>
-        <item>autohotkey</item>
-        <item>autoit</item>
-        <item>avisynth</item>
-        <item>awk</item>
-        <item>bascomavr</item>
-        <item>bash</item>
-        <item>basic4gl</item>
-        <item>bibtex</item>
-        <item>blitzbasic</item>
-        <item>bnf</item>
-        <item>boo</item>
-        <item>bf</item>
-        <item>c</item>
-        <item>c_mac</item>
-        <item>cil</item>
-        <item>csharp</item>
-        <item>cpp</item>
-        <item>cpp-qt</item>
-        <item>c_loadrunner</item>
-        <item>caddcl</item>
-        <item>cadlisp</item>
-        <item>cfdg</item>
-        <item>chaiscript</item>
-        <item>clojure</item>
-        <item>klonec</item>
-        <item>klonecpp</item>
-        <item>cmake</item>
-        <item>cobol</item>
-        <item>coffeescript</item>
-        <item>cfm</item>
-        <item>css</item>
-        <item>cuesheet</item>
-        <item>d</item>
-        <item>dcl</item>
-        <item>dcpu16</item>
-        <item>dcs</item>
-        <item>delphi</item>
-        <item>oxygene</item>
-        <item>diff</item>
-        <item>div</item>
-        <item>dos</item>
-        <item>dot</item>
-        <item>e</item>
-        <item>ecmascript</item>
-        <item>eiffel</item>
-        <item>email</item>
-        <item>epc</item>
-        <item>erlang</item>
-        <item>fsharp</item>
-        <item>falcon</item>
-        <item>fo</item>
-        <item>f1</item>
-        <item>fortran</item>
-        <item>freebasic</item>
-        <item>freeswitch</item>
-        <item>gambas</item>
-        <item>gml</item>
-        <item>gdb</item>
-        <item>genero</item>
-        <item>genie</item>
-        <item>gettext</item>
-        <item>go</item>
-        <item>groovy</item>
-        <item>gwbasic</item>
-        <item>haskell</item>
-        <item>haxe</item>
-        <item>hicest</item>
-        <item>hq9plus</item>
-        <item>html4strict</item>
-        <item>html5</item>
-        <item>icon</item>
-        <item>idl</item>
-        <item>ini</item>
-        <item>inno</item>
-        <item>intercal</item>
-        <item>io</item>
-        <item>j</item>
-        <item>java</item>
-        <item>java5</item>
-        <item>javascript</item>
-        <item>jquery</item>
-        <item>kixtart</item>
-        <item>latex</item>
-        <item>ldif</item>
-        <item>lb</item>
-        <item>lsl2</item>
-        <item>lisp</item>
-        <item>llvm</item>
-        <item>locobasic</item>
-        <item>logtalk</item>
-        <item>lolcode</item>
-        <item>lotusformulas</item>
-        <item>lotusscript</item>
-        <item>lscript</item>
-        <item>lua</item>
-        <item>m68k</item>
-        <item>magiksf</item>
-        <item>make</item>
-        <item>mapbasic</item>
-        <item>matlab</item>
-        <item>mirc</item>
-        <item>mmix</item>
-        <item>modula2</item>
-        <item>modula3</item>
-        <item>68000devpac</item>
-        <item>mpasm</item>
-        <item>mxml</item>
-        <item>mysql</item>
-        <item>nagios</item>
-        <item>newlisp</item>
-        <item>text</item>
-        <item>nsis</item>
-        <item>oberon2</item>
-        <item>objeck</item>
-        <item>objc</item>
-        <item>ocaml-brief</item>
-        <item>ocaml</item>
-        <item>octave</item>
-        <item>pf</item>
-        <item>glsl</item>
-        <item>oobas</item>
-        <item>oracle11</item>
-        <item>oracle8</item>
-        <item>oz</item>
-        <item>parasail</item>
-        <item>parigp</item>
-        <item>pascal</item>
-        <item>pawn</item>
-        <item>pcre</item>
-        <item>per</item>
-        <item>perl</item>
-        <item>perl6</item>
-        <item>php</item>
-        <item>php-brief</item>
-        <item>pic16</item>
-        <item>pike</item>
-        <item>pixelbender</item>
-        <item>plsql</item>
-        <item>postgresql</item>
-        <item>povray</item>
-        <item>powershell</item>
-        <item>powerbuilder</item>
-        <item>proftpd</item>
-        <item>progress</item>
-        <item>prolog</item>
-        <item>properties</item>
-        <item>providex</item>
-        <item>purebasic</item>
-        <item>pycon</item>
-        <item>python</item>
-        <item>pys60</item>
-        <item>q</item>
-        <item>qbasic</item>
-        <item>rsplus</item>
-        <item>rails</item>
-        <item>rebol</item>
-        <item>reg</item>
-        <item>rexx</item>
-        <item>robots</item>
-        <item>rpmspec</item>
-        <item>ruby</item>
-        <item>gnuplot</item>
-        <item>sas</item>
-        <item>scala</item>
-        <item>scheme</item>
-        <item>scilab</item>
-        <item>sdlbasic</item>
-        <item>smalltalk</item>
-        <item>smarty</item>
-        <item>spark</item>
-        <item>sparql</item>
-        <item>sql</item>
-        <item>stonescript</item>
-        <item>systemverilog</item>
-        <item>tsql</item>
-        <item>tcl</item>
-        <item>teraterm</item>
-        <item>thinbasic</item>
-        <item>typoscript</item>
-        <item>unicon</item>
-        <item>uscript</item>
-        <item>ups</item>
-        <item>urbi</item>
-        <item>vala</item>
-        <item>vbnet</item>
-        <item>vedit</item>
-        <item>verilog</item>
-        <item>vhdl</item>
-        <item>vim</item>
-        <item>visualprolog</item>
-        <item>vb</item>
-        <item>visualfoxpro</item>
-        <item>whitespace</item>
-        <item>whois</item>
-        <item>winbatch</item>
-        <item>xbasic</item>
-        <item>xml</item>
-        <item>xorg_conf</item>
-        <item>xpp</item>
-        <item>yaml</item>
-        <item>z80</item>
-        <item>zxbasic</item>
-    </string-array>
+    <string-array name="languages"><item>4CS</item><item>6502 ACME Cross Assembler</item><item>6502 Kick Assembler</item><item>6502 TASM/64TASS</item><item>ABAP</item><item>ActionScript</item><item>ActionScript 3</item><item>Ada</item><item>AIMMS</item><item>ALGOL 68</item><item>Apache Log</item><item>AppleScript</item><item>APT Sources</item><item>ARM</item><item>ASM (NASM)</item><item>ASP</item><item>Asymptote</item><item>autoconf</item><item>Autohotkey</item><item>AutoIt</item><item>Avisynth</item><item>Awk</item><item>BASCOM AVR</item><item>Bash</item><item>Basic4GL</item><item>Batch</item><item>BibTeX</item><item>Blitz Basic</item><item>BNF</item><item>BOO</item><item>BrainFuck</item><item>C</item><item>C (WinAPI)</item><item>C for Macs</item><item>C Intermediate Language</item><item>C#</item><item>C++</item><item>C++ (WinAPI)</item><item>C++ (with Qt extensions)</item><item>C: Loadrunner</item><item>CAD DCL</item><item>CAD Lisp</item><item>CFDG</item><item>ChaiScript</item><item>Chapel</item><item>Clojure</item><item>Clone C</item><item>Clone C++</item><item>CMake</item><item>COBOL</item><item>CoffeeScript</item><item>ColdFusion</item><item>CSS</item><item>Cuesheet</item><item>D</item><item>Dart</item><item>DCL</item><item>DCPU-16</item><item>DCS</item><item>Delphi</item><item>Delphi Prism (Oxygene)</item><item>Diff</item><item>DIV</item><item>DOT</item><item>E</item><item>Easytrieve</item><item>ECMAScript</item><item>Eiffel</item><item>Email</item><item>EPC</item><item>Erlang</item><item>F#</item><item>Falcon</item><item>FO Language</item><item>Formula One</item><item>Fortran</item><item>FreeBasic</item><item>FreeSWITCH</item><item>GAMBAS</item><item>Game Maker</item><item>GDB</item><item>Genero</item><item>Genie</item><item>GetText</item><item>Go</item><item>Groovy</item><item>GwBasic</item><item>Haskell</item><item>Haxe</item><item>HicEst</item><item>HQ9 Plus</item><item>HTML</item><item>HTML 5</item><item>Icon</item><item>IDL</item><item>INI file</item><item>Inno Script</item><item>INTERCAL</item><item>IO</item><item>ISPF Panel Definition</item><item>J</item><item>Java</item><item>Java 5</item><item>JavaScript</item><item>JCL</item><item>jQuery</item><item>KiXtart</item><item>Latex</item><item>LDIF</item><item>Liberty BASIC</item><item>Linden Scripting</item><item>Lisp</item><item>LLVM</item><item>Loco Basic</item><item>Logtalk</item><item>LOL Code</item><item>Lotus Formulas</item><item>Lotus Script</item><item>LScript</item><item>Lua</item><item>M68000 Assembler</item><item>MagikSF</item><item>Make</item><item>MapBasic</item><item>MatLab</item><item>mIRC</item><item>MIX Assembler</item><item>Modula 2</item><item>Modula 3</item><item>Motorola 68000 HiSoft Dev</item><item>MPASM</item><item>MXML</item><item>MySQL</item><item>Nagios</item><item>NetRexx</item><item>newLISP</item><item>Nginx</item><item>Nimrod</item><item>None</item><item>NullSoft Installer</item><item>Oberon 2</item><item>Objeck Programming Langua</item><item>Objective C</item><item>OCalm Brief</item><item>OCaml</item><item>Octave</item><item>OpenBSD PACKET FILTER</item><item>OpenGL Shading</item><item>Openoffice BASIC</item><item>Oracle 11</item><item>Oracle 8</item><item>Oz</item><item>ParaSail</item><item>PARI/GP</item><item>Pascal</item><item>PAWN</item><item>PCRE</item><item>Per</item><item>Perl</item><item>Perl 6</item><item>PHP</item><item>PHP Brief</item><item>Pic 16</item><item>Pike</item><item>Pixel Bender</item><item>PL/SQL</item><item>PostgreSQL</item><item>PostScript</item><item>POV-Ray</item><item>Power Shell</item><item>PowerBuilder</item><item>ProFTPd</item><item>Progress</item><item>Prolog</item><item>Properties</item><item>ProvideX</item><item>PureBasic</item><item>PyCon</item><item>Python</item><item>Python for S60</item><item>q/kdb+</item><item>QBasic</item><item>QML</item><item>R</item><item>Racket</item><item>Rails</item><item>RBScript</item><item>REBOL</item><item>REG</item><item>Rexx</item><item>Robots</item><item>RPM Spec</item><item>Ruby</item><item>Ruby Gnuplot</item><item>Rust</item><item>SAS</item><item>Scala</item><item>Scheme</item><item>Scilab</item><item>SCL</item><item>SdlBasic</item><item>Smalltalk</item><item>Smarty</item><item>SPARK</item><item>SPARQL</item><item>SQL</item><item>StandardML</item><item>StoneScript</item><item>SystemVerilog</item><item>T-SQL</item><item>TCL</item><item>Tera Term</item><item>thinBasic</item><item>TypoScript</item><item>Unicon</item><item>UnrealScript</item><item>UPC</item><item>Urbi</item><item>Vala</item><item>VB.NET</item><item>VBScript</item><item>Vedit</item><item>VeriLog</item><item>VHDL</item><item>VIM</item><item>Visual Pro Log</item><item>VisualBasic</item><item>VisualFoxPro</item><item>WhiteSpace</item><item>WHOIS</item><item>Winbatch</item><item>XBasic</item><item>XML</item><item>Xorg Config</item><item>XPP</item><item>YAML</item><item>Z80 Assembler</item><item>ZXBasic</item></string-array>
+    <string-array name="fixedlanguages"><item>4cs</item><item>6502acme</item><item>6502kickass</item><item>6502tasm</item><item>abap</item><item>actionscript</item><item>actionscript3</item><item>ada</item><item>aimms</item><item>algol68</item><item>apache</item><item>applescript</item><item>apt_sources</item><item>arm</item><item>asm</item><item>asp</item><item>asymptote</item><item>autoconf</item><item>autohotkey</item><item>autoit</item><item>avisynth</item><item>awk</item><item>bascomavr</item><item>bash</item><item>basic4gl</item><item>dos</item><item>bibtex</item><item>blitzbasic</item><item>bnf</item><item>boo</item><item>bf</item><item>c</item><item>c_winapi</item><item>c_mac</item><item>cil</item><item>csharp</item><item>cpp</item><item>cpp-winapi</item><item>cpp-qt</item><item>c_loadrunner</item><item>caddcl</item><item>cadlisp</item><item>cfdg</item><item>chaiscript</item><item>chapel</item><item>clojure</item><item>klonec</item><item>klonecpp</item><item>cmake</item><item>cobol</item><item>coffeescript</item><item>cfm</item><item>css</item><item>cuesheet</item><item>d</item><item>dart</item><item>dcl</item><item>dcpu16</item><item>dcs</item><item>delphi</item><item>oxygene</item><item>diff</item><item>div</item><item>dot</item><item>e</item><item>ezt</item><item>ecmascript</item><item>eiffel</item><item>email</item><item>epc</item><item>erlang</item><item>fsharp</item><item>falcon</item><item>fo</item><item>f1</item><item>fortran</item><item>freebasic</item><item>freeswitch</item><item>gambas</item><item>gml</item><item>gdb</item><item>genero</item><item>genie</item><item>gettext</item><item>go</item><item>groovy</item><item>gwbasic</item><item>haskell</item><item>haxe</item><item>hicest</item><item>hq9plus</item><item>html4strict</item><item>html5</item><item>icon</item><item>idl</item><item>ini</item><item>inno</item><item>intercal</item><item>io</item><item>ispfpanel</item><item>j</item><item>java</item><item>java5</item><item>javascript</item><item>jcl</item><item>jquery</item><item>kixtart</item><item>latex</item><item>ldif</item><item>lb</item><item>lsl2</item><item>lisp</item><item>llvm</item><item>locobasic</item><item>logtalk</item><item>lolcode</item><item>lotusformulas</item><item>lotusscript</item><item>lscript</item><item>lua</item><item>m68k</item><item>magiksf</item><item>make</item><item>mapbasic</item><item>matlab</item><item>mirc</item><item>mmix</item><item>modula2</item><item>modula3</item><item>68000devpac</item><item>mpasm</item><item>mxml</item><item>mysql</item><item>nagios</item><item>netrexx</item><item>newlisp</item><item>nginx</item><item>nimrod</item><item>text</item><item>nsis</item><item>oberon2</item><item>objeck</item><item>objc</item><item>ocaml-brief</item><item>ocaml</item><item>octave</item><item>pf</item><item>glsl</item><item>oobas</item><item>oracle11</item><item>oracle8</item><item>oz</item><item>parasail</item><item>parigp</item><item>pascal</item><item>pawn</item><item>pcre</item><item>per</item><item>perl</item><item>perl6</item><item>php</item><item>php-brief</item><item>pic16</item><item>pike</item><item>pixelbender</item><item>plsql</item><item>postgresql</item><item>postscript</item><item>povray</item><item>powershell</item><item>powerbuilder</item><item>proftpd</item><item>progress</item><item>prolog</item><item>properties</item><item>providex</item><item>purebasic</item><item>pycon</item><item>python</item><item>pys60</item><item>q</item><item>qbasic</item><item>qml</item><item>rsplus</item><item>racket</item><item>rails</item><item>rbs</item><item>rebol</item><item>reg</item><item>rexx</item><item>robots</item><item>rpmspec</item><item>ruby</item><item>gnuplot</item><item>rust</item><item>sas</item><item>scala</item><item>scheme</item><item>scilab</item><item>scl</item><item>sdlbasic</item><item>smalltalk</item><item>smarty</item><item>spark</item><item>sparql</item><item>sql</item><item>standardml</item><item>stonescript</item><item>systemverilog</item><item>tsql</item><item>tcl</item><item>teraterm</item><item>thinbasic</item><item>typoscript</item><item>unicon</item><item>uscript</item><item>ups</item><item>urbi</item><item>vala</item><item>vbnet</item><item>vbscript</item><item>vedit</item><item>verilog</item><item>vhdl</item><item>vim</item><item>visualprolog</item><item>vb</item><item>visualfoxpro</item><item>whitespace</item><item>whois</item><item>winbatch</item><item>xbasic</item><item>xml</item><item>xorg_conf</item><item>xpp</item><item>yaml</item><item>z80</item><item>zxbasic</item></string-array>
 </resources>

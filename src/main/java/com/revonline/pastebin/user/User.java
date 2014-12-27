@@ -4,77 +4,72 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class User
-{
-    private final static String KEY_NAME = "name";
-    private final static String KEY_KEY = "key";
+public class User {
 
-    private String userName;
-    private String userKey;
-    private boolean logged;
-    private SharedPreferences preferences;
+  private final static String KEY_NAME = "name";
+  private final static String KEY_KEY = "key";
 
-    public String getUserName() {
-        return userName;
-    }
+  private String userName;
+  private String userKey;
+  private boolean logged;
+  private SharedPreferences preferences;
 
-    public String getUserKey() {
-        return userKey;
-    }
+  public User(Context context) {
+    preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-    public boolean isLogged() {
-        return logged;
-    }
+    update();
+  }
 
-    public User(Context context)
-    {
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+  public void update() {
+    userName = preferences.getString(KEY_NAME, null);
+    userKey = preferences.getString(KEY_KEY, null);
 
-        update();
-    }
+    logged = !(userKey == null);
+  }
 
-    public void update()
-    {
-        userName = preferences.getString(KEY_NAME, null);
-        userKey = preferences.getString(KEY_KEY, null);
+  public String getUserName() {
+    return userName;
+  }
 
-        logged = !(userKey == null);
-    }
+  public void setUserName(String name) {
+    this.userName = name;
 
-    public void setUserKey(String key)
-    {
-        this.userKey = key;
+    SharedPreferences.Editor editor = preferences.edit();
+    editor.putString(KEY_NAME, name);
+    editor.commit();
+  }
 
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(KEY_KEY, key);
-        editor.commit();
-    }
+  public String getUserKey() {
+    return userKey;
+  }
 
-    public void setUserName(String name)
-    {
-        this.userName = name;
+  public void setUserKey(String key) {
+    this.userKey = key;
 
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(KEY_NAME, name);
-        editor.commit();
-    }
+    SharedPreferences.Editor editor = preferences.edit();
+    editor.putString(KEY_KEY, key);
+    editor.commit();
+  }
+
+  public boolean isLogged() {
+    return logged;
+  }
 //
 //    public void login()
 //    {
 //
 //    }
 
-    public void logout()
-    {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.remove(KEY_KEY);
-        editor.remove(KEY_NAME);
-        editor.commit();
+  public void logout() {
+    SharedPreferences.Editor editor = preferences.edit();
+    editor.remove(KEY_KEY);
+    editor.remove(KEY_NAME);
+    editor.commit();
 
-        userName = null;
-        userKey = null;
-        logged = false;
-    }
+    userName = null;
+    userKey = null;
+    logged = false;
+  }
 
 //    public void loginUser(String name, String password)
 //    {

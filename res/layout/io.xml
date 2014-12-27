@@ -6,17 +6,17 @@
               android:layout_height="match_parent">
 
     <ListView
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:id="@+id/pastes"
-        />
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/pastes"
+            />
 
     <TextView
-        android:id="@+id/empty"
-        android:text="@string/nopastes"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        style="@android:style/TextAppearance.Large"
-        android:gravity="center">
+            android:id="@+id/empty"
+            android:text="@string/nopastes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            style="@android:style/TextAppearance.Large"
+            android:gravity="center">
     </TextView>
 </LinearLayout>

@@ -2,20 +2,20 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
-        android:title="@string/preflanguage"
-        android:summary="@string/summarypreflanguage"
-        android:entries="@array/languages"
-        android:key="pref_defaultlanguage"
-        android:entryValues="@array/fixedlanguages"
-        android:defaultValue="@string/defaultlanguage"
-    />
+            android:title="@string/preflanguage"
+            android:summary="@string/summarypreflanguage"
+            android:entries="@array/languages"
+            android:key="pref_defaultlanguage"
+            android:entryValues="@array/fixedlanguages"
+            android:defaultValue="@string/defaultlanguage"
+            />
 
     <ListPreference
-        android:title="@string/scadenza"
-        android:summary="@string/summaryscadenza"
-        android:entries="@array/expiration"
-        android:entryValues="@array/expirationvalues"
-        android:defaultValue="@string/defaultexpiration"
-        android:key="pref_defaultexpiration"
-    />
+            android:title="@string/scadenza"
+            android:summary="@string/summaryscadenza"
+            android:entries="@array/expiration"
+            android:entryValues="@array/expirationvalues"
+            android:defaultValue="@string/defaultexpiration"
+            android:key="pref_defaultexpiration"
+            />
 </PreferenceScreen>
