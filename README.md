@@ -1,6 +1,7 @@
 # Pastebin Android application
 
-1.0 out. 
+1.5
+
 
 # Features
 * Fast post
@@ -10,7 +11,7 @@
 # Bugs
 
 # ToDo
-* Activity to show local pastes
+* Rewrite of the entire source code!
 
 # Photos - and more
 
