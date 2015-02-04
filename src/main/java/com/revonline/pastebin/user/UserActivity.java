@@ -220,6 +220,7 @@ public class UserActivity extends Activity {
     showLocalPastesMenuItem.setTitle(!showLocalPastes ? getString(R.string.localpastes) : getString(R.string.accountpastes, user.getUserName()));
     setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
     listViewEmptyText.setText(showLocalPastes ? R.string.norecords : R.string.waitdownloadlist);
+    showLocalPastesMenuItem.setIcon(!showLocalPastes ? R.drawable.ic_action_computer : R.drawable.ic_action_cloud);
   }
 
   private void updatePastesListView() {
