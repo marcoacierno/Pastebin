@@ -3,6 +3,7 @@ package com.revonline.pastebin.user;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import android.widget.Toast;
 import com.revonline.pastebin.ErrorMessages;
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
@@ -71,7 +73,7 @@ public class UserActivity extends Activity {
   private PastesListAdapter adapter;
   private TextView listViewEmptyText;
   private boolean showLocalPastes;
-  private DownloadPastes downloadPastesTask;
+  private DownloadUserPastes downloadUserPastesTask;
   private MenuItem showLocalPastesMenuItem;
 
   @Override
@@ -102,6 +104,7 @@ public class UserActivity extends Activity {
       pastesList = (ListView) findViewById(R.id.mypastes);
 
       adapter = new PastesListAdapter(this);
+
       pastesList.setAdapter(adapter);
       pastesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
@@ -115,16 +118,80 @@ public class UserActivity extends Activity {
         }
       });
 
+      pastesList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(final AdapterView<?> parent, final View view, final int position, final long id) {
+          final PasteInfo pasteInfo = (PasteInfo) parent.getItemAtPosition(position);
+
+          new AlertDialog.Builder(UserActivity.this)
+              .setTitle(R.string.delete_paste)
+              .setMessage(R.string.delete_paste_in_local_and_pastebin)
+              .setPositiveButton(R.string.pastebin_and_phone, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                  final PasteDBHelper pasteDBHelper = new PasteDBHelper(UserActivity.this);
+                  final boolean localRemoveSuccess = deleteLocalPaste(pasteDBHelper, pasteInfo);
+                  deleteRemovePaste(pasteDBHelper, pasteInfo);
+
+                  Toast.makeText
+                      (
+                          UserActivity.this,
+                          getString(
+                              R.string.paste_deleted_local_memory,
+                              localRemoveSuccess ? getString(R.string.yes) : getString(R.string.no)
+                          ),
+                          Toast.LENGTH_SHORT
+                      ).show();
+                }
+              })
+              .setNegativeButton(R.string.phone_only, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                  final PasteDBHelper pasteDBHelper = new PasteDBHelper(UserActivity.this);
+                  final boolean success = deleteLocalPaste(pasteDBHelper, pasteInfo);
+
+                  if (!success) {
+                    Toast.makeText(UserActivity.this, R.string.paste_not_saved_in_memory, Toast.LENGTH_SHORT).show();
+                    return;
+                  }
+
+                  Toast.makeText(UserActivity.this, getString(R.string.paste_deleted_local_memory, getString(R.string.yes)), Toast.LENGTH_SHORT).show();
+                  adapter.removePaste(pasteInfo);
+                }
+              })
+              .setNeutralButton(R.string.close, null)
+              .show();
+
+          return true;
+        }
+      });
+
       listViewEmptyText = (TextView) findViewById(R.id.empty);
       pastesList.setEmptyView(listViewEmptyText);
 
       if (user.isLogged()) {
-        new DownloadPastes().execute();
+        new DownloadUserPastes().execute();
       } else {
         showUserPastes();
         showLocalPastes = true;
       }
     }
+  }
+
+  private void deleteRemovePaste(final PasteDBHelper pasteDBHelper, final PasteInfo pasteInfo) {
+    new DeletePasteRequest().execute(pasteInfo);
+  }
+
+  private boolean deleteLocalPaste(final PasteDBHelper pasteDBHelper, final PasteInfo pasteInfo) {
+    final int sqlId = pasteInfo.getSqlID();
+
+    // -1 means that I don't have this paste in the DB
+    // but it could still exists in pastebin
+    if (sqlId == -1) {
+      return false;
+    }
+
+    return pasteDBHelper.deletePaste(pasteInfo.getSqlID());
   }
 
   @Override
@@ -154,9 +221,9 @@ public class UserActivity extends Activity {
 
   private void updatePastesListView() {
     if (showLocalPastes) {
-      if (downloadPastesTask != null) {
-        downloadPastesTask.cancel(true);
-        downloadPastesTask = null;
+      if (downloadUserPastesTask != null) {
+        downloadUserPastesTask.cancel(true);
+        downloadUserPastesTask = null;
       }
 
       if (!user.isLogged()) {
@@ -174,7 +241,7 @@ public class UserActivity extends Activity {
       // yyeeeeaaaaaah it's bad, but for now it works >_<
       // i wrote this code YEARS AGO! so don't blame me
       //
-      if (downloadPastesTask != null) {
+      if (downloadUserPastesTask != null) {
         return;
       }
 
@@ -188,8 +255,8 @@ public class UserActivity extends Activity {
 
       adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
 
-      downloadPastesTask = new DownloadPastes();
-      downloadPastesTask.execute();
+      downloadUserPastesTask = new DownloadUserPastes();
+      downloadUserPastesTask.execute();
     }
   }
 
@@ -255,9 +322,103 @@ public class UserActivity extends Activity {
     new LoginTask().execute(name, password);
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////
-  // DownloadPastes code, ignore it
-  class DownloadPastes extends AsyncTask<Void, Void, String> {
+  class DeletePasteRequest extends AsyncTask<PasteInfo, Void, NetworkDeleteResult> {
+    private ProgressDialog progressDialog;
+
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+
+      progressDialog = new ProgressDialog(UserActivity.this);
+      progressDialog.setMessage(getString(R.string.delete_in_progress));
+      // we cannot implement "Cancel" in a safe way yet
+//      progressDialog.setButton(ProgressDialog.BUTTON_NEGATIVE, getString(R.string.close), new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(final DialogInterface dialog, final int which) {
+//          cancel(true);
+//        }
+//      });
+      progressDialog.setCancelable(false);
+      progressDialog.setIndeterminate(true);
+      progressDialog.show();
+    }
+
+    @Override
+    protected NetworkDeleteResult doInBackground(final PasteInfo... params) {
+      if (!user.isLogged()) {
+        return new NetworkDeleteResult(false, getString(R.string.no_logged), params[0]);
+      }
+
+      final PasteInfo pasteInfo = params[0];
+
+      HttpClient client = new DefaultHttpClient();
+      HttpPost post = new HttpPost("http://pastebin.com/api/api_post.php");
+      HttpResponse response;
+      String bodyresponse;
+      List<BasicNameValuePair> pairs = new ArrayList<>();
+
+      pairs.add(new BasicNameValuePair("api_option", "delete"));
+      pairs.add(new BasicNameValuePair("api_user_key", user.getUserKey()));
+      pairs.add(new BasicNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
+      pairs.add(new BasicNameValuePair("api_paste_key", pasteInfo.getPasteKey()));
+
+      try {
+        post.setEntity(new UrlEncodedFormEntity(pairs));
+
+        if (isCancelled()) {
+          return new NetworkDeleteResult(false, getString(R.string.request_deleted), pasteInfo);
+        }
+
+        response = client.execute(post);
+        StatusLine statusLine = response.getStatusLine();
+
+        if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+          ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+          response.getEntity().writeTo(outputStream);
+          outputStream.close();
+          bodyresponse = outputStream.toString();
+          Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
+
+          final boolean success = "Paste Removed".equals(bodyresponse);
+          return new NetworkDeleteResult(success, success ? "" : getString(ErrorMessages.errors.get(bodyresponse)), pasteInfo);
+        } else {
+          response.getEntity().getContent().close();
+        }
+      } catch (IOException e) {
+        Log.e(ShareCodeActivity.DEBUG_TAG, "when deleting a paste " + pasteInfo, e);
+      }
+
+      return new NetworkDeleteResult(false, getString(R.string.nointernet), pasteInfo);
+    }
+
+    @Override
+    protected void onPostExecute(final NetworkDeleteResult networkDeleteResult) {
+      super.onPostExecute(networkDeleteResult);
+      progressDialog.hide();
+
+      if (isFinishing() || isCancelled()) {
+        return;
+      }
+
+      handleDeleteNetworkRequestResponse(networkDeleteResult);
+    }
+  }
+
+  private void handleDeleteNetworkRequestResponse(final NetworkDeleteResult result) {
+    if (result.isSuccess()) {
+      Toast.makeText(this, getString(R.string.paste_deleted_pastebin), Toast.LENGTH_SHORT).show();
+      adapter.removePaste(result.getPasteInfo());
+      return;
+    }
+
+    Toast.makeText(
+        this,
+        getString(R.string.unable_to_delete_paste_from_remote, result.getMessage()),
+        Toast.LENGTH_LONG
+    ).show();
+  }
+
+  class DownloadUserPastes extends AsyncTask<Void, Void, String> {
 //        ProgressDialog alertDialog;
 
     List<PasteInfo> pasteInfos;    @Override
@@ -270,7 +431,7 @@ public class UserActivity extends Activity {
     DialogInterface.OnClickListener retry = new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialogInterface, int i) {
-        new DownloadPastes().execute();
+        new DownloadUserPastes().execute();
       }
     };
     DialogInterface.OnClickListener close = new DialogInterface.OnClickListener() {
@@ -309,7 +470,7 @@ public class UserActivity extends Activity {
           SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
           SAXParser parser = saxParserFactory.newSAXParser();
           XMLReader reader = parser.getXMLReader();
-          XMLHandler handler = new XMLHandler();
+          XMLHandler handler = new XMLHandler(UserActivity.this);
           reader.setContentHandler(handler);
           reader.parse(new InputSource(new StringReader("<root>" + bodyresponse + "</root>")));
 
@@ -331,11 +492,12 @@ public class UserActivity extends Activity {
       super.onPostExecute(
         xml);    //To change body of overridden methods use File | Settings | File Templates.
       Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+      downloadUserPastesTask = null;
+
       if (isCancelled()) {
         return;
       }
 
-      downloadPastesTask = null;
 //            alertDialog.dismiss();
       if (pasteInfos != null /*&& pasteInfos.size() > 0*/) {
         adapter.setPasteInfoList(pasteInfos);
@@ -357,10 +519,6 @@ public class UserActivity extends Activity {
         builder.show();
       }
     }
-
-
-
-
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -481,6 +639,30 @@ public class UserActivity extends Activity {
       username.setEnabled(true);
       password.setEnabled(true);
       loginButton.setEnabled(true);
+    }
+  }
+
+  private static class NetworkDeleteResult {
+    private final boolean success;
+    private final String message;
+    private final PasteInfo pasteInfo;
+
+    public NetworkDeleteResult(final boolean success, final String message, final PasteInfo pasteInfo) {
+      this.success = success;
+      this.message = message;
+      this.pasteInfo = pasteInfo;
+    }
+
+    public boolean isSuccess() {
+      return success;
+    }
+
+    public String getMessage() {
+      return message;
+    }
+
+    public PasteInfo getPasteInfo() {
+      return pasteInfo;
     }
   }
 }

@@ -228,7 +228,7 @@ public class PopPastes extends Activity {
           SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
           SAXParser parser = saxParserFactory.newSAXParser();
           XMLReader reader = parser.getXMLReader();
-          XMLHandler handler = new XMLHandler();
+          XMLHandler handler = new XMLHandler(PopPastes.this);
           reader.setContentHandler(handler);
           reader.parse(new InputSource(new StringReader("<root>" + bodyresponse + "</root>")));
 
