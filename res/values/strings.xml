@@ -90,7 +90,7 @@
     <string name="clicktosee">Click here to open the paste</string>
     <string name="copyUrl">Copy url</string>
     <string name="localpastes">Local pastes</string>
-  <string name="accountpastes">Account pastes</string>
+  <string name="accountpastes">%1$s\'s pastes</string>
     <string name="saveDraft">Save draft</string>
     <string name="draft">Draft</string>
     <string name="restore_delete_draft">Do you want to restore the previous draft or delete it?</string>

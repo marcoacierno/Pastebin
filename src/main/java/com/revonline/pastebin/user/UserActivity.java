@@ -217,8 +217,9 @@ public class UserActivity extends Activity {
   }
 
   private void updateMenuItemLocalPastesText() {
-    showLocalPastesMenuItem.setTitle(!showLocalPastes ? R.string.localpastes : R.string.accountpastes);
+    showLocalPastesMenuItem.setTitle(!showLocalPastes ? getString(R.string.localpastes) : getString(R.string.accountpastes, user.getUserName()));
     setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
+    listViewEmptyText.setText(showLocalPastes ? R.string.norecords : R.string.waitdownloadlist);
   }
 
   private void updatePastesListView() {
@@ -421,15 +422,15 @@ public class UserActivity extends Activity {
   }
 
   class DownloadUserPastes extends AsyncTask<Void, Void, String> {
-//        ProgressDialog alertDialog;
+    List<PasteInfo> pasteInfos;
 
-    List<PasteInfo> pasteInfos;    @Override
+    @Override
     protected void onPreExecute() {
-      super
-        .onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
+      super.onPreExecute();
 
       listViewEmptyText.setText(R.string.waitdownloadlist);
     }
+
     DialogInterface.OnClickListener retry = new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialogInterface, int i) {
@@ -489,38 +490,39 @@ public class UserActivity extends Activity {
       }
 
       return bodyresponse;  //To change body of implemented methods use File | Settings | File Templates.
-    }    @Override
+    }
+
+    @Override
     protected void onPostExecute(String xml) {
-      super.onPostExecute(
-        xml);    //To change body of overridden methods use File | Settings | File Templates.
+      super.onPostExecute(xml);
+
       Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+
       downloadUserPastesTask = null;
       listViewEmptyText.setText(R.string.norecords);
 
       if (isCancelled()) {
+        Log.d(ShareCodeActivity.DEBUG_TAG, "ookay, request aborted");
         return;
       }
 
-//            alertDialog.dismiss();
-      if (pasteInfos != null /*&& pasteInfos.size() > 0*/) {
+      if (pasteInfos != null) {
         adapter.setPasteInfoList(pasteInfos);
-
-      } else {
-        AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
-
-        Log.d(ShareCodeActivity.DEBUG_TAG, "xml => " + xml);
-        if (ErrorMessages.errors.containsKey(xml)) {
-          builder.setMessage(
-            getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
-        } else {
-          builder.setMessage(R.string.nointernet);
-        }
-
-        // i do in this way cuz i think it can bug
-        builder.setPositiveButton(R.string.retry, retry);
-        builder.setNegativeButton(R.string.close, close);
-        builder.show();
+        return;
       }
+
+      AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+
+      Log.d(ShareCodeActivity.DEBUG_TAG, "xml => " + xml);
+      if (ErrorMessages.errors.containsKey(xml)) {
+        builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
+      } else {
+        builder.setMessage(R.string.nointernet);
+      }
+
+      builder.setPositiveButton(R.string.retry, retry);
+      builder.setNegativeButton(R.string.close, close);
+      builder.show();
     }
   }
 
@@ -559,8 +561,7 @@ public class UserActivity extends Activity {
 
       try {
         pair.add(new BasicNameValuePair("api_user_name", URLEncoder.encode(name, "ISO-8859-1")));
-        pair.add(
-          new BasicNameValuePair("api_user_password", URLEncoder.encode(password, "ISO-8859-1")));
+        pair.add(new BasicNameValuePair("api_user_password", URLEncoder.encode(password, "ISO-8859-1")));
 
         post.setEntity(new UrlEncodedFormEntity(pair));
 

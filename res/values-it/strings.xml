@@ -112,7 +112,7 @@
     <string name="clicktosee">Clicca per aprire il paste</string>
     <string name="pasteshared">%s è stato condiviso!</string>
     <string name="copyUrl">Copia Url</string>
-  <string name="accountpastes">Pastes account</string>
+  <string name="accountpastes">%1$s</string>
   <string name="localpastes">Pastes locali</string>
     <string name="saveDraft">Salva bozza</string>
     <string name="delete_draft">Bozza eliminata</string>
