@@ -495,6 +495,7 @@ public class UserActivity extends Activity {
         xml);    //To change body of overridden methods use File | Settings | File Templates.
       Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
       downloadUserPastesTask = null;
+      listViewEmptyText.setText(R.string.norecords);
 
       if (isCancelled()) {
         return;
@@ -503,7 +504,7 @@ public class UserActivity extends Activity {
 //            alertDialog.dismiss();
       if (pasteInfos != null /*&& pasteInfos.size() > 0*/) {
         adapter.setPasteInfoList(pasteInfos);
-        listViewEmptyText.setText(R.string.norecords);
+
       } else {
         AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
