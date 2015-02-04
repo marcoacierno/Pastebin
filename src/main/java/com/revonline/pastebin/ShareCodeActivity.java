@@ -3,6 +3,8 @@ package com.revonline.pastebin;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -47,7 +49,7 @@ public class ShareCodeActivity extends Activity {
   private String language;
   private String time;
   private int visiblity;
-  private String pasteCode;
+  private String pasteCode = "";
   private CodeShareReceiver codeshareResponse;
   private User user;
   private RadioButton privateButton;
@@ -436,6 +438,49 @@ public class ShareCodeActivity extends Activity {
       case R.id.opensettings:
         intent = new Intent(this, Settings.class);
         break;
+      case R.id.savedraft:
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(ShareCodeActivity.this);
+
+        final String draft = preferences.getString("draft", null);
+        pasteText.setText(draft);
+
+        if (draft == null) {
+          Toast.makeText(this, getString(R.string.no_draft_to_restore), Toast.LENGTH_SHORT).show();
+          return true;
+        }
+
+        if (pasteCode.length() == 0) {
+          new AlertDialog.Builder(this)
+              .setTitle(R.string.draft)
+              .setMessage(R.string.restore_delete_draft)
+              .setPositiveButton(R.string.restore_draft, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                  pasteText.setText(draft);
+                  Toast.makeText(ShareCodeActivity.this, R.string.draft_restored, Toast.LENGTH_SHORT).show();
+                }
+              })
+              .setNegativeButton(R.string.delete_draft, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                  final SharedPreferences.Editor editor = preferences.edit();
+                  editor.putString("draft", null);
+                  editor.commit();
+
+                  Toast.makeText(ShareCodeActivity.this, R.string.draft_deleted, Toast.LENGTH_SHORT).show();
+                }
+              })
+              .setNeutralButton(R.string.close, null)
+              .show();
+
+          return true;
+        }
+
+        Toast.makeText(this, R.string.draft_saved, Toast.LENGTH_SHORT).show();
+        final SharedPreferences.Editor preferencesEditor = preferences.edit();
+        preferencesEditor.putString("draft", pasteCode);
+        preferencesEditor.commit();
+        return true;
       default:
         return false;
     }

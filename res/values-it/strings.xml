@@ -114,4 +114,13 @@
     <string name="copyUrl">Copia Url</string>
   <string name="accountpastes">Pastes account</string>
   <string name="localpastes">Pastes locali</string>
+    <string name="saveDraft">Salva bozza</string>
+    <string name="delete_draft">Bozza eliminata</string>
+    <string name="draft">Bozza</string>
+    <string name="draft_deleted">Bozza eliminata</string>
+    <string name="draft_restored">Bozza recuperata</string>
+    <string name="draft_saved">Bozza salvata</string>
+    <string name="restore_draft">Recupera bozza</string>
+    <string name="restore_delete_draft">Vuoi recuperare o eliminare la bozza salvata?</string>
+    <string name="no_draft_to_restore">Nessuna bozza da ripristinare</string>
 </resources>
