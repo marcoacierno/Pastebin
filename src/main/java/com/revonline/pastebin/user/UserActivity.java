@@ -171,6 +171,7 @@ public class UserActivity extends Activity {
 
       if (user.isLogged()) {
         new DownloadUserPastes().execute();
+        showLocalPastes = false;
       } else {
         showUserPastes();
         showLocalPastes = true;
@@ -217,6 +218,7 @@ public class UserActivity extends Activity {
 
   private void updateMenuItemLocalPastesText() {
     showLocalPastesMenuItem.setTitle(!showLocalPastes ? R.string.localpastes : R.string.accountpastes);
+    setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
   }
 
   private void updatePastesListView() {
