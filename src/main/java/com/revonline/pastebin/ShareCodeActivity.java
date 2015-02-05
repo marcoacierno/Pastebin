@@ -442,9 +442,8 @@ public class ShareCodeActivity extends Activity {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(ShareCodeActivity.this);
 
         final String draft = preferences.getString("draft", null);
-        pasteText.setText(draft);
 
-        if (draft == null) {
+        if (draft == null && pasteCode.length() == 0) {
           Toast.makeText(this, getString(R.string.no_draft_to_restore), Toast.LENGTH_SHORT).show();
           return true;
         }
