@@ -14,7 +14,8 @@
             android:id="@+id/namepaste"
             android:singleLine="true"
             android:textSize="@dimen/pastenamesize"
-            android:layout_marginLeft="11dp"/>
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"/>
 
     <TextView
             android:text="10/05/2013"
@@ -23,19 +24,24 @@
             android:layout_width="wrap_content"
             android:padding="5dip"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="11dp"/>
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp"/>
 
   <TextView
             android:text="Autore - Linguaggio"
             android:layout_below="@id/namepaste"
             android:id="@+id/submessage"
             android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="5dip"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="11dp"/>
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp"/>
 
 </RelativeLayout>

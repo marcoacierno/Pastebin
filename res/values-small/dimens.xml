@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- small !-->
 <resources>
-    <dimen name="pastenamesize">10dip</dimen>
+    <dimen name="pastenamesize">10sp</dimen>
     <dimen name="codeminheight">150dip</dimen>
     <dimen name="subtitlePaste">20dp</dimen>
 </resources>
