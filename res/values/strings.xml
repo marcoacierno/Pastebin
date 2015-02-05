@@ -127,7 +127,7 @@
     <string name="request_deleted">Request aborted</string>
     <string name="delete_in_progress">Deleting...</string>
     <string name="delete_paste">Delete paste</string>
-    <string name="delete_paste_in_local_and_pastebin">Do you want to delete this paste at Pastebin server or only from the Memory?</string>
+    <string name="delete_paste_in_local_and_pastebin">Do you want to delete this paste from Pastebin server or only from the Memory?</string>
     <string name="paste_not_saved_in_memory">Paste not saved in phone\'s memory</string>
     <string name="pastebin_and_phone">Pastebin + Memory</string>
     <string name="phone_only">Phone\'s memory</string>
