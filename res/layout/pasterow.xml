@@ -5,14 +5,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <!--<ImageView-->
-    <!--android:layout_width="50dip"-->
-    <!--android:layout_height="50dip"-->
-    <!--android:src="@drawable/ic_action_person"-->
-    <!--android:contentDescription="avatar"-->
-    <!--android:id="@+id/linearlayout_avatar"-->
-    <!--/>-->
-
     <TextView
             android:text="Namfsdfsdfsdfsdfsdfsdffde"
             android:layout_height="wrap_content"
@@ -22,16 +14,7 @@
             android:id="@+id/namepaste"
             android:singleLine="true"
             android:textSize="@dimen/pastenamesize"
-            />
-
-    <TextView
-            android:text="Autore - Linguaggio"
-            android:id="@+id/submessage"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_below="@id/namepaste"
-            android:layout_marginTop="8dp"
-            />
+            android:layout_marginLeft="11dp"/>
 
     <TextView
             android:text="10/05/2013"
@@ -41,6 +24,18 @@
             android:padding="5dip"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            />
+            android:layout_marginRight="11dp"/>
+
+  <TextView
+            android:text="Autore - Linguaggio"
+            android:layout_below="@id/namepaste"
+            android:id="@+id/submessage"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="5dip"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="11dp"/>
 
 </RelativeLayout>
