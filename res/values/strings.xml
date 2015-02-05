@@ -133,4 +133,5 @@
     <string name="phone_only">Phone\'s memory</string>
   <string name="invalid_permission_to_remove_paste">Invalid permissions to remove paste</string>
   <string name="phone_memory">Memory</string>
+  <string name="private_paste_unable_to_see">This is a private paste! We cannot open this paste in the application yet. Do you want to open it in the Browser?</string>
 </resources>

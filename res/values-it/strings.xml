@@ -137,4 +137,5 @@
     <string name="unable_to_delete_paste_from_remote">Impossibile eliminare il Paste! %1$s</string>
     <string name="invalid_permission_to_remove_paste">Non hai i permessi per cancellare questo paste</string>
     <string name="phone_memory">Memoria</string>
+    <string name="private_paste_unable_to_see">Questo paste è privato e non può ancora essere visualizzato nell\'applicazione. Vuoi aprirlo sul browser?</string>
 </resources>
