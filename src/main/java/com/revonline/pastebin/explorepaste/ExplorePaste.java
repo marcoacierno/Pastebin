@@ -2,6 +2,7 @@ package com.revonline.pastebin.explorepaste;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -97,9 +98,7 @@ public class ExplorePaste extends Activity {
         startActivity(intent);
         break;
       case R.id.openinbrowser:
-        intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("http://pastebin.com/" + pasteKey));
-        startActivity(intent);
+        openInBrowser();
         break;
       case R.id.downloadpaste:
         String text = textView.getText().toString();
@@ -145,6 +144,13 @@ public class ExplorePaste extends Activity {
     }
     return super.onMenuItemSelected(featureId,
                                     item);    //To change body of overridden methods use File | Settings | File Templates.
+  }
+
+  private void openInBrowser() {
+    final Intent intent;
+    intent = new Intent(Intent.ACTION_VIEW);
+    intent.setData(Uri.parse("http://pastebin.com/" + pasteKey));
+    startActivity(intent);
   }
 
   @Override
@@ -246,15 +252,28 @@ public class ExplorePaste extends Activity {
       super.onPostExecute(
         s);    //To change body of overridden methods use File | Settings | File Templates.
 
+      if (!ExplorePaste.this.isFinishing()) {
+        alertDialog.dismiss();
+      }
+
+      if ("Error, this is a private paste. If this is your private paste, please login to Pastebin first.".equals(s)) {
+        new AlertDialog.Builder(ExplorePaste.this)
+            .setMessage(getString(R.string.private_paste_unable_to_see))
+            .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(final DialogInterface dialog, final int which) {
+                openInBrowser();
+              }
+            })
+            .setNegativeButton(R.string.no, null)
+            .show();
+      }
+
       downloaded = true;
+
       if (s != null) {
         textView.setText(s);
       }
-      //no paste here
-
-        if (!ExplorePaste.this.isFinishing()) {
-            alertDialog.dismiss();
-        }
     }
   }
 }

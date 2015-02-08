@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import android.widget.Toast;
 import com.revonline.pastebin.ErrorMessages;
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
@@ -90,8 +91,8 @@ public class PopPastes extends Activity {
       pasteInfos = savedInstanceState.getParcelableArrayList(KEY_POP_PASTES);
     } else {
       //
-      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//            String cached_xml = sharedPreferences.getString("cachexml", null);
+      final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+      String cached_xml = sharedPreferences.getString("cachexml", null);
 
       long lastDownload = sharedPreferences.getLong("lastdownload", 0);
 
@@ -108,47 +109,20 @@ public class PopPastes extends Activity {
 
         // non è passata un'ora, quindi uso la cache
         if (hours == 0) {
-          ObjectInputStream objectInputStream = null;
           pasteInfos = new ArrayList<>();
 
-          TimingLogger
-            logger =
-            new TimingLogger(ShareCodeActivity.DEBUG_TAG, "recent pastes restore");
-
           try {
-            objectInputStream = new ObjectInputStream(new FileInputStream(file));
+            SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+            SAXParser parser = saxParserFactory.newSAXParser();
+            XMLReader reader = parser.getXMLReader();
+            XMLHandler handler = new XMLHandler(this);
 
-            while (true) {
-              try {
-                pasteInfos.add((PasteInfo) objectInputStream.readObject());
-              } catch (ClassNotFoundException e) {
-                break;
-              } catch (EOFException e) {
-                break;
-              }
-            }
+            reader.setContentHandler(handler);
+            reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
 
-            logger.addSplit("restore");
-            logger.dumpToLog();
-
-//                        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-//                        SAXParser parser = saxParserFactory.newSAXParser();
-//                        XMLReader reader = parser.getXMLReader();
-//                        XMLHandler handler = new XMLHandler();
-//                        reader.setContentHandler(handler);
-//                        reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
-//
-//                        pasteInfos = handler.data;
-          } catch (IOException e) {
-            e.printStackTrace();
-          } finally {
-            if (objectInputStream != null) {
-              try {
-                objectInputStream.close();
-              } catch (IOException e) {
-                e.printStackTrace();
-              }
-            }
+            pasteInfos = handler.data;
+          } catch (IOException | ParserConfigurationException | SAXException e) {
+            Log.e(ShareCodeActivity.DEBUG_TAG, "mentre caricavo i trending pastes", e);
           }
         } else {
           file.delete();// passata un'ora, cancello il file
@@ -228,7 +202,7 @@ public class PopPastes extends Activity {
           SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
           SAXParser parser = saxParserFactory.newSAXParser();
           XMLReader reader = parser.getXMLReader();
-          XMLHandler handler = new XMLHandler();
+          XMLHandler handler = new XMLHandler(PopPastes.this);
           reader.setContentHandler(handler);
           reader.parse(new InputSource(new StringReader("<root>" + bodyresponse + "</root>")));
 
@@ -285,10 +259,9 @@ public class PopPastes extends Activity {
         return;
       }
 
-      SharedPreferences.Editor
-        editor =
-        PreferenceManager.getDefaultSharedPreferences(PopPastes.this).edit();
-//            editor.putString("cachexml", xml);
+      SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(PopPastes.this).edit();
+      editor.putString("cachexml", xml);
+
       editor.putLong("lastdownload", new DateTime().getMillis());
       editor.commit();
 

@@ -22,13 +22,13 @@ public class PasteDBHelper extends SQLiteOpenHelper {
   public static final String DATABASE_NAME = "pastebindb.db";
 
   private static final int DATABASE_VERSION = 1;
-  private static final String TABLE_NAME = "pastes";
-  private static final String KEY_ID = "id";
+  public static final String TABLE_NAME = "pastes";
+  public static final String KEY_ID = "id";
   private static final String KEY_NAME = "name";
   private static final String KEY_LANGUAGE = "language";
   private static final String KEY_SCADENZA = "scadenza";
   private static final String KEY_TIPO = "tipo";
-  private static final String KEY_KEY = "url";
+  public static final String KEY_KEY = "url";
   private static final String KEY_TIME = "time";
   private static final String CREATE_TABLE = "create table " + TABLE_NAME + "\n" +
                                              "(\n" +
@@ -127,6 +127,15 @@ public class PasteDBHelper extends SQLiteOpenHelper {
       return list;
     } finally {
       db.close();
+    }
+  }
+
+  public boolean deletePaste(int id) {
+    final SQLiteDatabase database = getWritableDatabase();
+    try {
+      return database.delete(TABLE_NAME, KEY_ID + " = ?", new String[]{String.valueOf(id)}) > 0;
+    } finally {
+      database.close();
     }
   }
 

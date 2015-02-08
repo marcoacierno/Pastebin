@@ -1,10 +1,14 @@
 package com.revonline.pastebin.xml;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.ShareCodeActivity;
 
+import com.revonline.pastebin.database.PasteDBHelper;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -27,6 +31,18 @@ public class XMLHandler extends DefaultHandler {
   private boolean onElement;
   private String value;
   private PasteInfo info = null;
+  private SQLiteDatabase database;
+
+  private final Context context;
+
+  public XMLHandler(final Context context) {
+    this.context = context;
+  }
+
+  @Override
+  public void startDocument() throws SAXException {
+    database = new PasteDBHelper(context).getReadableDatabase();
+  }
 
   @Override
   public void endDocument() throws SAXException {
@@ -34,6 +50,8 @@ public class XMLHandler extends DefaultHandler {
       data.add(info);
       value = "Untitled";
     }
+
+    database.close();
   }
 
     /*
@@ -77,6 +95,18 @@ public class XMLHandler extends DefaultHandler {
     switch (localName) {
       case XML_PASTE_KEY:
         info.setPasteKey(value);
+
+        // check if we have this paste in our local database
+        Cursor cursor = database.query(PasteDBHelper.TABLE_NAME, new String[]{PasteDBHelper.KEY_ID}, PasteDBHelper.KEY_KEY + " = ?", new String[]{value}, null, null, null, null);
+        boolean exists = cursor.moveToFirst();
+        int localId = -1;
+
+        if (exists) {
+          localId = cursor.getInt(cursor.getColumnIndex(PasteDBHelper.KEY_ID));
+        }
+
+        info.setSqlID(localId);
+
         Log.d(ShareCodeActivity.DEBUG_TAG, "XML PARSER -- paste key " + value);
         break;
       case XML_PASTE_DATE:

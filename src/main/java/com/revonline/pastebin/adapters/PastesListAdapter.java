@@ -49,6 +49,11 @@ public class PastesListAdapter extends BaseAdapter {
     notifyDataSetChanged();
   }
 
+  public void removePaste(PasteInfo paste) {
+    this.pasteInfoList.remove(paste);
+    notifyDataSetChanged();
+  }
+
 
   @Override
   public int getCount() {
