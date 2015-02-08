@@ -21,7 +21,7 @@ public class PasteInfo implements Parcelable, Serializable {
   private int sqlID;
   private String pasteName;
   private String pasteAuthor;
-  private String pasteLanguage;
+  private String pasteLanguage = "Unknown";
   private Calendar pasteData;
   private String pasteKey;
 

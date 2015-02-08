@@ -91,7 +91,7 @@ public class XMLHandler extends DefaultHandler {
   @Override
   public void endElement(String uri, String localName, String qName) throws SAXException {
     onElement = false;
-
+    Log.d(ShareCodeActivity.DEBUG_TAG, "local name is " + localName);
     switch (localName) {
       case XML_PASTE_KEY:
         info.setPasteKey(value);
