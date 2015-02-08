@@ -18,7 +18,7 @@ public class PasteInfo implements Parcelable, Serializable {
       return new PasteInfo[size];
     }
   };
-  public int sqlID;
+  private int sqlID;
   private String pasteName;
   private String pasteAuthor;
   private String pasteLanguage = "Unknown";

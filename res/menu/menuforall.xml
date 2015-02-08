@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:icon="@drawable/ic_action_favorite"
+          android:showAsAction="always"
+          android:title="@string/saveDraft"
+          android:id="@+id/savedraft" />
     <item
             android:icon="@drawable/ic_action_settings"
             android:showAsAction="never"

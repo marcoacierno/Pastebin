@@ -1,6 +1,6 @@
 # Pastebin Android application
 
-Current version is *1.5.1*
+Current version is *1.6*
 
 [Refer to the Milestones page](https://github.com/rrev/Pastebin/milestones) for information about coming versions. I try to release a new version every month
 
