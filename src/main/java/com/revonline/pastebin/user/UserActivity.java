@@ -219,7 +219,12 @@ public class UserActivity extends Activity {
   private void updateMenuItemLocalPastesText() {
     showLocalPastesMenuItem.setTitle(!showLocalPastes ? getString(R.string.localpastes) : getString(R.string.accountpastes, user.getUserName()));
     setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
-    listViewEmptyText.setText(showLocalPastes ? R.string.norecords : R.string.waitdownloadlist);
+
+    // empty text could not be available yet (not logged)
+    if (listViewEmptyText != null) {
+      listViewEmptyText.setText(showLocalPastes ? R.string.norecords : R.string.waitdownloadlist);
+    }
+
     showLocalPastesMenuItem.setIcon(!showLocalPastes ? R.drawable.ic_action_computer : R.drawable.ic_action_cloud);
   }
 
