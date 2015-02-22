@@ -217,7 +217,14 @@ public class UserActivity extends Activity {
   }
 
   private void updateMenuItemLocalPastesText() {
-    showLocalPastesMenuItem.setTitle(!showLocalPastes ? getString(R.string.localpastes) : getString(R.string.accountpastes, user.getUserName()));
+    if (!showLocalPastes) {
+      showLocalPastesMenuItem.setTitle(getString(R.string.localpastes));
+    } else if (user.isLogged()) {
+      showLocalPastesMenuItem.setTitle(getString(R.string.accountpastes, user.getUserName()));
+    } else {
+      showLocalPastesMenuItem.setTitle(getString(R.string.login));
+    }
+
     setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
 
     // empty text could not be available yet (not logged)
