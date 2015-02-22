@@ -246,27 +246,28 @@ public class UserActivity extends Activity {
       }
 
       showUserPastes();
-    } else {
-      // yyeeeeaaaaaah it's bad, but for now it works >_<
-      // i wrote this code YEARS AGO! so don't blame me
-      //
-      if (downloadUserPastesTask != null) {
-        return;
-      }
-
-      if (!user.isLogged()) {
-        Intent intent = getIntent();
-        intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, false);
-        finish();
-        startActivity(intent);
-        return;
-      }
-
-      adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
-
-      downloadUserPastesTask = new DownloadUserPastes();
-      downloadUserPastesTask.execute();
+      return;
     }
+
+    // yyeeeeaaaaaah it's bad, but for now it works >_<
+    // i wrote this code YEARS AGO! so don't blame me
+    //
+    if (downloadUserPastesTask != null) {
+      return;
+    }
+
+    if (!user.isLogged()) {
+      Intent intent = getIntent();
+      intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, false);
+      finish();
+      startActivity(intent);
+      return;
+    }
+
+    adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
+
+    downloadUserPastesTask = new DownloadUserPastes();
+    downloadUserPastesTask.execute();
   }
 
   private void showUserPastes() {
