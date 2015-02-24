@@ -397,7 +397,7 @@ public class UserActivity extends Activity {
           Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
 
           final boolean success = "Paste Removed".equals(bodyresponse);
-          return new NetworkDeleteResult(success, success ? "" : getString(ErrorMessages.errors.get(bodyresponse)), pasteInfo);
+          return new NetworkDeleteResult(success, success ? "" : getString(ErrorMessages.getErrorFor(bodyresponse)), pasteInfo);
         } else {
           response.getEntity().getContent().close();
         }
@@ -528,8 +528,8 @@ public class UserActivity extends Activity {
       AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
       Log.d(ShareCodeActivity.DEBUG_TAG, "xml => " + xml);
-      if (ErrorMessages.errors.containsKey(xml)) {
-        builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
+      if (ErrorMessages.containsError(xml)) {
+        builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.getErrorFor(xml)) + ")"));
       } else {
         builder.setMessage(R.string.nointernet);
       }
@@ -619,8 +619,8 @@ public class UserActivity extends Activity {
         builder.setPositiveButton(R.string.retry, retry);
         builder.setNegativeButton(R.string.close, close);
       } else {
-        if (ErrorMessages.errors.containsKey(s)) {
-          builder.setMessage(ErrorMessages.errors.get(s));
+        if (ErrorMessages.containsError(s)) {
+          builder.setMessage(ErrorMessages.getErrorFor(s));
           builder.setPositiveButton(R.string.retry, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

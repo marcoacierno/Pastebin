@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class ErrorMessages {
 
-  public final static Map<String, Integer> errors;
+  private final static Map<String, Integer> errors;
 
   static {
     final Map<String, Integer> tempErrors = new HashMap<>();
@@ -35,5 +35,13 @@ public class ErrorMessages {
     tempErrors.put("Bad API request, invalid permission to remove paste", R.string.invalid_permission_to_remove_paste);
 
     errors = Collections.unmodifiableMap(tempErrors);
+  }
+
+  public static int getErrorFor(final String message) {
+    return errors.get(message);
+  }
+
+  public static boolean containsError(final String message) {
+    return errors.containsKey(message);
   }
 }

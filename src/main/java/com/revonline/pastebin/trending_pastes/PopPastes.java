@@ -296,9 +296,9 @@ public class PopPastes extends Activity {
       } else {
         AlertDialog.Builder builder = new AlertDialog.Builder(PopPastes.this);
 
-        if (ErrorMessages.errors.containsKey(xml)) {
+        if (ErrorMessages.containsError(xml)) {
           builder.setMessage(
-            getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
+            getString(R.string.msgerrore, "(" + getString(ErrorMessages.getErrorFor(xml)) + ")"));
         } else {
           builder.setMessage(R.string.nointernet);
         }
