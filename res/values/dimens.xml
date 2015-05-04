@@ -8,4 +8,5 @@
     <dimen name="margin_right_layout">16dp</dimen>
     <dimen name="margin_top_layout">16dp</dimen>
     <dimen name="margin_bottom_layout">16dp</dimen>
+    <dimen name="margin_between_inputs">8dp</dimen>
 </resources>
