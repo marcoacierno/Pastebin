@@ -135,4 +135,5 @@
   <string name="phone_memory">Memory</string>
   <string name="private_paste_unable_to_see">This is a private paste! We cannot open this paste in the application yet. Do you want to open it in the Browser?</string>
   <string name="paste_not_found_maybe_deleted">Paste not found! It has been deleted or it\'s not available right now!</string>
+  <string name="import_settings">Import settings from Pastebin</string>
 </resources>

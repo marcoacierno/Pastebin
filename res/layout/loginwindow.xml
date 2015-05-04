@@ -24,9 +24,16 @@
               android:layout_below="@id/username"
               android:inputType="textPassword"/>
 
+    <CheckBox
+        android:layout_below="@id/password"
+        android:id="@+id/importSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/import_settings"/>
+
     <Button
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/password"
+            android:layout_below="@id/importSettings"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/login"
