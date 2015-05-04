@@ -4,4 +4,7 @@
     <dimen name="pastenamesize">10sp</dimen>
     <dimen name="codeminheight">150dip</dimen>
     <dimen name="subtitlePaste">20dp</dimen>
+    <dimen name="margin_left_layout">1dp</dimen>
+    <dimen name="margin_right_layout">1dp</dimen>
+    <dimen name="margin_top_layout">1dp</dimen>
 </resources>

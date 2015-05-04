@@ -7,13 +7,18 @@
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_left_layout"
+        android:layout_marginStart="@dimen/margin_left_layout"
+        android:layout_marginRight="@dimen/margin_right_layout"
+        android:layout_marginEnd="@dimen/margin_right_layout"
+        android:layout_marginTop="@dimen/margin_top_layout"
+        android:layout_marginBottom="@dimen/margin_bottom_layout"
         >
     <LinearLayout
             android:orientation="vertical"
-            android:padding="4dip"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
       <ScrollView
                 android:layout_height="@dimen/codeminheight"
