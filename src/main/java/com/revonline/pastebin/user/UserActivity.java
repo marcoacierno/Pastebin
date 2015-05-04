@@ -40,10 +40,12 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -53,6 +55,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -565,10 +569,11 @@ public class UserActivity extends Activity {
       String name = strings[0];
       String password = strings[1];
 
+      String userKey = null;
+
       HttpClient client = new DefaultHttpClient();
       HttpPost post = new HttpPost("http://pastebin.com/api/api_login.php");
       HttpResponse response;
-      String resp = null;
 
       ArrayList<BasicNameValuePair> pair = new ArrayList<>();
       pair.add(new BasicNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
@@ -587,15 +592,13 @@ public class UserActivity extends Activity {
           ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
           response.getEntity().writeTo(outputStream);
           outputStream.close();
-          resp = outputStream.toString();
+          userKey = outputStream.toString();
         }
-      } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
       } catch (IOException e) {
-        e.printStackTrace();
+        Log.e("UserActivity", "exception while login", e);
       }
 
-      return resp;
+      return userKey;
     }
 
     @Override
