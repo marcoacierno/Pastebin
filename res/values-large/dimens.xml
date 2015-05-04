@@ -4,4 +4,5 @@
     <dimen name="pastenamesize">20sp</dimen>
     <dimen name="codeminheight">350dip</dimen>
     <dimen name="subtitlePaste">15dp</dimen>
+    <dimen name="paste_content_font_size">20sp</dimen>
 </resources>
