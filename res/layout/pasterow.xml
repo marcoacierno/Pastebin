@@ -13,13 +13,14 @@
             android:textStyle="bold"
             android:id="@+id/namepaste"
             android:singleLine="true"
-            android:textSize="@dimen/pastenamesize"
+            android:textSize="@dimen/paste_name_font_size"
             android:layout_marginLeft="11dp"
             android:layout_marginStart="11dp"/>
 
     <TextView
             android:text="10/05/2013"
             android:id="@+id/pastetime"
+            android:textSize="@dimen/paste_date_font_size"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="5dip"
@@ -31,6 +32,7 @@
 
   <TextView
             android:text="Autore - Linguaggio"
+            android:textSize="@dimen/paste_description_font_size"
             android:layout_below="@id/namepaste"
             android:id="@+id/submessage"
             android:layout_marginLeft="6dp"
