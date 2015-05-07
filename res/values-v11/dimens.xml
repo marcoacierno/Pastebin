@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- normal !-->
+<resources>
+    <dimen name="margin_left_layout">16dp</dimen>
+    <dimen name="margin_right_layout">16dp</dimen>
+    <dimen name="margin_top_layout">16dp</dimen>
+    <dimen name="margin_bottom_layout">16dp</dimen>
+</resources>

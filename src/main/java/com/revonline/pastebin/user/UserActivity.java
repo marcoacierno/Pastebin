@@ -6,9 +6,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,10 +43,13 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -53,6 +59,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -75,6 +83,7 @@ public class UserActivity extends Activity {
   private boolean showLocalPastes;
   private DownloadUserPastes downloadUserPastesTask;
   private MenuItem showLocalPastesMenuItem;
+  private CheckBox importSettings;
 
   @Override
   public void onCreate(Bundle savedInstanceHere) {
@@ -98,6 +107,8 @@ public class UserActivity extends Activity {
       username = (EditText) findViewById(R.id.username);
       password = (EditText) findViewById(R.id.password);
       loginButton = (Button) findViewById(R.id.loginbutton);
+
+      importSettings = (CheckBox) findViewById(R.id.importSettings);
     } else {
       setContentView(R.layout.iopastes);
       // ID: mypastes
@@ -217,7 +228,14 @@ public class UserActivity extends Activity {
   }
 
   private void updateMenuItemLocalPastesText() {
-    showLocalPastesMenuItem.setTitle(!showLocalPastes ? getString(R.string.localpastes) : getString(R.string.accountpastes, user.getUserName()));
+    if (!showLocalPastes) {
+      showLocalPastesMenuItem.setTitle(getString(R.string.localpastes));
+    } else if (user.isLogged()) {
+      showLocalPastesMenuItem.setTitle(getString(R.string.accountpastes, user.getUserName()));
+    } else {
+      showLocalPastesMenuItem.setTitle(getString(R.string.login));
+    }
+
     setTitle(getString(R.string.io) + (showLocalPastes ? " - " + getString(R.string.phone_memory) : " - Pastebin"));
 
     // empty text could not be available yet (not logged)
@@ -246,27 +264,28 @@ public class UserActivity extends Activity {
       }
 
       showUserPastes();
-    } else {
-      // yyeeeeaaaaaah it's bad, but for now it works >_<
-      // i wrote this code YEARS AGO! so don't blame me
-      //
-      if (downloadUserPastesTask != null) {
-        return;
-      }
-
-      if (!user.isLogged()) {
-        Intent intent = getIntent();
-        intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, false);
-        finish();
-        startActivity(intent);
-        return;
-      }
-
-      adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
-
-      downloadUserPastesTask = new DownloadUserPastes();
-      downloadUserPastesTask.execute();
+      return;
     }
+
+    // yyeeeeaaaaaah it's bad, but for now it works >_<
+    // i wrote this code YEARS AGO! so don't blame me
+    //
+    if (downloadUserPastesTask != null) {
+      return;
+    }
+
+    if (!user.isLogged()) {
+      Intent intent = getIntent();
+      intent.putExtra(EXTRA_FORCE_LOGGED_VIEW, false);
+      finish();
+      startActivity(intent);
+      return;
+    }
+
+    adapter.setPasteInfoList(Collections.<PasteInfo>emptyList());
+
+    downloadUserPastesTask = new DownloadUserPastes();
+    downloadUserPastesTask.execute();
   }
 
   private void showUserPastes() {
@@ -389,7 +408,7 @@ public class UserActivity extends Activity {
           Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
 
           final boolean success = "Paste Removed".equals(bodyresponse);
-          return new NetworkDeleteResult(success, success ? "" : getString(ErrorMessages.errors.get(bodyresponse)), pasteInfo);
+          return new NetworkDeleteResult(success, success ? "" : getString(ErrorMessages.getErrorFor(bodyresponse)), pasteInfo);
         } else {
           response.getEntity().getContent().close();
         }
@@ -520,8 +539,8 @@ public class UserActivity extends Activity {
       AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
 
       Log.d(ShareCodeActivity.DEBUG_TAG, "xml => " + xml);
-      if (ErrorMessages.errors.containsKey(xml)) {
-        builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.errors.get(xml)) + ")"));
+      if (ErrorMessages.containsError(xml)) {
+        builder.setMessage(getString(R.string.msgerrore, "(" + getString(ErrorMessages.getErrorFor(xml)) + ")"));
       } else {
         builder.setMessage(R.string.nointernet);
       }
@@ -557,37 +576,97 @@ public class UserActivity extends Activity {
       String name = strings[0];
       String password = strings[1];
 
-      HttpClient client = new DefaultHttpClient();
-      HttpPost post = new HttpPost("http://pastebin.com/api/api_login.php");
-      HttpResponse response;
-      String resp = null;
+      String userKey = null;
 
-      ArrayList<BasicNameValuePair> pair = new ArrayList<>();
-      pair.add(new BasicNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
+      {
 
-      try {
-        pair.add(new BasicNameValuePair("api_user_name", URLEncoder.encode(name, "ISO-8859-1")));
-        pair.add(new BasicNameValuePair("api_user_password", URLEncoder.encode(password, "ISO-8859-1")));
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost("http://pastebin.com/api/api_login.php");
+        HttpResponse response;
 
-        post.setEntity(new UrlEncodedFormEntity(pair));
+        ArrayList<BasicNameValuePair> pair = new ArrayList<>();
+        pair.add(new BasicNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
 
-        response = client.execute(post);
-        StatusLine line = response.getStatusLine();
+        try {
+          pair.add(new BasicNameValuePair("api_user_name", URLEncoder.encode(name, "ISO-8859-1")));
+          pair.add(new BasicNameValuePair("api_user_password", URLEncoder.encode(password, "ISO-8859-1")));
 
-        if (line.getStatusCode() == HttpStatus.SC_OK) {
-          // OK
-          ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-          response.getEntity().writeTo(outputStream);
-          outputStream.close();
-          resp = outputStream.toString();
+          post.setEntity(new UrlEncodedFormEntity(pair));
+
+          response = client.execute(post);
+          StatusLine line = response.getStatusLine();
+
+          if (line.getStatusCode() == HttpStatus.SC_OK) {
+            // OK
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            response.getEntity().writeTo(outputStream);
+            outputStream.close();
+            userKey = outputStream.toString();
+          }
+        } catch (IOException e) {
+          Log.e("UserActivity", "exception while login", e);
         }
-      } catch (UnsupportedEncodingException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
+
       }
 
-      return resp;
+      Log.d("UserActivity", "check if I should import settings");
+      Log.d("UserActivity", "import settings is selected? " + importSettings.isChecked());
+      Log.d("UserActivity", "userKey is null? " + (userKey == null));
+      Log.d("UserActivity", "userKey is? " + userKey);
+      if (importSettings.isChecked() && userKey != null && !ErrorMessages.containsError(userKey)) {
+        Log.d("UserActivity", "user asked us to import his settings and we can");
+
+        // http://pastebin.com/api/api_post.php
+        HttpClient client = new DefaultHttpClient();
+        HttpPost post = new HttpPost("http://pastebin.com/api/api_post.php");
+        HttpResponse response;
+
+        ArrayList<BasicNameValuePair> pair = new ArrayList<>();
+        pair.add(new BasicNameValuePair("api_dev_key", SpecialKeys.DEV_KEY));
+
+        try {
+          pair.add(new BasicNameValuePair("api_option", "userdetails"));
+          pair.add(new BasicNameValuePair("api_user_key", userKey));
+
+          post.setEntity(new UrlEncodedFormEntity(pair));
+
+          response = client.execute(post);
+          StatusLine line = response.getStatusLine();
+
+          if (line.getStatusCode() == HttpStatus.SC_OK) {
+            // OK
+            final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            response.getEntity().writeTo(outputStream);
+
+            Log.d("UserActivity", "ok received user preferences");
+
+            final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+            final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+            final Document document = documentBuilder.parse(new ByteArrayInputStream(outputStream.toByteArray()));
+
+            final Element root = document.getDocumentElement();
+
+            final SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(UserActivity.this).edit();
+
+            preferences.putString("pref_defaultexpiration", root.getElementsByTagName("user_expiration").item(0).getTextContent());
+            preferences.putString("pref_defaultlanguage", root.getElementsByTagName("user_format_short").item(0).getTextContent());
+
+            Log.d("UserActivity", "default expiration => " + root.getElementsByTagName("user_expiration").item(0).getTextContent());
+            Log.d("UserActivity", "pref_defaultlanguage => " + root.getElementsByTagName("user_format_short").item(0).getTextContent());
+
+
+            preferences.commit();
+
+            outputStream.close();
+          }
+        } catch (IOException e) {
+          Log.e("UserActivity", "exception while getting user settings", e);
+        } catch (ParserConfigurationException | SAXException e) {
+          Log.e("UserActivity", "exception while getting user settings (creating xml parser)", e);
+        }
+      }
+
+      return userKey;
     }
 
     @Override
@@ -611,8 +690,8 @@ public class UserActivity extends Activity {
         builder.setPositiveButton(R.string.retry, retry);
         builder.setNegativeButton(R.string.close, close);
       } else {
-        if (ErrorMessages.errors.containsKey(s)) {
-          builder.setMessage(ErrorMessages.errors.get(s));
+        if (ErrorMessages.containsError(s)) {
+          builder.setMessage(ErrorMessages.getErrorFor(s));
           builder.setPositiveButton(R.string.retry, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

@@ -7,13 +7,19 @@
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_left_layout"
+        android:layout_marginStart="@dimen/margin_left_layout"
+        android:layout_marginRight="@dimen/margin_right_layout"
+        android:layout_marginEnd="@dimen/margin_right_layout"
+        android:layout_marginTop="@dimen/margin_top_layout"
+        android:layout_marginBottom="@dimen/margin_bottom_layout"
         >
     <LinearLayout
             android:orientation="vertical"
-            android:padding="4dip"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_marginBottom="@dimen/margin_between_inputs"
+            android:layout_height="wrap_content">
 
       <ScrollView
                 android:layout_height="@dimen/codeminheight"
@@ -31,10 +37,12 @@
         </ScrollView>
 
         <RadioGroup
+                android:layout_marginTop="@dimen/margin_between_inputs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/accessibilita"
+                android:layout_marginBottom="@dimen/margin_between_inputs"
                 >
             <RadioButton
                     android:id="@+id/access_pubblico"
@@ -46,6 +54,7 @@
                     android:checked="true"
                     />
             <RadioButton
+                android:layout_marginLeft="10dip"
                     android:id="@+id/access_private"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,6 +76,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/margin_between_inputs"
                 >
 
             <TextView
@@ -87,7 +97,8 @@
 
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-                      android:orientation="horizontal">
+                      android:orientation="horizontal"
+                      android:layout_marginBottom="@dimen/margin_between_inputs">
 
             <TextView
                     android:id="@+id/language"
@@ -109,6 +120,7 @@
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
+                      android:layout_marginBottom="@dimen/margin_between_inputs"
                       android:id="@+id/internal_ll">
 
             <TextView
@@ -131,6 +143,7 @@
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
+                      android:layout_marginBottom="@dimen/margin_between_inputs"
                       android:id="@+id/internal_l2">
 
             <CheckBox

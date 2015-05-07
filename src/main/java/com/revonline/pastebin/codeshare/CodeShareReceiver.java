@@ -58,8 +58,8 @@ public class CodeShareReceiver extends BroadcastReceiver {
     if (!urlValidator.isValid(finalResponse)) {
       Log.d(ShareCodeActivity.DEBUG_TAG, "finalResponse => " + finalResponse);
       Log.d(ShareCodeActivity.DEBUG_TAG,
-            "errors.get(finalResponse) => " + ErrorMessages.errors.get(finalResponse));
-      String response = context.getString(ErrorMessages.errors.get(finalResponse));
+            "errors.get(finalResponse) => " + ErrorMessages.getErrorFor(finalResponse));
+      String response = context.getString(ErrorMessages.getErrorFor(finalResponse));
 
       alertDialog.setTitle(R.string.errore);
       alertDialog.setMessage(context.getString(R.string.msgerrore, response));

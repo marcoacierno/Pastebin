@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- normal !-->
 <resources>
-    <dimen name="pastenamesize">13sp</dimen>
+    <dimen name="paste_name_font_size">13sp</dimen>
     <dimen name="codeminheight">270dip</dimen>
     <dimen name="subtitlePaste">10dp</dimen>
+    <dimen name="margin_left_layout">16dp</dimen>
+    <dimen name="margin_right_layout">16dp</dimen>
+    <dimen name="margin_top_layout">16dp</dimen>
+    <dimen name="margin_bottom_layout">16dp</dimen>
+    <dimen name="margin_between_inputs">8dp</dimen>
+    <dimen name="paste_content_font_size">14sp</dimen>
+    <dimen name="paste_description_font_size">14sp</dimen>
+    <dimen name="paste_date_font_size">14sp</dimen>
 </resources>

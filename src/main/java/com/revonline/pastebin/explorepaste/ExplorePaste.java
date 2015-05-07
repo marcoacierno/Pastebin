@@ -193,26 +193,44 @@ public class ExplorePaste extends Activity {
     @Override
     protected String doInBackground(Void... params) {
       String finalResponse = null;
+      HttpResponse response = null;
+      boolean consumed = false;
 
       try {
         DefaultHttpClient client = new DefaultHttpClient();
-        HttpResponse response;
         HttpGet httpGet = new HttpGet("http://pastebin.com/raw.php?i=" + pasteKey);
 
         response = client.execute(httpGet);
         StatusLine statusLine = response.getStatusLine();
 
-        if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
-          ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-          response.getEntity().writeTo(outputStream);
-          outputStream.close();
+        switch (statusLine.getStatusCode()) {
+          case HttpStatus.SC_OK: {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            response.getEntity().writeTo(outputStream);
+            outputStream.close();
 
-          finalResponse = outputStream.toString();
-        } else {
-          response.getEntity().getContent().close();
+            finalResponse = outputStream.toString();
+            consumed = true;
+            break;
+          }
+          default: {
+            finalResponse = null;
+            break;
+          }
         }
+
       } catch (IOException e) {
-        e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        Log.e(ShareCodeActivity.DEBUG_TAG, "while download paste raw", e);
+      } finally {
+        if (response != null) {
+          try {
+            if (!consumed) {
+              response.getEntity().getContent().close();
+            }
+          } catch (IOException e) {
+            Log.e(ShareCodeActivity.DEBUG_TAG, "while closing content", e);
+          }
+        }
       }
 
       return finalResponse;  //To change body of implemented methods use File | Settings | File Templates.
@@ -252,9 +270,11 @@ public class ExplorePaste extends Activity {
       super.onPostExecute(
         s);    //To change body of overridden methods use File | Settings | File Templates.
 
-      if (!ExplorePaste.this.isFinishing()) {
-        alertDialog.dismiss();
+      if (ExplorePaste.this.isFinishing()) {
+        return;
       }
+
+      alertDialog.dismiss();
 
       if ("Error, this is a private paste. If this is your private paste, please login to Pastebin first.".equals(s)) {
         new AlertDialog.Builder(ExplorePaste.this)
@@ -266,6 +286,18 @@ public class ExplorePaste extends Activity {
               }
             })
             .setNegativeButton(R.string.no, null)
+            .show();
+      }
+
+      if (s == null) {
+        new AlertDialog.Builder(ExplorePaste.this)
+            .setMessage(getString(R.string.paste_not_found_maybe_deleted))
+            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+              @Override
+              public void onClick(final DialogInterface dialog, final int which) {
+                ExplorePaste.this.finish();
+              }
+            })
             .show();
       }
 

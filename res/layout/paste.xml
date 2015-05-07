@@ -3,7 +3,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:layout_marginLeft="@dimen/margin_left_layout"
+              android:layout_marginStart="@dimen/margin_left_layout"
+              android:layout_marginRight="@dimen/margin_right_layout"
+              android:layout_marginEnd="@dimen/margin_right_layout"
+              android:layout_marginTop="@dimen/margin_top_layout"
+              android:layout_marginBottom="@dimen/margin_bottom_layout">
     <ScrollView
             android:layout_height="match_parent"
             android:layout_width="match_parent">
@@ -11,9 +17,10 @@
                 android:id="@+id/codeview"
                 android:freezesText="true"
                 android:textIsSelectable="true"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="@string/waitdownload"
+                android:textSize="@dimen/paste_content_font_size"
                 />
 
     </ScrollView>
