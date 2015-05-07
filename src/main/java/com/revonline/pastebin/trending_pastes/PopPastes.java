@@ -12,13 +12,10 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.TimingLogger;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
-import android.widget.Toast;
 import com.revonline.pastebin.ErrorMessages;
 import com.revonline.pastebin.PasteInfo;
 import com.revonline.pastebin.R;
@@ -27,7 +24,6 @@ import com.revonline.pastebin.SpecialKeys;
 import com.revonline.pastebin.adapters.PastesListAdapter;
 import com.revonline.pastebin.explorepaste.ExplorePaste;
 import com.revonline.pastebin.xml.XMLHandler;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
@@ -42,30 +38,27 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.ByteArrayOutputStream;
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 /**
  * Created with IntelliJ IDEA. User: Marco Date: 01/12/13 Time: 12.01 To change this template use
  * File | Settings | File Templates.
  */
-public class PopPastes extends Activity {
+public class PopPastes extends Activity implements DeserializePastesListener {
 
   public static final String KEY_POP_PASTES = "poppastes";
   public static final String CACHE_PASTES = "pastes";
+  private static final String TAG = PopPastes.class.getSimpleName();
   DialogInterface.OnClickListener retry = new DialogInterface.OnClickListener() {
     @Override
     public void onClick(DialogInterface dialog, int which) {
@@ -80,6 +73,7 @@ public class PopPastes extends Activity {
   };
   private PastesListAdapter adapter;
   private ArrayList<PasteInfo> pasteInfos;
+  private ProgressDialog downloadingPastesFromMemory;
 
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -96,7 +90,7 @@ public class PopPastes extends Activity {
 
       long lastDownload = sharedPreferences.getLong("lastdownload", 0);
 
-      Log.d(ShareCodeActivity.DEBUG_TAG, "lastDownload=>" + lastDownload);
+      Log.d(TAG, "lastDownload=>" + lastDownload);
 
       File file = new File(getCacheDir(), CACHE_PASTES);
       if (file.exists()) {
@@ -105,28 +99,30 @@ public class PopPastes extends Activity {
           DateTime.now()
         ).getHours();
 
-        Log.d(ShareCodeActivity.DEBUG_TAG, "diff: " + hours);
+        Log.d(TAG, "diff: " + hours);
 
         // non è passata un'ora, quindi uso la cache
         if (hours == 0) {
-          pasteInfos = new ArrayList<>();
+          downloadingPastesFromMemory = new ProgressDialog(this);
+          downloadingPastesFromMemory.setMessage(getString(R.string.loading_pastes_from_memory));
+          downloadingPastesFromMemory.setTitle(R.string.pastepopolari);
+          downloadingPastesFromMemory.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(final DialogInterface dialog, final int which) {
+              finish();
+            }
+          });
+          downloadingPastesFromMemory.setIndeterminate(true);
+          downloadingPastesFromMemory.setCancelable(false);
+          downloadingPastesFromMemory.show();
 
-          try {
-            SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
-            SAXParser parser = saxParserFactory.newSAXParser();
-            XMLReader reader = parser.getXMLReader();
-            XMLHandler handler = new XMLHandler(this);
-
-            reader.setContentHandler(handler);
-            reader.parse(new InputSource(new StringReader("<root>" + cached_xml + "</root>")));
-
-            pasteInfos = handler.data;
-          } catch (IOException | ParserConfigurationException | SAXException e) {
-            Log.e(ShareCodeActivity.DEBUG_TAG, "mentre caricavo i trending pastes", e);
-          }
+          new DeserializePastesFromCacheTask(this, this).execute(cached_xml);
         } else {
           file.delete();// passata un'ora, cancello il file
+          new DownloadTrendingPastes().execute();
         }
+      } else {
+        new DownloadTrendingPastes().execute();
       }
     }
 
@@ -144,29 +140,45 @@ public class PopPastes extends Activity {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(parent.getContext(), ExplorePaste.class);
-        //Log.d(ShareCodeActivity.DEBUG_TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemIdAtPosition(position));
+        //Log.d(TAG, "parent.getItemIdAtPosition(position) => " + parent.getItemIdAtPosition(position));
         intent
-          .putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable) parent.getItemAtPosition(position));
+            .putExtra(ExplorePaste.EXTRA_PASTE_INFO, (Parcelable) parent.getItemAtPosition(position));
         startActivity(intent);
       }
     });
 
     listView.setEmptyView(findViewById(R.id.empty));
-
-    if (pasteInfos == null || pasteInfos.size() == 0) {
-      new DownloadTrendingPastes().execute();
-    } else {
-      adapter.setPasteInfoList(pasteInfos);
-    }
   }
 
   @Override
   protected void onSaveInstanceState(Bundle outState) {
     outState.putParcelableArrayList(KEY_POP_PASTES, pasteInfos);
-//        Log.d(ShareCodeActivity.DEBUG_TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
-//        Log.d(ShareCodeActivity.DEBUG_TAG, "outState " + outState.getParcelableArrayList("poppastes"));
+//        Log.d(TAG, "onSaveInstanceState->pasteInfos => " + pasteInfos);
+//        Log.d(TAG, "outState " + outState.getParcelableArrayList("poppastes"));
 
     super.onSaveInstanceState(outState);
+  }
+
+  @Override
+  public void onDeserializePastesResult(final List<PasteInfo> pastes) {
+    Log.d(TAG, "result from deserializator => " + pastes);
+    downloadingPastesFromMemory.dismiss();
+
+    if (pastes == null) {
+      new AlertDialog.Builder(this)
+          .setTitle(R.string.loading_failed)
+          .setMessage(getString(R.string.unable_to_load_pastes_from_memory))
+          .setNegativeButton("Chiudi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(final DialogInterface dialog, final int which) {
+              finish();
+            }
+          })
+          .show();
+      return;
+    }
+
+    adapter.setPasteInfoList(pastes);
   }
 
   //<Params, Progress, Result>
@@ -197,7 +209,7 @@ public class PopPastes extends Activity {
           outputStream.close();
           bodyresponse = outputStream.toString();
 
-          Log.d(ShareCodeActivity.DEBUG_TAG, "bodyresponse == " + bodyresponse);
+          Log.d(TAG, "bodyresponse == " + bodyresponse);
 
           SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
           SAXParser parser = saxParserFactory.newSAXParser();
@@ -211,7 +223,7 @@ public class PopPastes extends Activity {
           response.getEntity().getContent().close();
         }
       } catch (IOException | SAXException | ParserConfigurationException e) {
-        Log.d(ShareCodeActivity.DEBUG_TAG, "Exception: ", e);
+        Log.d(TAG, "Exception: ", e);
       }
 
       return bodyresponse;  //To change body of implemented methods use File | Settings | File Templates.
@@ -288,7 +300,7 @@ public class PopPastes extends Activity {
         }
       }
 
-//            Log.d(ShareCodeActivity.DEBUG_TAG, "pasteInfos = " + pasteInfos);
+//            Log.d(TAG, "pasteInfos = " + pasteInfos);
 
       alertDialog.dismiss();
       if (pasteInfos != null && pasteInfos.size() > 0) {

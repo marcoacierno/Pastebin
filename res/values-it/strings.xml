@@ -140,4 +140,7 @@
     <string name="private_paste_unable_to_see">Questo paste è privato e non può ancora essere visualizzato nell\'applicazione. Vuoi aprirlo sul browser?</string>
   <string name="paste_not_found_maybe_deleted">Paste non trovato! Forse è stato eliminato o non è disponibile al momento!</string>
     <string name="import_settings">Importa impostazioni da Pastebin</string>
+  <string name="loading_pastes_from_memory">Caricamento pastes dalla memoria del telefono…</string>
+  <string name="unable_to_load_pastes_from_memory">Impossibile caricare i pastes dalla memoria</string>
+  <string name="loading_failed">Caricamento fallito</string>
 </resources>
